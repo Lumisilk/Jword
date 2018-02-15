@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB2DC6BE20340F57000D6AB2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */; };
+		BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BF203410D9000D6AB2 /* NoteView.swift */; };
+		BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6C120341E61000D6AB2 /* ColorDot.swift */; };
+		BB2DC6C42034228C000D6AB2 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6C32034228C000D6AB2 /* CardView.swift */; };
+		BB2DC6C620355B60000D6AB2 /* HomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6C520355B60000D6AB2 /* HomePageController.swift */; };
+		BB2DC6C820357E9D000D6AB2 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6C720357E9D000D6AB2 /* EntryView.swift */; };
 		BB2E778D202C5D7E00548A6D /* JMEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E778C202C5D7E00548A6D /* JMEntry.swift */; };
 		BB2E7790202C62BD00548A6D /* Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E778F202C62BD00548A6D /* Enumeration.swift */; };
 		BB2E7794202C642200548A6D /* JMSense.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7793202C642200548A6D /* JMSense.swift */; };
@@ -16,6 +22,7 @@
 		BB67F0FE202D542000FE6F75 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FD202D542000FE6F75 /* BookManager.swift */; };
 		BB772D3E202DAA98008DFE85 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Other.swift */; };
 		BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D41202DEB1F008DFE85 /* UserDataManager.swift */; };
+		BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */; };
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
 		BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* SearchPageController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
@@ -46,6 +53,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		BB2DC6BF203410D9000D6AB2 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		BB2DC6C120341E61000D6AB2 /* ColorDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDot.swift; sourceTree = "<group>"; };
+		BB2DC6C32034228C000D6AB2 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		BB2DC6C520355B60000D6AB2 /* HomePageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageController.swift; sourceTree = "<group>"; };
+		BB2DC6C720357E9D000D6AB2 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		BB2E778C202C5D7E00548A6D /* JMEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMEntry.swift; sourceTree = "<group>"; };
 		BB2E778F202C62BD00548A6D /* Enumeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumeration.swift; sourceTree = "<group>"; };
 		BB2E7793202C642200548A6D /* JMSense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMSense.swift; sourceTree = "<group>"; };
@@ -55,6 +68,7 @@
 		BB67F0FD202D542000FE6F75 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		BB772D3D202DAA98008DFE85 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		BB772D41202DEB1F008DFE85 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		BBC75E5B202EF87600255050 /* SearchPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
@@ -101,6 +115,7 @@
 				BB772D41202DEB1F008DFE85 /* UserDataManager.swift */,
 				BB67F0FD202D542000FE6F75 /* BookManager.swift */,
 				BBC75E57202EF2B800255050 /* StudyManager.swift */,
+				BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */,
 				BB772D3D202DAA98008DFE85 /* Other.swift */,
 			);
 			path = Managers;
@@ -149,6 +164,7 @@
 		BBDA3DAF202BFB010038BE8B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BB2DC6C520355B60000D6AB2 /* HomePageController.swift */,
 				BBC75E5B202EF87600255050 /* SearchPageController.swift */,
 				BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */,
 			);
@@ -158,6 +174,11 @@
 		BBDA3DB0202BFB090038BE8B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BB2DC6C32034228C000D6AB2 /* CardView.swift */,
+				BB2DC6C120341E61000D6AB2 /* ColorDot.swift */,
+				BB2DC6C720357E9D000D6AB2 /* EntryView.swift */,
+				BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */,
+				BB2DC6BF203410D9000D6AB2 /* NoteView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -269,9 +290,16 @@
 				BBDA3D9D202BFAF10038BE8B /* AppDelegate.swift in Sources */,
 				BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */,
 				BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */,
+				BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */,
+				BB2DC6BE20340F57000D6AB2 /* ColorManager.swift in Sources */,
+				BB2DC6C820357E9D000D6AB2 /* EntryView.swift in Sources */,
 				BB67F0FE202D542000FE6F75 /* BookManager.swift in Sources */,
+				BB2DC6C620355B60000D6AB2 /* HomePageController.swift in Sources */,
 				BB2E7794202C642200548A6D /* JMSense.swift in Sources */,
 				BB2E778D202C5D7E00548A6D /* JMEntry.swift in Sources */,
+				BB2DC6C42034228C000D6AB2 /* CardView.swift in Sources */,
+				BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */,
+				BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */,
 				BB2E7790202C62BD00548A6D /* Enumeration.swift in Sources */,
 				BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */,
 				BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */,

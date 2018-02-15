@@ -21,16 +21,16 @@ final class BookManager {
   }
   
   private func supplyWorkbench() {
-    let amountWorkbench = UserDataManager.countOfWorkbench
-    let currentAmount = realm.objects(WordRecord.self).filter("level != 0 AND level != 5").count
-    if currentAmount < amountWorkbench {
-      let need = amountWorkbench - currentAmount
+    let workbenchCount = UserDataManager.countOfWorkbench
+    let currentCount = realm.objects(WordRecord.self).filter("level != 0 AND level != 5").count
+    if currentCount < workbenchCount {
+      let need = workbenchCount - currentCount
       var wordReadyToLearn = Array(realm.objects(WordRecord.self).filter("level = 0"))
       if need < wordReadyToLearn.count {
         wordReadyToLearn = wordReadyToLearn.randomPick(n: need)
       }
       for word in wordReadyToLearn {
-        word.level = 1
+        word.state = .ready
       }
     }
   }

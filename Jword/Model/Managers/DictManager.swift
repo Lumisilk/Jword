@@ -32,7 +32,7 @@ final class DictManager {
     return realm.object(ofType: JMEntry.self, forPrimaryKey: id)!
   }
   
-  func entrySorter(_ e1: JMEntry, _ e2: JMEntry) -> Bool {
+  private func entrySorter(_ e1: JMEntry, _ e2: JMEntry) -> Bool {
     if e1.kanji.count != e2.kanji.count {
       return e1.kanji.count < e2.kanji.count
     } else if e1.priority != e2.priority {

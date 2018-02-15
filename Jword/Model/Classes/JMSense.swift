@@ -17,7 +17,7 @@ final class JMSense: Object {
   @objc dynamic private var ant: String = ""
   @objc dynamic private var lsource: String = ""
   @objc dynamic var ExInfo: String = ""
-  @objc dynamic private var gloss: String = ""
+  @objc dynamic var gloss: String = ""
   
   var pos: Set<SensePos> {
     var set = Set<SensePos>()
@@ -52,9 +52,6 @@ final class JMSense: Object {
       }
     }
     return res
-  }
-  var senses: [String] {
-    return gloss.components(separatedBy: "@")
   }
   
   override static func indexedProperties() -> [String] {
