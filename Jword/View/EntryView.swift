@@ -32,13 +32,13 @@ class EntryView: CardView {
   private func initView() {
     // initial Views
     kanjiLabel.font = UIFont.systemFont(ofSize: 36)
-    kanjiLabel.textColor = .black
+    kanjiLabel.textColor = ColorManager.text
     kanjiLabel.lineBreakMode = .byWordWrapping
     kanjiLabel.numberOfLines = 0
     kanjiLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(kanjiLabel)
     readingLabel.font = UIFont.systemFont(ofSize: 19)
-    readingLabel.textColor = .gray
+    readingLabel.textColor = ColorManager.subText
     readingLabel.lineBreakMode = .byWordWrapping
     readingLabel.numberOfLines = 0
     readingLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +76,7 @@ class EntryView: CardView {
       let label = UILabel()
       label.text = sense.gloss.replacingOccurrences(of: "@", with: "\n")
       label.font = UIFont.systemFont(ofSize: 17)
-      label.textColor = .gray
+      label.textColor = ColorManager.subText
       label.lineBreakMode = .byWordWrapping
       label.numberOfLines = 0
       label.translatesAutoresizingMaskIntoConstraints = false

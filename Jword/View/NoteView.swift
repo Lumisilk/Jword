@@ -38,25 +38,30 @@ class NoteView: CardView {
     let buttonLeft = NSLayoutConstraint(item: addNoteButton, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
     let buttonRight = NSLayoutConstraint(item: addNoteButton, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
     let buttonHeight = NSLayoutConstraint(item: addNoteButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 0, constant: 100)
-    buttonConstraints = [buttonTop, buttonLeft, buttonRight, buttonHeight]
+    let selfBottom1 = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: addNoteButton, attribute: .bottom, multiplier: 1, constant: 0)
+    buttonConstraints = [buttonTop, buttonLeft, buttonRight, buttonHeight, selfBottom1]
     
     let noteTop = NSLayoutConstraint(item: noteTextView, attribute: .top, relatedBy: .equal, toItem: line, attribute: .bottom, multiplier: 1, constant: 3)
     let noteLeft = NSLayoutConstraint(item: noteTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: sideMargin)
     let noteRight = NSLayoutConstraint(item: noteTextView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -sideMargin)
-    textViewConstraints = [noteTop, noteLeft, noteRight]
-
+    let selfBottom2 = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: noteTextView, attribute: .bottom, multiplier: 1, constant: bottomMargin)
+    textViewConstraints = [noteTop, noteLeft, noteRight, selfBottom2]
   }
   
   func loadNote(_ note: String?) {
-    
-    // TODO: remove subview and constraints
     if let note = note {
+      addNoteButton.removeFromSuperview()
       noteTextView.text = note
-      addSubview(noteTextView)
-      addConstraints(textViewConstraints)
+      if noteTextView.superview == nil {
+        addSubview(noteTextView)
+        addConstraints(textViewConstraints)
+      }
     } else {
-      addSubview(addNoteButton)
-      addConstraints(buttonConstraints)
+      noteTextView.removeFromSuperview()
+      if addNoteButton.superview == nil {
+        addSubview(addNoteButton)
+        addConstraints(buttonConstraints)
+      }
     }
     
   }

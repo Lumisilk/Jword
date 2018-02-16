@@ -58,8 +58,8 @@ class SearchPageController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showWordPage" {
       let entry = sender as! JMEntry
-      //let controller = segue.destination as! WordPageController
-      //controller.entry = entry
+      let controller = segue.destination as! WordPageController
+      controller.entry = entry
     }
   }
   

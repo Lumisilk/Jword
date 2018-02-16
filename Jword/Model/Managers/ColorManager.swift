@@ -53,7 +53,8 @@ final class ColorManager {
       label = UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1) // gray
       line = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
       text = UIColor.black
-      subText = UIColor(red: 92/255, green: 92/255, blue: 92/255, alpha: 1) // light gray
+      subText = UIColor.gray
+      //subText = UIColor(red: 92/255, green: 92/255, blue: 92/255, alpha: 1) // light gray
     }
   }
   

@@ -85,6 +85,8 @@ class ExampleView: CardView {
       let t: CGFloat = (japLabel.font.lineHeight - 14)/2
       otherConstraints.append(NSLayoutConstraint(item: japLabel, attribute: .top, relatedBy: .equal, toItem: dot, attribute: .top, multiplier: 1, constant: -t))
       otherConstraints.append(NSLayoutConstraint(item: engLabel, attribute: .top, relatedBy: .equal, toItem: japLabel, attribute: .bottom, multiplier: 1, constant: japEngLabelSpace))
+      otherConstraints.append(NSLayoutConstraint(item: engLabel, attribute: .left, relatedBy: .equal, toItem: japLabel, attribute: .left, multiplier: 1, constant: 0))
+      otherConstraints.append(NSLayoutConstraint(item: engLabel, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -sideMargin))
     }
     
     otherConstraints.append(NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: engLabels.last!, attribute: .bottom, multiplier: 1, constant: bottomMargin))

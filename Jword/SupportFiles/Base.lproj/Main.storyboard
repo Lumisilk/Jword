@@ -60,10 +60,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
+                    <connections>
+                        <segue destination="2gm-Pp-KLl" kind="push" identifier="showWordPage" id="iMz-kZ-uos"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUJ-je-4lg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-318" y="-107"/>
+        </scene>
+        <!--Word Page Controller-->
+        <scene sceneID="8s6-WO-LvL">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2gm-Pp-KLl" customClass="WordPageController" customModule="Jword" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sFM-4s-EIM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-yT-xex">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pg1-ry-JUg" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a8z-yT-xex" firstAttribute="leading" secondItem="B7j-2Z-juM" secondAttribute="leading" id="8C9-yY-1fw"/>
+                            <constraint firstItem="a8z-yT-xex" firstAttribute="top" secondItem="B7j-2Z-juM" secondAttribute="top" id="Esm-hw-ITb"/>
+                            <constraint firstItem="a8z-yT-xex" firstAttribute="bottom" secondItem="B7j-2Z-juM" secondAttribute="bottom" id="FZd-wJ-dHE"/>
+                            <constraint firstItem="a8z-yT-xex" firstAttribute="trailing" secondItem="B7j-2Z-juM" secondAttribute="trailing" id="rp2-wC-3L1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="B7j-2Z-juM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Lt6-1N-ekG"/>
+                    <connections>
+                        <outlet property="contentView" destination="pg1-ry-JUg" id="fRT-6v-c2z"/>
+                        <outlet property="scrollView" destination="a8z-yT-xex" id="uhm-e4-izJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uut-N9-Iyh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="501.60000000000002" y="-107.49625187406298"/>
         </scene>
         <!--Home Page Controller-->
         <scene sceneID="ScZ-g0-O1Q">
