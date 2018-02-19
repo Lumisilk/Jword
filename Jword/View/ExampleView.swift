@@ -11,9 +11,9 @@ import UIKit
 class ExampleView: CardView {
   
   // Margins
-  private let dotLabelSpace: CGFloat = 10
+  private let dotLabelSpace: CGFloat = 18
   private let japEngLabelSpace: CGFloat = 5
-  private let betweenExampleSpace: CGFloat = 10
+  private let betweenExampleSpace: CGFloat = 15
   
   // SubViews
   private var dots = [ColorDot]()

@@ -33,6 +33,7 @@ class NoteView: CardView {
     addNoteButton.setTitle("Add a note", for: .normal)
     addNoteButton.setTitleColor(.black, for: .normal)
     addNoteButton.backgroundColor = UIColor.clear
+    addNoteButton.translatesAutoresizingMaskIntoConstraints = false
     
     let buttonTop = NSLayoutConstraint(item: addNoteButton, attribute: .top, relatedBy: .equal, toItem: line, attribute: .bottom, multiplier: 1, constant: 0)
     let buttonLeft = NSLayoutConstraint(item: addNoteButton, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)

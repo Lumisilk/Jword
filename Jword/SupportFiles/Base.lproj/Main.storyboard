@@ -61,7 +61,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </refreshControl>
                     <connections>
-                        <segue destination="2gm-Pp-KLl" kind="push" identifier="showWordPage" id="iMz-kZ-uos"/>
+                        <segue destination="2gm-Pp-KLl" kind="push" identifier="showWordPage" id="pQ2-i2-KWJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUJ-je-4lg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -76,29 +76,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-yT-xex">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pg1-ry-JUg" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fln-yh-dKH">
+                                <rect key="frame" x="20" y="621" width="335" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="ifo-FM-YHX"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-yT-xex">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="a8z-yT-xex" firstAttribute="leading" secondItem="B7j-2Z-juM" secondAttribute="leading" id="8C9-yY-1fw"/>
-                            <constraint firstItem="a8z-yT-xex" firstAttribute="top" secondItem="B7j-2Z-juM" secondAttribute="top" id="Esm-hw-ITb"/>
-                            <constraint firstItem="a8z-yT-xex" firstAttribute="bottom" secondItem="B7j-2Z-juM" secondAttribute="bottom" id="FZd-wJ-dHE"/>
-                            <constraint firstItem="a8z-yT-xex" firstAttribute="trailing" secondItem="B7j-2Z-juM" secondAttribute="trailing" id="rp2-wC-3L1"/>
+                            <constraint firstItem="B7j-2Z-juM" firstAttribute="bottom" secondItem="fln-yh-dKH" secondAttribute="bottom" constant="10" id="dYB-y7-MAL"/>
+                            <constraint firstItem="a8z-yT-xex" firstAttribute="top" secondItem="B7j-2Z-juM" secondAttribute="top" id="f4N-ZD-31q"/>
+                            <constraint firstItem="fln-yh-dKH" firstAttribute="leading" secondItem="B7j-2Z-juM" secondAttribute="leading" constant="20" id="llb-fQ-xZK"/>
+                            <constraint firstItem="a8z-yT-xex" firstAttribute="leading" secondItem="B7j-2Z-juM" secondAttribute="leading" id="lr2-Ja-dfs"/>
+                            <constraint firstItem="B7j-2Z-juM" firstAttribute="bottom" secondItem="a8z-yT-xex" secondAttribute="bottom" id="pFJ-dV-RF9"/>
+                            <constraint firstItem="B7j-2Z-juM" firstAttribute="trailing" secondItem="a8z-yT-xex" secondAttribute="trailing" id="vgC-09-cuP"/>
+                            <constraint firstItem="B7j-2Z-juM" firstAttribute="trailing" secondItem="fln-yh-dKH" secondAttribute="trailing" constant="20" id="zKN-Wk-Sc5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B7j-2Z-juM"/>
                     </view>
                     <navigationItem key="navigationItem" id="Lt6-1N-ekG"/>
                     <connections>
-                        <outlet property="contentView" destination="pg1-ry-JUg" id="fRT-6v-c2z"/>
+                        <outlet property="forgetButton" destination="fln-yh-dKH" id="w6D-9S-yKl"/>
                         <outlet property="scrollView" destination="a8z-yT-xex" id="uhm-e4-izJ"/>
                     </connections>
                 </viewController>

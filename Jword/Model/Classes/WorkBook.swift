@@ -24,6 +24,7 @@ final class WordRecord: Object {
   @objc dynamic var entryId: Int = 0
   @objc dynamic var needCheck: Bool = false
   @objc dynamic var lastUpdate: Date = Date()
+  @objc dynamic var note: String? = nil
   
   @objc dynamic private var privateLevel: Int = 0
   var state: State {

@@ -80,7 +80,7 @@
 		BBDA3DA8202BFAF10038BE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBDA3DB1202BFB960038BE8B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
-		BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPageController.swift; sourceTree = "<group>"; };
+		BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPageController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
