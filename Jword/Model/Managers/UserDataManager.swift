@@ -10,11 +10,7 @@ import Foundation
 import RealmSwift
 
 final class UserDataManager {
-  
-  static let shared = UserDataManager()
-  
-  let realm: Realm
-  
+
   static var countToLearnEveryday: Int {
     get {
       return UserDefaults.standard.integer(forKey: "amountToLearnEveryday")
@@ -35,17 +31,6 @@ final class UserDataManager {
     set {
       UserDefaults.standard.set(newValue, forKey: "lastUpdateDate")
     }
-  }
-  
-  private init() {
-    // Prepare realm
-    var config = Realm.Configuration()
-    let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    print(documentURL)
-    config.fileURL = documentURL.appendingPathComponent("WordBook.realm")
-    config.objectTypes = [WordRecord.self, WordToday.self]
-    config.schemaVersion = 0
-    realm = try! Realm(configuration: config)
   }
   
 }

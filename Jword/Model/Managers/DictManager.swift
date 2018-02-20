@@ -11,10 +11,9 @@ import RealmSwift
 
 final class DictManager {
 
-  static let shared = DictManager()
   private let realm: Realm
   
-  private init() {
+  init() {
     var config = Realm.Configuration()
     config.fileURL = Bundle.main.url(forResource: "JMDict", withExtension: "realm")
     config.readOnly = true

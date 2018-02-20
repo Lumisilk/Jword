@@ -12,7 +12,7 @@ class SearchPageController: UITableViewController {
 
   let searchController = UISearchController(searchResultsController: nil)
   
-  let dictionary = DictManager.shared
+  let dictionary = DictManager()
   var searchResults = [JMEntry]()
   
   override func viewDidLoad() {
@@ -60,9 +60,9 @@ class SearchPageController: UITableViewController {
       let entry = sender as! JMEntry
       let controller = segue.destination as! WordPageController
       controller.entry = entry
+      controller.loadWord(entry: entry, record: nil)
     }
   }
-  
 }
 
 // MARK: - UISearchResultsUpdating Delegate

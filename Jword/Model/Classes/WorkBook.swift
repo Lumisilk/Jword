@@ -60,15 +60,27 @@ final class WordRecord: Object {
 
 final class WordToday: Object {
   
+  enum State: Int {
+    case forgotten = -1
+    case wait = 0
+    case leart = 1
+  }
+  
   @objc dynamic var item: WordRecord? = nil
-  @objc dynamic var learnt: Int = 1
+  @objc dynamic private var privateState: Int = 0
+  var state: State {
+    get {
+      return State(rawValue: privateState)!
+    }
+    set {
+      privateState = newValue.rawValue
+    }
+  }
   
   func forget() {
-    learnt = 0
-    item?.forget()
+    privateState = 0
   }
   func pass() {
-    learnt += 1
-    item?.pass()
+    privateState += 1
   }
 }

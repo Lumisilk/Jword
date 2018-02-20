@@ -23,6 +23,8 @@
 		BB772D3E202DAA98008DFE85 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Other.swift */; };
 		BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D41202DEB1F008DFE85 /* UserDataManager.swift */; };
 		BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */; };
+		BBC0D37C203C145200DCF4B3 /* KnowOrNotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D37B203C145200DCF4B3 /* KnowOrNotView.swift */; };
+		BBC0D384203C632E00DCF4B3 /* EntryView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D383203C632E00DCF4B3 /* EntryView2.swift */; };
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
 		BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* SearchPageController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
@@ -69,6 +71,8 @@
 		BB772D3D202DAA98008DFE85 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		BB772D41202DEB1F008DFE85 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
+		BBC0D37B203C145200DCF4B3 /* KnowOrNotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowOrNotView.swift; sourceTree = "<group>"; };
+		BBC0D383203C632E00DCF4B3 /* EntryView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView2.swift; sourceTree = "<group>"; };
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		BBC75E5B202EF87600255050 /* SearchPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
@@ -119,6 +123,26 @@
 				BB772D3D202DAA98008DFE85 /* Other.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		BBC0D379203C138D00DCF4B3 /* WordPage */ = {
+			isa = PBXGroup;
+			children = (
+				BB2DC6C120341E61000D6AB2 /* ColorDot.swift */,
+				BB2DC6C720357E9D000D6AB2 /* EntryView.swift */,
+				BBC0D383203C632E00DCF4B3 /* EntryView2.swift */,
+				BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */,
+				BB2DC6BF203410D9000D6AB2 /* NoteView.swift */,
+			);
+			path = WordPage;
+			sourceTree = "<group>";
+		};
+		BBC0D37A203C13C700DCF4B3 /* StudyPage */ = {
+			isa = PBXGroup;
+			children = (
+				BBC0D37B203C145200DCF4B3 /* KnowOrNotView.swift */,
+			);
+			path = StudyPage;
 			sourceTree = "<group>";
 		};
 		BBDA3D90202BFAF00038BE8B = {
@@ -175,10 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				BB2DC6C32034228C000D6AB2 /* CardView.swift */,
-				BB2DC6C120341E61000D6AB2 /* ColorDot.swift */,
-				BB2DC6C720357E9D000D6AB2 /* EntryView.swift */,
-				BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */,
-				BB2DC6BF203410D9000D6AB2 /* NoteView.swift */,
+				BBC0D379203C138D00DCF4B3 /* WordPage */,
+				BBC0D37A203C13C700DCF4B3 /* StudyPage */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -288,6 +310,7 @@
 				BBEC0512202F3DBB00CD7A54 /* WordPageController.swift in Sources */,
 				BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */,
 				BBDA3D9D202BFAF10038BE8B /* AppDelegate.swift in Sources */,
+				BBC0D384203C632E00DCF4B3 /* EntryView2.swift in Sources */,
 				BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */,
 				BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */,
 				BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */,
@@ -304,6 +327,7 @@
 				BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */,
 				BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */,
 				BB772D3E202DAA98008DFE85 /* Other.swift in Sources */,
+				BBC0D37C203C145200DCF4B3 /* KnowOrNotView.swift in Sources */,
 				BB2E7798202C66B100548A6D /* DictManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

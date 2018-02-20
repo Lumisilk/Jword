@@ -12,12 +12,24 @@ import RealmSwift
 final class BookManager {
   
   private let realm: Realm
+  
   init() {
-    realm = UserDataManager.shared.realm
+    var config = Realm.Configuration()
+    let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    print(documentURL)
+    config.fileURL = documentURL.appendingPathComponent("WordBook.realm")
+    config.objectTypes = [WordRecord.self, WordToday.self]
+    config.schemaVersion = 0
+    realm = try! Realm(configuration: config)
   }
   
   func get(WordRecord id: Int) -> WordRecord? {
     return realm.object(ofType: WordRecord.self, forPrimaryKey: id)
+  }
+  
+  // Daily Check
+  func dailyCheck() {
+    
   }
   
   private func supplyWorkbench() {
@@ -35,7 +47,7 @@ final class BookManager {
     }
   }
   
-  func refreshWordToday() {
+  private func refreshWordToday() {
     let amountToLearnEveryday = UserDataManager.countToLearnEveryday
     var workbench = Array(realm.objects(WordRecord.self).filter("level != 0 AND level != 5"))
     let wordsToday = realm.objects(WordToday.self)

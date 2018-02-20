@@ -17,7 +17,14 @@ final class StudyManager {
   let wordsTolearn: Results<WordToday>
   
   init() {
-    realm = UserDataManager.shared.realm
+    var config = Realm.Configuration()
+    let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    print(documentURL)
+    config.fileURL = documentURL.appendingPathComponent("WordBook.realm")
+    config.objectTypes = [WordRecord.self, WordToday.self]
+    config.schemaVersion = 0
+    realm = try! Realm(configuration: config)
+    
     wordsLearnt = realm.objects(WordToday.self).filter("learnt = 2")
     wordsTolearn = realm.objects(WordToday.self).filter("learnt != 2")
   }

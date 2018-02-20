@@ -31,15 +31,7 @@ class HomePageController: UIViewController {
 //    let sense2 = ["1-1", "A rabbit to jump very very very very very very very hiiiiiiiigh", "bunny", "4-1@4-2"]
 //    let entry2 = JMEntry(kanji: "兎", reading: "うさぎ", senses: sense2)
     
-    v = EntryView(entry: e1)
-    view.addSubview(v)
-    
     view.backgroundColor = ColorManager.background
-    v.translatesAutoresizingMaskIntoConstraints = false
-    let top = NSLayoutConstraint(item: v, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 50)
-    let left = NSLayoutConstraint(item: v, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 14)
-    let right = NSLayoutConstraint(item: v, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -14)
-    view.addConstraints([top, left, right])
   }
 
 }
