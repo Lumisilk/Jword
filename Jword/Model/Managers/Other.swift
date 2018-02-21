@@ -6,7 +6,7 @@
 //  Copyright © 2018 ribilynn. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RealmSwift
 
 extension Array {
@@ -16,6 +16,12 @@ extension Array {
       copy.swapAt(i, Int(arc4random_uniform(UInt32(i + 1))))
     }
     return Array(copy.suffix(n))
+  }
+}
+
+extension UIView {
+  var isPresented: Bool {
+    return superview != nil
   }
 }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchPageController: UITableViewController {
+final class SearchPageController: UITableViewController {
 
   let searchController = UISearchController(searchResultsController: nil)
   

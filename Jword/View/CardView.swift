@@ -11,7 +11,10 @@ import UIKit
 class CardView: UIView {
   
   internal let sideMargin: CGFloat = 16
-  internal let bottomMargin: CGFloat = 14
+  internal let topBottomMargin: CGFloat = 14
+  internal let leftMarginForStack: CGFloat = 29
+  internal let verticalBigSpace: CGFloat = 10
+  internal let verticalSmallSpace: CGFloat = 4
   
   internal let line = UIView()
   

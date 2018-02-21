@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoteView: CardView {
+final class NoteView: CardView {
   
   private let addNoteButton = UIButton()
   private let noteTextView = UITextView()
@@ -45,7 +45,7 @@ class NoteView: CardView {
     let noteTop = NSLayoutConstraint(item: noteTextView, attribute: .top, relatedBy: .equal, toItem: line, attribute: .bottom, multiplier: 1, constant: 3)
     let noteLeft = NSLayoutConstraint(item: noteTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: sideMargin)
     let noteRight = NSLayoutConstraint(item: noteTextView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -sideMargin)
-    let selfBottom2 = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: noteTextView, attribute: .bottom, multiplier: 1, constant: bottomMargin)
+    let selfBottom2 = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: noteTextView, attribute: .bottom, multiplier: 1, constant: topBottomMargin)
     textViewConstraints = [noteTop, noteLeft, noteRight, selfBottom2]
   }
   
