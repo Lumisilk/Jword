@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 extension Array {
   func randomPick(n: Int) -> [Element] {
@@ -20,8 +19,13 @@ extension Array {
 }
 
 extension UIView {
-  var isPresented: Bool {
-    return superview != nil
+//  var isPresented: Bool {
+//    return superview != nil
+//  }
+  static func addRadius(views: [UIView], radius: CGFloat) {
+    for view in views {
+      view.layer.cornerRadius = radius
+    }
   }
 }
 

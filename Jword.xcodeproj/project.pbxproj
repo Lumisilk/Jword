@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB105840203F024000DE6BDC /* KnowQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10583F203F024000DE6BDC /* KnowQuizController.swift */; };
+		BB105842203F024B00DE6BDC /* SpellQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB105841203F024B00DE6BDC /* SpellQuizController.swift */; };
 		BB2DC6BE20340F57000D6AB2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */; };
 		BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BF203410D9000D6AB2 /* NoteView.swift */; };
 		BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6C120341E61000D6AB2 /* ColorDot.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BB10583F203F024000DE6BDC /* KnowQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowQuizController.swift; sourceTree = "<group>"; };
+		BB105841203F024B00DE6BDC /* SpellQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellQuizController.swift; sourceTree = "<group>"; };
 		BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		BB2DC6BF203410D9000D6AB2 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		BB2DC6C120341E61000D6AB2 /* ColorDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDot.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 				BB2DC6C520355B60000D6AB2 /* HomePageController.swift */,
 				BBC75E5B202EF87600255050 /* SearchPageController.swift */,
 				BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */,
+				BB10583F203F024000DE6BDC /* KnowQuizController.swift */,
+				BB105841203F024B00DE6BDC /* SpellQuizController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -314,6 +320,7 @@
 				BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */,
 				BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */,
 				BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */,
+				BB105842203F024B00DE6BDC /* SpellQuizController.swift in Sources */,
 				BB2DC6BE20340F57000D6AB2 /* ColorManager.swift in Sources */,
 				BB2DC6C820357E9D000D6AB2 /* EntryView.swift in Sources */,
 				BB67F0FE202D542000FE6F75 /* BookManager.swift in Sources */,
@@ -321,6 +328,7 @@
 				BB2E7794202C642200548A6D /* JMSense.swift in Sources */,
 				BB2E778D202C5D7E00548A6D /* JMEntry.swift in Sources */,
 				BB2DC6C42034228C000D6AB2 /* CardView.swift in Sources */,
+				BB105840203F024000DE6BDC /* KnowQuizController.swift in Sources */,
 				BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */,
 				BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */,
 				BB2E7790202C62BD00548A6D /* Enumeration.swift in Sources */,

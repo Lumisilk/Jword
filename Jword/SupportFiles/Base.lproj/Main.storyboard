@@ -134,6 +134,69 @@
             </objects>
             <point key="canvasLocation" x="-1908" y="613.94302848575717"/>
         </scene>
+        <!--Title-->
+        <scene sceneID="PQu-oh-haw">
+            <objects>
+                <viewController id="JPR-Vh-gjA" customClass="KnowQuizController" customModule="Jword" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GoN-Op-A8P">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IPW-IK-25c">
+                                <rect key="frame" x="16" y="551" width="343" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ULf-MC-a4n">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="49.5"/>
+                                        <state key="normal" title="Know"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gu8-zY-89M">
+                                        <rect key="frame" x="0.0" y="50.5" width="343" height="49.5"/>
+                                        <state key="normal" title="Don't know"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QN8-G8-Mbj">
+                                        <rect key="frame" x="0.0" y="49.5" width="343" height="1"/>
+                                        <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="Hfn-7y-aMy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gu8-zY-89M" firstAttribute="top" secondItem="QN8-G8-Mbj" secondAttribute="bottom" id="1tv-9a-q4L"/>
+                                    <constraint firstItem="ULf-MC-a4n" firstAttribute="top" secondItem="IPW-IK-25c" secondAttribute="top" id="8hi-Dv-6ie"/>
+                                    <constraint firstItem="ULf-MC-a4n" firstAttribute="leading" secondItem="IPW-IK-25c" secondAttribute="leading" id="Cbd-rN-gFo"/>
+                                    <constraint firstItem="gu8-zY-89M" firstAttribute="leading" secondItem="IPW-IK-25c" secondAttribute="leading" id="FUn-Jl-tZE"/>
+                                    <constraint firstAttribute="trailing" secondItem="ULf-MC-a4n" secondAttribute="trailing" id="PQ2-bH-9FX"/>
+                                    <constraint firstItem="QN8-G8-Mbj" firstAttribute="centerY" secondItem="IPW-IK-25c" secondAttribute="centerY" id="V0a-mS-c4e"/>
+                                    <constraint firstAttribute="trailing" secondItem="gu8-zY-89M" secondAttribute="trailing" id="ceT-X5-gvb"/>
+                                    <constraint firstAttribute="trailing" secondItem="QN8-G8-Mbj" secondAttribute="trailing" id="fOz-e5-eF8"/>
+                                    <constraint firstAttribute="bottom" secondItem="gu8-zY-89M" secondAttribute="bottom" id="gYq-1U-IYn"/>
+                                    <constraint firstItem="QN8-G8-Mbj" firstAttribute="leading" secondItem="IPW-IK-25c" secondAttribute="leading" id="qBw-UK-Nzy"/>
+                                    <constraint firstItem="QN8-G8-Mbj" firstAttribute="top" secondItem="ULf-MC-a4n" secondAttribute="bottom" id="tOM-4x-Jf6"/>
+                                    <constraint firstAttribute="height" constant="100" id="vde-MQ-LC0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="01a-9U-d6o" firstAttribute="bottom" secondItem="IPW-IK-25c" secondAttribute="bottom" constant="16" id="3kk-pH-p09"/>
+                            <constraint firstItem="01a-9U-d6o" firstAttribute="trailing" secondItem="IPW-IK-25c" secondAttribute="trailing" constant="16" id="ERo-pD-W5z"/>
+                            <constraint firstItem="IPW-IK-25c" firstAttribute="leading" secondItem="01a-9U-d6o" secondAttribute="leading" constant="16" id="smP-QB-eFm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="01a-9U-d6o"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Yn9-Sj-XQx"/>
+                    <connections>
+                        <outlet property="KnowButtonContainer" destination="IPW-IK-25c" id="2qN-XZ-SZC"/>
+                        <outlet property="noButton" destination="gu8-zY-89M" id="vP7-A7-tZR"/>
+                        <outlet property="yesButton" destination="ULf-MC-a4n" id="feq-MI-jNC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aXb-Zy-Ag8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1020" y="859.52023988005999"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ehe-It-Hp8">
             <objects>

@@ -27,7 +27,7 @@ final class BookManager {
     return realm.object(ofType: WordRecord.self, forPrimaryKey: id)
   }
   
-  // Daily Check
+  // MARK: Daily Check
   func dailyCheck() {
     
   }
@@ -60,5 +60,23 @@ final class BookManager {
       wordToday.item = word
       realm.add(wordToday)
     }
+  }
+  
+  // MARK: Word Operation
+  func AddOrForget(entryID: Int) {
+    if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: entryID) {
+      record.forget()
+      if let word = realm.object(ofType: WordToday.self, forPrimaryKey: entryID) {
+        word.forget()
+      }
+    } else {
+      let newRecord = WordRecord()
+      newRecord.entryId = entryID
+      realm.add(newRecord)
+    }
+  }
+  
+  func pass(entryID: Int) {
+    
   }
 }
