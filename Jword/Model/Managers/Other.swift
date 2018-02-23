@@ -19,12 +19,20 @@ extension Array {
 }
 
 extension UIView {
-//  var isPresented: Bool {
-//    return superview != nil
-//  }
+  var isPresented: Bool {
+    return superview != nil
+  }
   static func addRadius(views: [UIView], radius: CGFloat) {
     for view in views {
       view.layer.cornerRadius = radius
+    }
+  }
+  static func addShadows(views: [UIView]) {
+    for view in views {
+      view.layer.shadowColor = UIColor.gray.cgColor
+      view.layer.shadowOpacity = 0.1
+      view.layer.shadowOffset = CGSize(width: 0, height: 0)
+      view.layer.shadowRadius = 6
     }
   }
 }

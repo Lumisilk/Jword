@@ -25,8 +25,6 @@
 		BB772D3E202DAA98008DFE85 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Other.swift */; };
 		BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D41202DEB1F008DFE85 /* UserDataManager.swift */; };
 		BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */; };
-		BB9583E6203D4DA000F39DDB /* KnowOrNotView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9583E5203D4DA000F39DDB /* KnowOrNotView.xib */; };
-		BBC0D37C203C145200DCF4B3 /* KnowOrNotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC0D37B203C145200DCF4B3 /* KnowOrNotView.swift */; };
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
 		BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* SearchPageController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
@@ -39,6 +37,8 @@
 		BBDA3DB5202BFB960038BE8B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */; };
 		BBDA3DB6202BFB960038BE8B /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBEC0512202F3DBB00CD7A54 /* WordPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */; };
+		BBFC228920400CEE00267C4B /* progressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC228820400CEE00267C4B /* progressView.swift */; };
+		BBFC228B2040123B00267C4B /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFC228A2040123B00267C4B /* ProgressView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,8 +75,6 @@
 		BB772D3D202DAA98008DFE85 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		BB772D41202DEB1F008DFE85 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
-		BB9583E5203D4DA000F39DDB /* KnowOrNotView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KnowOrNotView.xib; sourceTree = "<group>"; };
-		BBC0D37B203C145200DCF4B3 /* KnowOrNotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowOrNotView.swift; sourceTree = "<group>"; };
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		BBC75E5B202EF87600255050 /* SearchPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
@@ -89,6 +87,8 @@
 		BBDA3DB1202BFB960038BE8B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPageController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		BBFC228820400CEE00267C4B /* progressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressView.swift; sourceTree = "<group>"; };
+		BBFC228A2040123B00267C4B /* ProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,8 +143,8 @@
 		BBC0D37A203C13C700DCF4B3 /* StudyPage */ = {
 			isa = PBXGroup;
 			children = (
-				BBC0D37B203C145200DCF4B3 /* KnowOrNotView.swift */,
-				BB9583E5203D4DA000F39DDB /* KnowOrNotView.xib */,
+				BBFC228820400CEE00267C4B /* progressView.swift */,
+				BBFC228A2040123B00267C4B /* ProgressView.xib */,
 			);
 			path = StudyPage;
 			sourceTree = "<group>";
@@ -285,9 +285,9 @@
 			files = (
 				BBDA3DA7202BFAF10038BE8B /* LaunchScreen.storyboard in Resources */,
 				BBDA3DA4202BFAF10038BE8B /* Assets.xcassets in Resources */,
+				BBFC228B2040123B00267C4B /* ProgressView.xib in Resources */,
 				BBDA3DA2202BFAF10038BE8B /* Main.storyboard in Resources */,
 				BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */,
-				BB9583E6203D4DA000F39DDB /* KnowOrNotView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,9 +333,9 @@
 				BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */,
 				BB2E7790202C62BD00548A6D /* Enumeration.swift in Sources */,
 				BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */,
+				BBFC228920400CEE00267C4B /* progressView.swift in Sources */,
 				BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */,
 				BB772D3E202DAA98008DFE85 /* Other.swift in Sources */,
-				BBC0D37C203C145200DCF4B3 /* KnowOrNotView.swift in Sources */,
 				BB2E7798202C66B100548A6D /* DictManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

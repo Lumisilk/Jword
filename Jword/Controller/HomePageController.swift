@@ -31,14 +31,14 @@ final class HomePageController: UIViewController {
 //    let sense2 = ["1-1", "A rabbit to jump very very very very very very very hiiiiiiiigh", "bunny", "4-1@4-2"]
 //    let entry2 = JMEntry(kanji: "兎", reading: "うさぎ", senses: sense2)
     
-    let k = UINib(nibName: "KnowOrNotView", bundle: nil).instantiate(withOwner: nil, options: nil).first! as! KnowOrNotView
-    k.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(k)
-    view.addConstraint(NSLayoutConstraint(item: k, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 30))
-    view.addConstraint(NSLayoutConstraint(item: k, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 14))
-    view.addConstraint(NSLayoutConstraint(item: k, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -14))
-    view.addConstraint(NSLayoutConstraint(item: k, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 0, constant: 80))
-    
+//
+//    k.translatesAutoresizingMaskIntoConstraints = false
+//    view.addSubview(k)
+//    view.addConstraint(NSLayoutConstraint(item: k, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 30))
+//    view.addConstraint(NSLayoutConstraint(item: k, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 14))
+//    view.addConstraint(NSLayoutConstraint(item: k, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -14))
+//    view.addConstraint(NSLayoutConstraint(item: k, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 0, constant: 80))
+//    
     view.backgroundColor = ColorManager.background
   }
 

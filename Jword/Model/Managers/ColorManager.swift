@@ -15,12 +15,6 @@ final class ColorManager {
     case blue = 1
   }
   
-  //static let shared = ColorManager()
-  
-  private init() {
-    ColorManager.applyTheme()
-  }
-  
   static var theme: Theme {
     if let value = UserDefaults.standard.value(forKey: "theme") as? Int {
       return Theme(rawValue: value)!
@@ -31,9 +25,13 @@ final class ColorManager {
   
   static var background: UIColor!
   static var frontBackground: UIColor!
+  
   static var tint: UIColor!
+  static var fail: UIColor!
+  
   static var label: UIColor!
   static var line: UIColor!
+  
   static var text: UIColor!
   static var subText: UIColor!
   
@@ -50,6 +48,7 @@ final class ColorManager {
       background = UIColor(red: 248/255, green: 248/255, blue: 255/255, alpha: 1) // light blue
       frontBackground = UIColor.white
       tint = UIColor(red: 34/255, green: 129/255, blue: 255/255, alpha: 1) // sky blue
+      fail = UIColor.orange
       label = UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1) // gray
       line = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
       text = UIColor.black
