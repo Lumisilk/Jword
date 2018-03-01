@@ -11,15 +11,27 @@ import RealmSwift
 
 final class DictManager {
 
+  private static weak var instance: DictManager?
+  
   private let realm: Realm
   
-  init() {
+  private init() {
     var config = Realm.Configuration()
     config.fileURL = Bundle.main.url(forResource: "JMDict", withExtension: "realm")
     config.readOnly = true
     config.objectTypes = [JMEntry.self, JMSense.self, TNKExample.self]
     config.schemaVersion = 2
     realm = try! Realm(configuration: config)
+  }
+  
+  static func shared() -> DictManager {
+    if let res = DictManager.instance {
+      return res
+    } else {
+      let res = DictManager()
+      DictManager.instance = res
+      return res
+    }
   }
   
   func search(kanji: String) -> [JMEntry] {

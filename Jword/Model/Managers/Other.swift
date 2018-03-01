@@ -22,7 +22,7 @@ extension UIView {
   var isPresented: Bool {
     return superview != nil
   }
-  static func addRadius(views: [UIView], radius: CGFloat) {
+  static func addRadius(views: [UIView], radius: CGFloat = 20) {
     for view in views {
       view.layer.cornerRadius = radius
     }
@@ -30,10 +30,17 @@ extension UIView {
   static func addShadows(views: [UIView]) {
     for view in views {
       view.layer.shadowColor = UIColor.gray.cgColor
-      view.layer.shadowOpacity = 0.1
-      view.layer.shadowOffset = CGSize(width: 0, height: 0)
-      view.layer.shadowRadius = 6
+      view.layer.shadowOpacity = 0.6
+      view.layer.shadowOffset = CGSize(width: 0, height: 3)
+      view.layer.shadowRadius = 14
     }
+  }
+}
+
+extension UIStoryboard {
+  static func instantiateController(identifier: String) -> UIViewController {
+    let sb = UIStoryboard(name: "Main", bundle: nil)
+    return sb.instantiateViewController(withIdentifier: identifier)
   }
 }
 

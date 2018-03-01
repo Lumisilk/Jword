@@ -22,8 +22,8 @@ class CardView: UIView {
     super.init(frame: CGRect.zero)
     // self
     backgroundColor = ColorManager.frontBackground
-    layer.cornerRadius = 13
-    UIView.addShadows(views: [self])
+    UIView.addRadius(views: [self])
+    //UIView.addShadows(views: [self])
     
     if let title = title {
       // init subView

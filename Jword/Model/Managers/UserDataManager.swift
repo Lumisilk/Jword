@@ -13,11 +13,10 @@ final class UserDataManager {
 
   static var countToLearnEveryday: Int {
     get {
-      return UserDefaults.standard.integer(forKey: "amountToLearnEveryday")
+      let res = UserDefaults.standard.integer(forKey: "amountToLearnEveryday")
+      return res == 0 ? 10 : res
     }
-    set {
-      UserDefaults.standard.set(newValue, forKey: "amountToLearnEveryday")
-    }
+    set { UserDefaults.standard.set(newValue, forKey: "amountToLearnEveryday") }
   }
   
   static var countOfWorkbench: Int {
@@ -25,12 +24,8 @@ final class UserDataManager {
   }
   
   static var lastUpdateDate: Date {
-    get {
-      return UserDefaults.standard.value(forKey: "lastUpdateDate") as! Date
-    }
-    set {
-      UserDefaults.standard.set(newValue, forKey: "lastUpdateDate")
-    }
+    get { return UserDefaults.standard.value(forKey: "lastUpdateDate") as! Date }
+    set { UserDefaults.standard.set(newValue, forKey: "lastUpdateDate") }
   }
   
 }

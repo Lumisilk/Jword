@@ -41,7 +41,9 @@ final class WordRecord: Object {
   }
   
   func forget() {
-    privateLevel /= 2
+    if privateLevel != 1 {
+      privateLevel /= 2
+    }
     needCheck = true
     lastUpdate = Date()
   }
@@ -63,10 +65,10 @@ final class WordToday: Object {
   enum State: Int {
     case forgotten = -1
     case wait = 0
-    case leart = 1
+    case learnt = 1
   }
   
-  @objc dynamic var item: WordRecord? = nil
+  @objc dynamic var entryId: Int = 0
   @objc dynamic private var privateState: Int = 0
   var state: State {
     get {
@@ -77,10 +79,16 @@ final class WordToday: Object {
     }
   }
   
+  override static func primaryKey() -> String? {
+    return "entryId"
+  }
+  
   func forget() {
-    privateState = 0
+    privateState = -1
   }
   func pass() {
-    privateState += 1
+    if privateState < 1 {
+      privateState += 1
+    }
   }
 }

@@ -11,9 +11,11 @@ import RealmSwift
 
 final class BookManager {
   
-  private let realm: Realm
+  private static weak var instance: BookManager? = nil
   
-  init() {
+  let realm: Realm
+  
+  private init() {
     var config = Realm.Configuration()
     let documentURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     print(documentURL)
@@ -23,8 +25,18 @@ final class BookManager {
     realm = try! Realm(configuration: config)
   }
   
-  func get(WordRecord id: Int) -> WordRecord? {
-    return realm.object(ofType: WordRecord.self, forPrimaryKey: id)
+  static func shared() -> BookManager {
+    if let res = BookManager.instance {
+      return res
+    } else {
+      let res = BookManager()
+      BookManager.instance = res
+      return res
+    }
+  }
+  
+  func getWordRecord(entryID: Int) -> WordRecord? {
+    return realm.object(ofType: WordRecord.self, forPrimaryKey: entryID)
   }
   
   // MARK: Daily Check
@@ -32,51 +44,77 @@ final class BookManager {
     
   }
   
-  private func supplyWorkbench() {
+  func supplyWorkbench() {
     let workbenchCount = UserDataManager.countOfWorkbench
-    let currentCount = realm.objects(WordRecord.self).filter("level != 0 AND level != 5").count
+    let currentCount = realm.objects(WordRecord.self).filter("privateLevel != 0 AND privateLevel != 5").count
     if currentCount < workbenchCount {
       let need = workbenchCount - currentCount
-      var wordReadyToLearn = Array(realm.objects(WordRecord.self).filter("level = 0"))
+      var wordReadyToLearn = Array(realm.objects(WordRecord.self).filter("privateLevel = 0"))
       if need < wordReadyToLearn.count {
         wordReadyToLearn = wordReadyToLearn.randomPick(n: need)
       }
-      for word in wordReadyToLearn {
-        word.state = .ready
+      try? realm.write {
+        for word in wordReadyToLearn {
+          word.state = .ready
+        }
       }
     }
   }
   
-  private func refreshWordToday() {
-    let amountToLearnEveryday = UserDataManager.countToLearnEveryday
-    var workbench = Array(realm.objects(WordRecord.self).filter("level != 0 AND level != 5"))
-    let wordsToday = realm.objects(WordToday.self)
-    realm.delete(wordsToday)
-    if workbench.count > amountToLearnEveryday {
-      workbench = workbench.randomPick(n: amountToLearnEveryday)
-    }
-    for word in workbench {
-      let wordToday = WordToday()
-      wordToday.item = word
-      realm.add(wordToday)
+  func refreshWordToday() {
+    try? realm.write {
+      let amountToLearnEveryday = UserDataManager.countToLearnEveryday
+      var workbench = Array(realm.objects(WordRecord.self).filter("privateLevel != 0 AND privateLevel != 5"))
+      let wordsToday = realm.objects(WordToday.self)
+      realm.delete(wordsToday)
+      if workbench.count > amountToLearnEveryday {
+        workbench = workbench.randomPick(n: amountToLearnEveryday)
+      }
+      for word in workbench {
+        let wordToday = WordToday()
+        wordToday.entryId = word.entryId
+        realm.add(wordToday)
+      }
     }
   }
   
   // MARK: Word Operation
-  func AddOrForget(entryID: Int) {
-    if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: entryID) {
-      record.forget()
-      if let word = realm.object(ofType: WordToday.self, forPrimaryKey: entryID) {
-        word.forget()
+  func addOrForget(entryID: Int) {
+    try? realm.write {
+      if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: entryID) {
+        record.forget()
+        if let word = realm.object(ofType: WordToday.self, forPrimaryKey: entryID) {
+          word.forget()
+        }
+      } else {
+        let newRecord = WordRecord()
+        newRecord.entryId = entryID
+        realm.add(newRecord)
       }
-    } else {
-      let newRecord = WordRecord()
-      newRecord.entryId = entryID
-      realm.add(newRecord)
     }
   }
   
   func pass(entryID: Int) {
-    
+    try? realm.write {
+      if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: entryID) {
+        record.pass()
+        if let word = realm.object(ofType: WordToday.self, forPrimaryKey: entryID) {
+          word.pass()
+        }
+      }
+    }
+  }
+  
+  func tooEasy(entryID: Int) {
+
+  }
+  
+  // MARK: Functiton for Test
+  func printAmount() {
+    let records = realm.objects(WordRecord.self)
+    for i in 0...5 {
+      let count = records.filter("privateLevel = %@", i).count
+      print("level=\(i): \(count)")
+    }
   }
 }

@@ -20,6 +20,7 @@
 		BB2E7794202C642200548A6D /* JMSense.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7793202C642200548A6D /* JMSense.swift */; };
 		BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7795202C649C00548A6D /* TNKExample.swift */; };
 		BB2E7798202C66B100548A6D /* DictManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7797202C66B100548A6D /* DictManager.swift */; };
+		BB5997D52042BF8A009138D4 /* StudyContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5997D42042BF8A009138D4 /* StudyContainerController.swift */; };
 		BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FB202D505700FE6F75 /* WorkBook.swift */; };
 		BB67F0FE202D542000FE6F75 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FD202D542000FE6F75 /* BookManager.swift */; };
 		BB772D3E202DAA98008DFE85 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Other.swift */; };
@@ -28,6 +29,9 @@
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
 		BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* SearchPageController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
+		BBD6B1E720469ACB0005E827 /* SupplyWorkbench.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1E620469ACB0005E827 /* SupplyWorkbench.swift */; };
+		BBD6B1EF20469B1D0005E827 /* AddNewRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1EE20469B1D0005E827 /* AddNewRecords.swift */; };
+		BBD6B1F12046A1CF0005E827 /* RefreshWordToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1F02046A1CF0005E827 /* RefreshWordToday.swift */; };
 		BBDA3D9D202BFAF10038BE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA3D9C202BFAF10038BE8B /* AppDelegate.swift */; };
 		BBDA3DA2202BFAF10038BE8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDA3DA0202BFAF10038BE8B /* Main.storyboard */; };
 		BBDA3DA4202BFAF10038BE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBDA3DA3202BFAF10038BE8B /* Assets.xcassets */; };
@@ -37,9 +41,17 @@
 		BBDA3DB5202BFB960038BE8B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */; };
 		BBDA3DB6202BFB960038BE8B /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBEC0512202F3DBB00CD7A54 /* WordPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */; };
-		BBFC228920400CEE00267C4B /* progressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC228820400CEE00267C4B /* progressView.swift */; };
-		BBFC228B2040123B00267C4B /* ProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFC228A2040123B00267C4B /* ProgressView.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BBD6B1E920469ACB0005E827 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBDA3D91202BFAF00038BE8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BBDA3D98202BFAF10038BE8B;
+			remoteInfo = Jword;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		BBDA3DB7202BFB970038BE8B /* Embed Frameworks */ = {
@@ -70,6 +82,7 @@
 		BB2E7793202C642200548A6D /* JMSense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMSense.swift; sourceTree = "<group>"; };
 		BB2E7795202C649C00548A6D /* TNKExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNKExample.swift; sourceTree = "<group>"; };
 		BB2E7797202C66B100548A6D /* DictManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictManager.swift; sourceTree = "<group>"; };
+		BB5997D42042BF8A009138D4 /* StudyContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyContainerController.swift; sourceTree = "<group>"; };
 		BB67F0FB202D505700FE6F75 /* WorkBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBook.swift; sourceTree = "<group>"; };
 		BB67F0FD202D542000FE6F75 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		BB772D3D202DAA98008DFE85 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
@@ -78,6 +91,11 @@
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		BBC75E5B202EF87600255050 /* SearchPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
+		BBD6B1E420469ACB0005E827 /* BookManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBD6B1E620469ACB0005E827 /* SupplyWorkbench.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyWorkbench.swift; sourceTree = "<group>"; };
+		BBD6B1E820469ACB0005E827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBD6B1EE20469B1D0005E827 /* AddNewRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRecords.swift; sourceTree = "<group>"; };
+		BBD6B1F02046A1CF0005E827 /* RefreshWordToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshWordToday.swift; sourceTree = "<group>"; };
 		BBDA3D99202BFAF10038BE8B /* Jword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBDA3D9C202BFAF10038BE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBDA3DA1202BFAF10038BE8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,11 +105,16 @@
 		BBDA3DB1202BFB960038BE8B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
 		BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPageController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		BBFC228820400CEE00267C4B /* progressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = progressView.swift; sourceTree = "<group>"; };
-		BBFC228A2040123B00267C4B /* ProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BBD6B1E120469ACB0005E827 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBDA3D96202BFAF10038BE8B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -120,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				BB2E7797202C66B100548A6D /* DictManager.swift */,
-				BB772D41202DEB1F008DFE85 /* UserDataManager.swift */,
 				BB67F0FD202D542000FE6F75 /* BookManager.swift */,
+				BB772D41202DEB1F008DFE85 /* UserDataManager.swift */,
 				BBC75E57202EF2B800255050 /* StudyManager.swift */,
 				BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */,
 				BB772D3D202DAA98008DFE85 /* Other.swift */,
@@ -143,10 +166,19 @@
 		BBC0D37A203C13C700DCF4B3 /* StudyPage */ = {
 			isa = PBXGroup;
 			children = (
-				BBFC228820400CEE00267C4B /* progressView.swift */,
-				BBFC228A2040123B00267C4B /* ProgressView.xib */,
 			);
 			path = StudyPage;
+			sourceTree = "<group>";
+		};
+		BBD6B1E520469ACB0005E827 /* BookManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				BBD6B1F02046A1CF0005E827 /* RefreshWordToday.swift */,
+				BBD6B1EE20469B1D0005E827 /* AddNewRecords.swift */,
+				BBD6B1E620469ACB0005E827 /* SupplyWorkbench.swift */,
+				BBD6B1E820469ACB0005E827 /* Info.plist */,
+			);
+			path = BookManagerTests;
 			sourceTree = "<group>";
 		};
 		BBDA3D90202BFAF00038BE8B = {
@@ -155,6 +187,7 @@
 				BBC75E5D202F1BBD00255050 /* JMDict.realm */,
 				BBDA3DB1202BFB960038BE8B /* Realm.framework */,
 				BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */,
+				BBD6B1E520469ACB0005E827 /* BookManagerTests */,
 				BBDA3D9A202BFAF10038BE8B /* Products */,
 				BBDA3D9B202BFAF10038BE8B /* Jword */,
 			);
@@ -164,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				BBDA3D99202BFAF10038BE8B /* Jword.app */,
+				BBD6B1E420469ACB0005E827 /* BookManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -195,6 +229,7 @@
 				BB2DC6C520355B60000D6AB2 /* HomePageController.swift */,
 				BBC75E5B202EF87600255050 /* SearchPageController.swift */,
 				BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */,
+				BB5997D42042BF8A009138D4 /* StudyContainerController.swift */,
 				BB10583F203F024000DE6BDC /* KnowQuizController.swift */,
 				BB105841203F024B00DE6BDC /* SpellQuizController.swift */,
 			);
@@ -225,6 +260,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BBD6B1E320469ACB0005E827 /* BookManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBD6B1EB20469ACB0005E827 /* Build configuration list for PBXNativeTarget "BookManagerTests" */;
+			buildPhases = (
+				BBD6B1E020469ACB0005E827 /* Sources */,
+				BBD6B1E120469ACB0005E827 /* Frameworks */,
+				BBD6B1E220469ACB0005E827 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BBD6B1EA20469ACB0005E827 /* PBXTargetDependency */,
+			);
+			name = BookManagerTests;
+			productName = BookManagerTests;
+			productReference = BBD6B1E420469ACB0005E827 /* BookManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BBDA3D98202BFAF10038BE8B /* Jword */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BBDA3DAB202BFAF10038BE8B /* Build configuration list for PBXNativeTarget "Jword" */;
@@ -254,6 +307,11 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = ribilynn;
 				TargetAttributes = {
+					BBD6B1E320469ACB0005E827 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BBDA3D98202BFAF10038BE8B;
+					};
 					BBDA3D98202BFAF10038BE8B = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -274,18 +332,25 @@
 			projectRoot = "";
 			targets = (
 				BBDA3D98202BFAF10038BE8B /* Jword */,
+				BBD6B1E320469ACB0005E827 /* BookManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		BBD6B1E220469ACB0005E827 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBDA3D97202BFAF10038BE8B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BBDA3DA7202BFAF10038BE8B /* LaunchScreen.storyboard in Resources */,
 				BBDA3DA4202BFAF10038BE8B /* Assets.xcassets in Resources */,
-				BBFC228B2040123B00267C4B /* ProgressView.xib in Resources */,
 				BBDA3DA2202BFAF10038BE8B /* Main.storyboard in Resources */,
 				BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */,
 			);
@@ -310,6 +375,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BBD6B1E020469ACB0005E827 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD6B1E720469ACB0005E827 /* SupplyWorkbench.swift in Sources */,
+				BBD6B1EF20469B1D0005E827 /* AddNewRecords.swift in Sources */,
+				BBD6B1F12046A1CF0005E827 /* RefreshWordToday.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBDA3D95202BFAF10038BE8B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -323,6 +398,7 @@
 				BB105842203F024B00DE6BDC /* SpellQuizController.swift in Sources */,
 				BB2DC6BE20340F57000D6AB2 /* ColorManager.swift in Sources */,
 				BB2DC6C820357E9D000D6AB2 /* EntryView.swift in Sources */,
+				BB5997D52042BF8A009138D4 /* StudyContainerController.swift in Sources */,
 				BB67F0FE202D542000FE6F75 /* BookManager.swift in Sources */,
 				BB2DC6C620355B60000D6AB2 /* HomePageController.swift in Sources */,
 				BB2E7794202C642200548A6D /* JMSense.swift in Sources */,
@@ -333,7 +409,6 @@
 				BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */,
 				BB2E7790202C62BD00548A6D /* Enumeration.swift in Sources */,
 				BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */,
-				BBFC228920400CEE00267C4B /* progressView.swift in Sources */,
 				BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */,
 				BB772D3E202DAA98008DFE85 /* Other.swift in Sources */,
 				BB2E7798202C66B100548A6D /* DictManager.swift in Sources */,
@@ -341,6 +416,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BBD6B1EA20469ACB0005E827 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BBDA3D98202BFAF10038BE8B /* Jword */;
+			targetProxy = BBD6B1E920469ACB0005E827 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BBDA3DA0202BFAF10038BE8B /* Main.storyboard */ = {
@@ -362,6 +445,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		BBD6B1EC20469ACB0005E827 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				INFOPLIST_FILE = BookManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ribilynn.BookManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jword.app/Jword";
+			};
+			name = Debug;
+		};
+		BBD6B1ED20469ACB0005E827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				INFOPLIST_FILE = BookManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ribilynn.BookManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Jword.app/Jword";
+			};
+			name = Release;
+		};
 		BBDA3DA9202BFAF10038BE8B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -508,6 +623,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BBD6B1EB20469ACB0005E827 /* Build configuration list for PBXNativeTarget "BookManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBD6B1EC20469ACB0005E827 /* Debug */,
+				BBD6B1ED20469ACB0005E827 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BBDA3D94202BFAF00038BE8B /* Build configuration list for PBXProject "Jword" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

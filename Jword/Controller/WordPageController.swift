@@ -8,9 +8,15 @@
 
 import UIKit
 
-fileprivate let margin: CGFloat = 14
+fileprivate let margin: CGFloat = 20
 
 final class WordPageController: UIViewController {
+  
+  enum openMethod {
+    case search
+    case failed
+    case passed
+  }
   
   // view
   @IBOutlet weak var scrollView: UIScrollView!
@@ -23,28 +29,31 @@ final class WordPageController: UIViewController {
   private let forgetButton = UIButton()
   private let continueButton = UIButton()
   
+  
   // variable
+  let bookManager = BookManager.shared()
+  weak var studyManager: StudyManager?
   var entry: JMEntry!
   var record: WordRecord?
-  var flag = true
+  var method: openMethod!
+  var isPropertyLoaded = false
   
   // MARK: - View
   override func viewDidLoad() {
     initView()
+    if isPropertyLoaded {
+      loadPage()
+    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
     var size = stackView.frame.size
-    size.height += margin * 2 + forgetButton.frame.height
+    print(size.height)
+    size.height += 14 + margin * 2 + buttonStack.frame.height
     scrollView.contentSize = size
   }
   
   private func initView() {
-    // navigationBar
-//    navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//    navigationController?.navigationBar.shadowImage = UIImage()
-//    navigationController?.navigationBar.isTranslucent = true
-//    navigationController?.view.backgroundColor = .clear
     // self view
     view.backgroundColor = ColorManager.background
     // stackView
@@ -54,29 +63,27 @@ final class WordPageController: UIViewController {
     stackView.spacing = margin
     stackView.translatesAutoresizingMaskIntoConstraints = false
     scrollView.addSubview(stackView)
+    
+    UIView.addShadows(views: [forgetButton, continueButton])
+    UIView.addRadius(views: [forgetButton,continueButton], radius: 18)
     // forgetButton
-    forgetButton.layer.cornerRadius = 18
     forgetButton.backgroundColor = ColorManager.tint
     forgetButton.setTitle("Forget", for: .normal)
     forgetButton.setTitleColor(ColorManager.background, for: .normal)
-    buttonStack.addArrangedSubview(forgetButton)
-    
+    forgetButton.addTarget(self, action: #selector(addOrForget), for: .touchUpInside)
     // continueButton
-    continueButton.layer.cornerRadius = 18
     continueButton.backgroundColor = .green
     continueButton.setTitle("Continue", for: .normal)
     continueButton.setTitleColor(ColorManager.background, for: .normal)
-    buttonStack.addArrangedSubview(continueButton)
+    continueButton.addTarget(self, action: #selector(processNext), for: .touchUpInside)
     
     // constraints
-    view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1, constant: 0))
+    view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1, constant: margin))
     view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .left, relatedBy: .equal, toItem: scrollView, attribute: .left, multiplier: 1, constant: margin))
     view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1, constant: -margin * 2))
-    
-    view.bringSubview(toFront: buttonStack)
   }
   
-  func loadWord(entry: JMEntry, record: WordRecord?) {
+  private func loadPage() {
     // entryView
     entryView.loadEntry(entry)
     if !entryView.isPresented {
@@ -107,28 +114,40 @@ final class WordPageController: UIViewController {
     } else {
       noteView.removeFromSuperview()
     }
-  }
-
-  @IBAction func AddOrForget(_ sender: Any) {
-    let s1 = JMSense()
-    s1.gloss = "to sleep (not necessarily lying down)"
-    let s2 = JMSense()
-    s2.gloss = "to die"
-    let s3 = JMSense()
-    s3.gloss = "to lie idle (e.g. of resources)@to be dormant@to be unused"
-    let s4 = JMSense()
-    s4.gloss = "to close one's eyes"
-    let e1 = JMEntry()
-    e1.kanji = "眠い"
-    e1.reading = "ねむい"
-    e1.senses.append(objectsIn: [s1,s2,s3,s4])
     
-    if flag {
-      loadWord(entry: e1, record: nil)
-    } else {
-      loadWord(entry: entry, record: nil)
+    // buttonStack
+    forgetButton.removeFromSuperview()
+    continueButton.removeFromSuperview()
+    switch method {
+    case .search:
+      buttonStack.addArrangedSubview(forgetButton)
+    case .failed:
+      buttonStack.addArrangedSubview(continueButton)
+    case .passed:
+      buttonStack.addArrangedSubview(forgetButton)
+      buttonStack.addArrangedSubview(continueButton)
+    default:
+      break
     }
-    flag = !flag
+    view.bringSubview(toFront: buttonStack)
+    viewDidAppear(false)
+  }
+  
+  func load(entry: JMEntry, method: openMethod) {
+    self.entry = entry
+    self.method = method
+    record = bookManager.getWordRecord(entryID: entry.id)
+    if isViewLoaded {
+      loadPage()
+    }
+    isPropertyLoaded = true
+  }
+  
+  @objc private func addOrForget() {
+    bookManager.addOrForget(entryID: entry.id)
+  }
+  @objc private func processNext() {
+    studyManager?.processNextQuiz()
   }
   
 }

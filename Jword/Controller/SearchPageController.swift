@@ -12,21 +12,18 @@ final class SearchPageController: UITableViewController {
 
   let searchController = UISearchController(searchResultsController: nil)
   
-  let dictionary = DictManager()
+  let dictionary = DictManager.shared()
   var searchResults = [JMEntry]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    print("view did load")
+    searchController.searchBar.placeholder = "漢字/ローマ字/English"
     searchController.searchResultsUpdater = self
     searchController.obscuresBackgroundDuringPresentation = false
-    searchController.searchBar.placeholder = "漢字/ローマ字/English"
     searchController.hidesNavigationBarDuringPresentation = false
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = false
-    //definesPresentationContext = true
-
-    
   }
   
   // MARK: - TableView
@@ -46,9 +43,9 @@ final class SearchPageController: UITableViewController {
     performSegue(withIdentifier: "showWordPage", sender: entry)
   }
   override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    if refreshControl!.isRefreshing {
-      dismiss(animated: true, completion: nil)
-    }
+//    if refreshControl!.isRefreshing {
+//      dismiss(animated: true, completion: nil)
+//    }
   }
 
   // MARK: - View Function
@@ -59,8 +56,7 @@ final class SearchPageController: UITableViewController {
     if segue.identifier == "showWordPage" {
       let entry = sender as! JMEntry
       let controller = segue.destination as! WordPageController
-      controller.entry = entry
-      controller.loadWord(entry: entry, record: nil)
+      controller.load(entry: entry, method: .search)
     }
   }
 }
@@ -68,9 +64,7 @@ final class SearchPageController: UITableViewController {
 // MARK: - UISearchResultsUpdating Delegate
 extension SearchPageController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
-    guard !searchController.searchBar.text!.isEmpty else {
-      return
-    }
+    guard !searchController.searchBar.text!.isEmpty else { return }
     searchResults = dictionary.search(kanji: searchController.searchBar.text!)
     tableView.reloadData()
   }
