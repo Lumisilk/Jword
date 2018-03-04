@@ -36,4 +36,12 @@ final class JMEntry: Object {
   override static func indexedProperties() -> [String] {
     return ["groupId", "kanji", "reading"]
   }
+  
+  func pickOneExample() -> TNKExample? {
+    guard !examples.isEmpty else {
+      return nil
+    }
+    let idx = Int(arc4random_uniform(UInt32(examples.count)))
+    return examples[idx]
+  }
 }

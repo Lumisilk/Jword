@@ -106,7 +106,14 @@ final class BookManager {
   }
   
   func tooEasy(entryID: Int) {
-
+    try? realm.write {
+      if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: entryID) {
+        record.pass()
+        if let word = realm.object(ofType: WordToday.self, forPrimaryKey: entryID) {
+          word.pass()
+        }
+      }
+    }
   }
   
   // MARK: Functiton for Test

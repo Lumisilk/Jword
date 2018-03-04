@@ -43,13 +43,12 @@ final class SearchPageController: UITableViewController {
     performSegue(withIdentifier: "showWordPage", sender: entry)
   }
   override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//    if refreshControl!.isRefreshing {
-//      dismiss(animated: true, completion: nil)
-//    }
+    // TODO: send dismiss
   }
 
   // MARK: - View Function
   @IBAction func dismiss(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
     dismiss(animated: true, completion: nil)
   }
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

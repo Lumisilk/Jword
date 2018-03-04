@@ -26,6 +26,7 @@
 		BB772D3E202DAA98008DFE85 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Other.swift */; };
 		BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D41202DEB1F008DFE85 /* UserDataManager.swift */; };
 		BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */; };
+		BBA052FA204B9B32002A095D /* JWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA052F9204B9B32002A095D /* JWButton.swift */; };
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
 		BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* SearchPageController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
@@ -88,6 +89,7 @@
 		BB772D3D202DAA98008DFE85 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		BB772D41202DEB1F008DFE85 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
+		BBA052F9204B9B32002A095D /* JWButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JWButton.swift; path = Jword/View/JWButton.swift; sourceTree = SOURCE_ROOT; };
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		BBC75E5B202EF87600255050 /* SearchPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
@@ -127,6 +129,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB110712204C30A40013633A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				BBC75E5B202EF87600255050 /* SearchPageController.swift */,
+				BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		BB110713204C30AE0013633A /* Study */ = {
+			isa = PBXGroup;
+			children = (
+				BBC75E57202EF2B800255050 /* StudyManager.swift */,
+				BB5997D42042BF8A009138D4 /* StudyContainerController.swift */,
+				BB10583F203F024000DE6BDC /* KnowQuizController.swift */,
+				BB105841203F024B00DE6BDC /* SpellQuizController.swift */,
+			);
+			path = Study;
+			sourceTree = "<group>";
+		};
 		BB772D3F202DB03A008DFE85 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,11 +167,17 @@
 				BB2E7797202C66B100548A6D /* DictManager.swift */,
 				BB67F0FD202D542000FE6F75 /* BookManager.swift */,
 				BB772D41202DEB1F008DFE85 /* UserDataManager.swift */,
-				BBC75E57202EF2B800255050 /* StudyManager.swift */,
 				BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */,
 				BB772D3D202DAA98008DFE85 /* Other.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		BBA052F8204B949C002A095D /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Icon;
 			sourceTree = "<group>";
 		};
 		BBC0D379203C138D00DCF4B3 /* WordPage */ = {
@@ -161,13 +189,6 @@
 				BB2DC6BF203410D9000D6AB2 /* NoteView.swift */,
 			);
 			path = WordPage;
-			sourceTree = "<group>";
-		};
-		BBC0D37A203C13C700DCF4B3 /* StudyPage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = StudyPage;
 			sourceTree = "<group>";
 		};
 		BBD6B1E520469ACB0005E827 /* BookManagerTests */ = {
@@ -205,6 +226,7 @@
 		BBDA3D9B202BFAF10038BE8B /* Jword */ = {
 			isa = PBXGroup;
 			children = (
+				BBA052F8204B949C002A095D /* Icon */,
 				BBDA3DA8202BFAF10038BE8B /* Info.plist */,
 				BBDA3DB8202BFBB20038BE8B /* SupportFiles */,
 				BBDA3DAE202BFAFC0038BE8B /* Model */,
@@ -227,11 +249,8 @@
 			isa = PBXGroup;
 			children = (
 				BB2DC6C520355B60000D6AB2 /* HomePageController.swift */,
-				BBC75E5B202EF87600255050 /* SearchPageController.swift */,
-				BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */,
-				BB5997D42042BF8A009138D4 /* StudyContainerController.swift */,
-				BB10583F203F024000DE6BDC /* KnowQuizController.swift */,
-				BB105841203F024B00DE6BDC /* SpellQuizController.swift */,
+				BB110712204C30A40013633A /* Search */,
+				BB110713204C30AE0013633A /* Study */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -239,9 +258,9 @@
 		BBDA3DB0202BFB090038BE8B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BBA052F9204B9B32002A095D /* JWButton.swift */,
 				BB2DC6C32034228C000D6AB2 /* CardView.swift */,
 				BBC0D379203C138D00DCF4B3 /* WordPage */,
-				BBC0D37A203C13C700DCF4B3 /* StudyPage */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -403,6 +422,7 @@
 				BB2DC6C620355B60000D6AB2 /* HomePageController.swift in Sources */,
 				BB2E7794202C642200548A6D /* JMSense.swift in Sources */,
 				BB2E778D202C5D7E00548A6D /* JMEntry.swift in Sources */,
+				BBA052FA204B9B32002A095D /* JWButton.swift in Sources */,
 				BB2DC6C42034228C000D6AB2 /* CardView.swift in Sources */,
 				BB105840203F024000DE6BDC /* KnowQuizController.swift in Sources */,
 				BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */,

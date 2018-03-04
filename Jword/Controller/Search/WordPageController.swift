@@ -18,7 +18,7 @@ final class WordPageController: UIViewController {
     case passed
   }
   
-  // view
+  // MARK: View Property
   @IBOutlet weak var scrollView: UIScrollView!
   private let stackView = UIStackView()
   var entryView = EntryView(entry: nil)
@@ -26,11 +26,13 @@ final class WordPageController: UIViewController {
   var noteView = NoteView(note: nil)
   
   @IBOutlet weak var buttonStack: UIStackView!
-  private let forgetButton = UIButton()
-  private let continueButton = UIButton()
+  private let forgetButton = JWButton()
+  private let continueButton = JWButton()
   
+  @IBOutlet weak var buttonStackRightCons: NSLayoutConstraint!
+  @IBOutlet weak var buttonStackLeftCons: NSLayoutConstraint!
   
-  // variable
+  // MARK: Variable Property
   let bookManager = BookManager.shared()
   weak var studyManager: StudyManager?
   var entry: JMEntry!
@@ -38,7 +40,7 @@ final class WordPageController: UIViewController {
   var method: openMethod!
   var isPropertyLoaded = false
   
-  // MARK: - View
+  // MARK: ViewController Method
   override func viewDidLoad() {
     initView()
     if isPropertyLoaded {
@@ -47,15 +49,11 @@ final class WordPageController: UIViewController {
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    var size = stackView.frame.size
-    print(size.height)
-    size.height += 14 + margin * 2 + buttonStack.frame.height
-    scrollView.contentSize = size
+    reloadSize()
   }
   
+  // MARK: View Method
   private func initView() {
-    // self view
-    view.backgroundColor = ColorManager.background
     // stackView
     stackView.axis = .vertical
     stackView.distribution = .equalSpacing
@@ -64,23 +62,35 @@ final class WordPageController: UIViewController {
     stackView.translatesAutoresizingMaskIntoConstraints = false
     scrollView.addSubview(stackView)
     
-    UIView.addShadows(views: [forgetButton, continueButton])
+    //UIView.addShadows(views: [forgetButton, continueButton])
     UIView.addRadius(views: [forgetButton,continueButton], radius: 18)
     // forgetButton
-    forgetButton.backgroundColor = ColorManager.tint
-    forgetButton.setTitle("Forget", for: .normal)
-    forgetButton.setTitleColor(ColorManager.background, for: .normal)
+    
+    changeButtonStackLength(isShort: true)
     forgetButton.addTarget(self, action: #selector(addOrForget), for: .touchUpInside)
-    // continueButton
-    continueButton.backgroundColor = .green
     continueButton.setTitle("Continue", for: .normal)
-    continueButton.setTitleColor(ColorManager.background, for: .normal)
     continueButton.addTarget(self, action: #selector(processNext), for: .touchUpInside)
     
     // constraints
     view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1, constant: margin))
     view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .left, relatedBy: .equal, toItem: scrollView, attribute: .left, multiplier: 1, constant: margin))
     view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1, constant: -margin * 2))
+    
+    applyTheme()
+  }
+  
+  private func applyTheme() {
+    view.backgroundColor = ColorManager.background
+    forgetButton.setTitleColor(ColorManager.background, for: .normal)
+    continueButton.backgroundColor = ColorManager.tint
+  }
+  
+  private func reloadSize() {
+    view.layoutIfNeeded()
+    var size = stackView.frame.size
+    size.height += 14 + margin * 2 + buttonStack.frame.height
+    scrollView.contentSize = size
+    scrollView.setContentOffset(CGPoint.zero, animated: false)
   }
   
   private func loadPage() {
@@ -120,31 +130,57 @@ final class WordPageController: UIViewController {
     continueButton.removeFromSuperview()
     switch method {
     case .search:
+      if record == nil {
+        forgetButton.setTitle("Add", for: .normal)
+        forgetButton.backgroundColor = ColorManager.tint
+      } else {
+        forgetButton.setTitle("Forget", for: .normal)
+        forgetButton.backgroundColor = ColorManager.forgetButton
+      }
       buttonStack.addArrangedSubview(forgetButton)
-    case .failed:
-      buttonStack.addArrangedSubview(continueButton)
-    case .passed:
-      buttonStack.addArrangedSubview(forgetButton)
+    case .failed, .passed:
       buttonStack.addArrangedSubview(continueButton)
     default:
       break
     }
+    
     view.bringSubview(toFront: buttonStack)
-    viewDidAppear(false)
+    reloadSize()
   }
   
-  func load(entry: JMEntry, method: openMethod) {
+  private func changeButtonStackLength(isShort: Bool) {
+    if isShort {
+      buttonStackLeftCons.constant = margin * 2
+      buttonStackRightCons.constant = margin * 2
+    } else {
+      buttonStackLeftCons.constant = margin
+      buttonStackRightCons.constant = margin
+    }
+  }
+  
+  func load(entry: JMEntry, record: WordRecord?, method: openMethod) {
     self.entry = entry
     self.method = method
-    record = bookManager.getWordRecord(entryID: entry.id)
+    self.record = record
     if isViewLoaded {
       loadPage()
     }
     isPropertyLoaded = true
   }
   
+  // MARK: Action Method
   @objc private func addOrForget() {
-    bookManager.addOrForget(entryID: entry.id)
+    if studyManager != nil {
+      studyManager?.forget()
+    } else {
+      bookManager.addOrForget(entryID: entry.id)
+    }
+    forgetButton.backgroundColor = ColorManager.frontBackground
+    forgetButton.setTitleColor(ColorManager.label, for: .normal)
+    forgetButton.setTitle("Added to word book", for: .normal)
+    forgetButton.layer.borderWidth = 1
+    forgetButton.layer.borderColor = ColorManager.label.cgColor
+    forgetButton.isEnabled = false
   }
   @objc private func processNext() {
     studyManager?.processNextQuiz()

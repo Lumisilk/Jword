@@ -10,9 +10,6 @@ import UIKit
 
 final class StudyContainerController: UIViewController {
   
-  @IBOutlet weak var navagationBar: UINavigationBar!
-  @IBOutlet weak var containerView: UIView!
-  
   var studyManager: StudyManager!
   
   override func viewDidLoad() {

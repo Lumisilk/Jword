@@ -57,8 +57,12 @@ final class WordRecord: Object {
     lastUpdate = Date()
   }
   
+  func tooEasy() {
+    privateLevel = 5
+    needCheck = false
+    lastUpdate = Date()
+  }
 }
-
 
 final class WordToday: Object {
   

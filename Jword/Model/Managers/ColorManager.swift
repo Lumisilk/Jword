@@ -27,7 +27,8 @@ final class ColorManager {
   static var frontBackground: UIColor!
   
   static var tint: UIColor!
-  static var fail: UIColor!
+  static var forgetButton: UIColor!
+  //static var fail: UIColor!
   
   static var label: UIColor!
   static var line: UIColor!
@@ -45,15 +46,15 @@ final class ColorManager {
     case .night:
       break
     case .blue:
-      background = UIColor(red: 248/255, green: 248/255, blue: 255/255, alpha: 1) // light blue
-      frontBackground = UIColor.white
-      tint = UIColor(red: 34/255, green: 129/255, blue: 255/255, alpha: 1) // sky blue
-      fail = UIColor.orange
-      label = UIColor(red: 153/255, green: 153/255, blue: 153/255, alpha: 1) // gray
-      line = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
-      text = UIColor.black
-      subText = UIColor.gray
-      //subText = UIColor(red: 92/255, green: 92/255, blue: 92/255, alpha: 1) // light gray
+      //background = UIColor(red: 248/255, green: 248/255, blue: 255/255, alpha: 1) // light blue
+      background = UIColor(r: 233, g: 244, b: 255) // light blue
+      frontBackground = .white
+      tint = UIColor(r: 34, g: 129, b: 255) // blue
+      forgetButton = UIColor(r: 227, g: 55, b: 36)
+      label = UIColor(r: 153, g: 153, b: 153)
+      line = UIColor(r: 200, g: 200, b: 200)
+      text = .black
+      subText = .gray
     }
   }
   
