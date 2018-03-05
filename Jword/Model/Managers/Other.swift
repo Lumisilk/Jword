@@ -8,12 +8,18 @@
 
 import UIKit
 
+extension Int {
+  static func random(_ upper: Int) -> Int {
+    return Int(arc4random_uniform(UInt32(upper)))
+  }
+}
+
 extension Array {
   
   func randomPick(n: Int) -> [Element] {
     var copy = self
     for i in stride(from: count-1, to: count-n-1, by: -1) {
-      copy.swapAt(i, Int(arc4random_uniform(UInt32(i + 1))))
+      copy.swapAt(i, Int.random(i+1))
     }
     return Array(copy.suffix(n))
   }
@@ -21,7 +27,7 @@ extension Array {
   mutating func shuffle() {
     guard count > 1 else { return }
     for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: count, to: 1, by: -1)) {
-      let d: IndexDistance = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+      let d: IndexDistance = Int.random(unshuffledCount)
       let i = index(firstUnshuffled, offsetBy: d)
       swapAt(firstUnshuffled, i)
     }

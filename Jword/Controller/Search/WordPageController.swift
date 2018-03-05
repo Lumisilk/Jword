@@ -20,7 +20,8 @@ final class WordPageController: UIViewController {
   
   // MARK: View Property
   @IBOutlet weak var scrollView: UIScrollView!
-  private let stackView = UIStackView()
+  @IBOutlet weak var stackView: UIStackView!
+  //private let stackView = UIStackView()
   var entryView = EntryView(entry: nil)
   var exampleView = ExampleView(examples: [])
   var noteView = NoteView(note: nil)
@@ -37,46 +38,32 @@ final class WordPageController: UIViewController {
   weak var studyManager: StudyManager?
   var entry: JMEntry!
   var record: WordRecord?
-  var method: openMethod!
-  var isPropertyLoaded = false
   
   // MARK: ViewController Method
   override func viewDidLoad() {
     initView()
-    if isPropertyLoaded {
-      loadPage()
-    }
+    applyTheme()
   }
   
   override func viewDidAppear(_ animated: Bool) {
-    reloadSize()
+    reloadscrollViewSize()
   }
   
   // MARK: View Method
   private func initView() {
-    // stackView
-    stackView.axis = .vertical
-    stackView.distribution = .equalSpacing
-    stackView.alignment = .fill
-    stackView.spacing = margin
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    scrollView.addSubview(stackView)
+    stackView.addArrangedSubview(entryView)
+    stackView.addArrangedSubview(exampleView)
+    stackView.addArrangedSubview(noteView)
+    changeButtonStackLength(isShort: true)
     
     //UIView.addShadows(views: [forgetButton, continueButton])
     UIView.addRadius(views: [forgetButton,continueButton], radius: 18)
-    // forgetButton
-    
-    changeButtonStackLength(isShort: true)
     forgetButton.addTarget(self, action: #selector(addOrForget), for: .touchUpInside)
     continueButton.setTitle("Continue", for: .normal)
     continueButton.addTarget(self, action: #selector(processNext), for: .touchUpInside)
-    
-    // constraints
-    view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: scrollView, attribute: .top, multiplier: 1, constant: margin))
-    view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .left, relatedBy: .equal, toItem: scrollView, attribute: .left, multiplier: 1, constant: margin))
-    view.addConstraint(NSLayoutConstraint(item: stackView, attribute: .width, relatedBy: .equal, toItem: scrollView, attribute: .width, multiplier: 1, constant: -margin * 2))
-    
-    applyTheme()
+    buttonStack.addArrangedSubview(forgetButton)
+    buttonStack.addArrangedSubview(continueButton)
+    view.bringSubview(toFront: buttonStack)
   }
   
   private func applyTheme() {
@@ -85,7 +72,7 @@ final class WordPageController: UIViewController {
     continueButton.backgroundColor = ColorManager.tint
   }
   
-  private func reloadSize() {
+  private func reloadscrollViewSize() {
     view.layoutIfNeeded()
     var size = stackView.frame.size
     size.height += 14 + margin * 2 + buttonStack.frame.height
@@ -93,59 +80,16 @@ final class WordPageController: UIViewController {
     scrollView.setContentOffset(CGPoint.zero, animated: false)
   }
   
-  private func loadPage() {
-    // entryView
-    entryView.loadEntry(entry)
-    if !entryView.isPresented {
-      stackView.addArrangedSubview(entryView)
-    }
-
-    // exampleView
-    if !entry.examples.isEmpty {
-      let exp: [TNKExample] = entry.examples.count > 3 ? Array(entry.examples).randomPick(n: 3) : Array(entry.examples)
-      exampleView.loadExamples(exp)
-      if !exampleView.isPresented {
-        if stackView.arrangedSubviews.count == 2 {
-          stackView.insertArrangedSubview(exampleView, at: 1)
-        } else {
-          stackView.addArrangedSubview(exampleView)
-        }
-      }
-    } else {
-      exampleView.removeFromSuperview()
-    }
-    
-    // noteView
+  private func updateRecord() {
     if let record = record {
       noteView.loadNote(record.note)
-      if !noteView.isPresented {
-        stackView.addArrangedSubview(noteView)
-      }
+      noteView.isHidden = false
     } else {
-      noteView.removeFromSuperview()
+      noteView.isHidden = true
     }
-    
-    // buttonStack
-    forgetButton.removeFromSuperview()
-    continueButton.removeFromSuperview()
-    switch method {
-    case .search:
-      if record == nil {
-        forgetButton.setTitle("Add", for: .normal)
-        forgetButton.backgroundColor = ColorManager.tint
-      } else {
-        forgetButton.setTitle("Forget", for: .normal)
-        forgetButton.backgroundColor = ColorManager.forgetButton
-      }
-      buttonStack.addArrangedSubview(forgetButton)
-    case .failed, .passed:
-      buttonStack.addArrangedSubview(continueButton)
-    default:
-      break
+    if isViewLoaded {
+      reloadscrollViewSize()
     }
-    
-    view.bringSubview(toFront: buttonStack)
-    reloadSize()
   }
   
   private func changeButtonStackLength(isShort: Bool) {
@@ -158,14 +102,40 @@ final class WordPageController: UIViewController {
     }
   }
   
-  func load(entry: JMEntry, record: WordRecord?, method: openMethod) {
+  func load(entry: JMEntry, method: openMethod, record: WordRecord? = nil) {
     self.entry = entry
-    self.method = method
-    self.record = record
-    if isViewLoaded {
-      loadPage()
+    self.record = method == .search ? bookManager.getWordRecord(entryID: entry.id) : record
+    
+    // entry and example
+    entryView.loadEntry(entry)
+    if !entry.examples.isEmpty {
+      let exp: [TNKExample] = entry.examples.count > 3 ? Array(entry.examples).randomPick(n: 3) : Array(entry.examples)
+      exampleView.loadExamples(exp)
+      exampleView.isHidden = false
+    } else {
+      exampleView.isHidden = true
     }
-    isPropertyLoaded = true
+    
+    // button
+    switch method {
+    case .search:
+      if record == nil {
+        forgetButton.setTitle("Add", for: .normal)
+        forgetButton.backgroundColor = ColorManager.tint
+      } else {
+        forgetButton.setTitle("Forget", for: .normal)
+        forgetButton.backgroundColor = ColorManager.forgetButton
+      }
+      continueButton.isHidden = true
+      forgetButton.isHidden = false
+    case .failed, .passed:
+      forgetButton.isHidden = true
+      continueButton.isHidden = false
+    }
+    
+    if isViewLoaded {
+      reloadscrollViewSize()
+    }
   }
   
   // MARK: Action Method

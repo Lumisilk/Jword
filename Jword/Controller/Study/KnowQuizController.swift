@@ -41,8 +41,6 @@ final class KnowQuizController: UIViewController {
     UIView.addRadius(views: [labelContainer, sentenceContainer, KnowButtonContainer], radius: 16)
     sentenceContainer.isHidden = true
     //UIView.addShadows(views: [labelContainer, sentenceContainer, KnowButtonContainer])
-    yesButton.addTarget(self, action: #selector(pressKnow), for: .touchUpInside)
-    noButton.addTarget(self, action: #selector(pressDontKnow), for: .touchUpInside)
   }
   private func applyTheme() {
     view.backgroundColor = ColorManager.background
@@ -50,7 +48,6 @@ final class KnowQuizController: UIViewController {
     sentenceContainer.backgroundColor = ColorManager.frontBackground
     KnowButtonContainer.backgroundColor = ColorManager.frontBackground
   }
-  
   
   private func loadPage() {
     kanjiLabel.text = entry?.kanji
@@ -70,11 +67,11 @@ final class KnowQuizController: UIViewController {
     }
   }
 
-  @objc private func pressKnow() {
+  @IBAction func pressKnow(_ sender: Any) {
     studyManager?.pass()
     studyManager?.showWordPage(method: .passed)
   }
-  @objc private func pressDontKnow() {
+  @IBAction func pressNotKnow(_ sender: Any) {
     switch state {
     case .start:
       sentenceContainer.isHidden = false
@@ -83,7 +80,5 @@ final class KnowQuizController: UIViewController {
       studyManager?.forget()
       studyManager?.showWordPage(method: .failed)
     }
-    
   }
-  
 }

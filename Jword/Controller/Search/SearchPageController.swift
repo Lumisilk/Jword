@@ -13,6 +13,7 @@ final class SearchPageController: UITableViewController {
   let searchController = UISearchController(searchResultsController: nil)
   
   let dictionary = DictManager.shared()
+  let bookManager = BookManager.shared()
   var searchResults = [JMEntry]()
   
   override func viewDidLoad() {

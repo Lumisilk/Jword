@@ -23,7 +23,7 @@ final class StudyManager {
   unowned let containerController: StudyContainerController
   let wordPageController: WordPageController
   let knowQuizController: KnowQuizController
-  //let spellQuizController: SpellQuizController
+  let spellQuizController: SpellQuizController
   
   init(containerView: StudyContainerController) {
     realm = bookManager.realm
@@ -33,12 +33,12 @@ final class StudyManager {
     self.containerController = containerView
     wordPageController = UIStoryboard.instantiateController(identifier: "WordPageController") as! WordPageController
     knowQuizController = UIStoryboard.instantiateController(identifier: "KnowQuizController") as! KnowQuizController
-    //spellQuizController = UIStoryboard.instantiateController(identifier: "SpellQuizController") as! SpellQuizController
+    spellQuizController = UIStoryboard.instantiateController(identifier: "SpellQuizController") as! SpellQuizController
     
     wordPageController.studyManager = self
     knowQuizController.studyManager = self
-    //spellQuizController.studyManager = self
-    addChildController([wordPageController, knowQuizController])
+    spellQuizController.studyManager = self
+    addChildController([wordPageController, knowQuizController, spellQuizController])
   }
   
   // MARK: Child Controller Method
@@ -71,12 +71,12 @@ final class StudyManager {
         assert(true)
       case .ready, .familiar:
         // prepare KnowQuiz
-        knowQuizController.load(entry: presentEntry)
-        containerController.view.addSubview(knowQuizController.view)
+//        knowQuizController.load(entry: presentEntry)
+//        containerController.view.addSubview(knowQuizController.view)
+        fallthrough
       case .know, .spell:
-        // prepare SpellQuiz
-        //spellQuizController.initial(entry: entry)
-        break
+        spellQuizController.load(entry: presentEntry)
+        containerController.view.addSubview(spellQuizController.view)
       }
     } else {
       wordsTolearn = Array(realm.objects(WordToday.self).filter("privateState != 1")).shuffled()
@@ -89,7 +89,7 @@ final class StudyManager {
   }
   
   func showWordPage(method: WordPageController.openMethod) {
-    wordPageController.load(entry: presentEntry, record: presentRecord, method: method)
+    wordPageController.load(entry: presentEntry, method: method, record: presentRecord)
     containerController.view.addSubview(wordPageController.view)
   }
   

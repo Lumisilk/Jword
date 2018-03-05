@@ -10,37 +10,86 @@ import UIKit
 
 final class SpellQuizController: UIViewController {
   
-  let bookManager = BookManager.shared()
+  @IBOutlet weak var senseContainer: UIView!
+  private var dot = ColorDot(color: ColorManager.tint)
+  @IBOutlet weak var senseLabel: UILabel!
+  @IBOutlet weak var quizContainer: UIView!
+  @IBOutlet weak var quizLabel: UILabel!
+  @IBOutlet weak var inputContainer: UIView!
+  @IBOutlet weak var inputTextField: UITextField!
+  @IBOutlet weak var forgetButton: JWButton!
+  @IBOutlet weak var confirmButton: JWButton!
+  
   weak var studyManager: StudyManager?
   var entry: JMEntry!
-  var sentence: TNKExample?
+  var answer: String = ""
   
   override func viewDidLoad() {
     initView()
-    loadQuiz()
+    applyTheme()
   }
   
   private func initView() {
-  
+    UIView.addRadius(views: [senseContainer, quizContainer, inputContainer, forgetButton, confirmButton])
+    dot.translatesAutoresizingMaskIntoConstraints = false
   }
   
-  func initial(entry: JMEntry) {
+  private func applyTheme() {
+    view.backgroundColor = ColorManager.background
+    senseContainer.backgroundColor = ColorManager.frontBackground
+    quizContainer.backgroundColor = ColorManager.frontBackground
+    inputContainer.backgroundColor = ColorManager.frontBackground
+    forgetButton.backgroundColor = ColorManager.forgetButton
+    forgetButton.setTitleColor(ColorManager.frontBackground, for: .normal)
+    confirmButton.backgroundColor = ColorManager.tint
+    confirmButton.setTitleColor(ColorManager.frontBackground, for: .normal)
+  }
+  
+  func load(entry: JMEntry) {
     self.entry = entry
-    if entry.examples.isEmpty {
-      sentence = nil
+    updateView()
+  }
+  
+  private func updateView() {
+    senseLabel.text = entry.firstGlossToLabelText()
+    senseLabel.textColor = ColorManager.subText
+    
+    senseContainer.addSubview(dot)
+    senseContainer.addConstraints(dot.sizeConstraints())
+    let t: CGFloat = (senseLabel.font.lineHeight - 14)/2
+    senseContainer.addConstraint(NSLayoutConstraint(item: dot, attribute: .top, relatedBy: .equal, toItem: senseLabel, attribute: .top, multiplier: 1, constant: t))
+    senseContainer.addConstraint(NSLayoutConstraint(item: dot, attribute: .left, relatedBy: .equal, toItem: senseContainer, attribute: .left, multiplier: 1, constant: 14))
+    
+    if let (quiz, answer) = entry.pickQuiz() {
+      quizLabel.text = quiz
+      self.answer = answer
+      quizContainer.isHidden = false
     } else {
-      let idx = arc4random_uniform(UInt32(entry.examples.count))
-      sentence = entry.examples[Int(idx)]
+      self.answer = entry.kanji
+      quizContainer.isHidden = true
+    }
+  }
+
+  @IBAction func pressForget(_ sender: Any) {
+    studyManager?.forget()
+    studyManager?.showWordPage(method: .failed)
+  }
+  
+  @IBAction func pressConfirm(_ sender: Any) {
+    guard let reply = inputTextField.text else { return }
+    switch reply {
+    case answer:
+      // exactly correct
+      studyManager?.pass()
+      studyManager?.showWordPage(method: .passed)
+    case entry.kanji:
+      // partially correct
+      break
+    default:
+      // wrong
+      break
     }
   }
   
-  private func loadQuiz() {
-    
-  }
-  
-  func reloadQuiz(entry: JMEntry) {
-    initial(entry: entry)
-    loadQuiz()
-  }
   
 }

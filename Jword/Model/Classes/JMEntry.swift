@@ -37,11 +37,26 @@ final class JMEntry: Object {
     return ["groupId", "kanji", "reading"]
   }
   
+  func firstGlossToLabelText() -> String {
+    let first = senses.first!
+    return first.gloss.replacingOccurrences(of: "@", with: "\n")
+  }
+  
   func pickOneExample() -> TNKExample? {
     guard !examples.isEmpty else {
       return nil
     }
-    let idx = Int(arc4random_uniform(UInt32(examples.count)))
+    let idx = Int.random(examples.count)
     return examples[idx]
+  }
+  
+  func pickQuiz() -> (quiz: String, answer: String)? {
+    guard let example = pickOneExample(), let idx = example.words.index(of: kanji) else {
+      return nil
+    }
+    let deform = example.deformations[idx]
+    let underline = String(repeating: "__", count: deform.count)
+    let quiz = example.japanese.replacingOccurrences(of: deform, with: underline)
+    return (quiz, deform)
   }
 }
