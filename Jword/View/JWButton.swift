@@ -9,34 +9,13 @@
 import UIKit
 
 class JWButton: UIButton {
-  
-  override init(frame: CGRect) {
-    super.init(frame: CGRect.zero)
-    initView()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    initView()
-  }
-  
-  private final func initView() {
-    addTarget(self, action: #selector(shrink), for: .touchDown)
-    addTarget(self, action: #selector(shrink), for: .touchDragInside)
-    addTarget(self, action: #selector(recover), for: .touchDragOutside)
-    addTarget(self, action: #selector(recover), for: .touchUpInside)
-  }
-  
-  @objc private final func shrink() {
-    UIView.animate(withDuration: TimeInterval(0.1)) {
-      self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+  override var isHighlighted: Bool {
+    didSet {
+      let xScale : CGFloat = isHighlighted ? 0.95 : 1.0
+      let yScale : CGFloat = isHighlighted ? 0.95 : 1.0
+      UIView.animate(withDuration: 0.1) {
+        self.transform = CGAffineTransform(scaleX: xScale, y: yScale)
+      }
     }
   }
-  
-  @objc private final func recover() {
-    UIView.animate(withDuration: TimeInterval(0.1)) {
-      self.transform = CGAffineTransform(scaleX: 1, y: 1)
-    }
-  }
-  
 }

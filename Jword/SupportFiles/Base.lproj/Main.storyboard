@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -69,17 +70,17 @@
             <objects>
                 <viewController storyboardIdentifier="WordPageController" automaticallyAdjustsScrollViewInsets="NO" id="2gm-Pp-KLl" customClass="WordPageController" customModule="Jword" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sFM-4s-EIM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8z-yT-xex">
-                                <rect key="frame" x="0.0" y="20" width="375" height="583"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qbw-zC-o53">
                                         <rect key="frame" x="20" y="20" width="335" height="0.0"/>
                                         <subviews>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bg3-DZ-WN0">
-                                                <rect key="frame" x="-20" y="-40" width="375" height="0.0"/>
+                                                <rect key="frame" x="-20" y="-84" width="375" height="0.0"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
@@ -95,7 +96,7 @@
                                 </constraints>
                             </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="h2Z-M1-bRe">
-                                <rect key="frame" x="20" y="553" width="335" height="36"/>
+                                <rect key="frame" x="20" y="617" width="335" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="b9T-vV-sb6"/>
                                 </constraints>
@@ -262,28 +263,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnt-NI-SFj" customClass="JWButton" customModule="Jword" customModuleProvider="target">
-                                <rect key="frame" x="108" y="182" width="159" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="lPY-pe-uLp" kind="presentation" id="izu-hr-Te5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBI-qy-rzG">
-                                <rect key="frame" x="164" y="435" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="l6V-Bk-gmv" kind="presentation" id="Kf0-Ws-RZ0"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="Oeo-bj-BnP">
+                                <rect key="frame" x="24" y="503.5" width="327" height="93.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Np4-Ch-t2S" customClass="HomeButton" customModule="Jword" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="151.5" height="93.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Np4-Ch-t2S" secondAttribute="height" multiplier="1.62" id="35X-nU-p0E"/>
+                                        </constraints>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XnG-cN-4Ot" customClass="HomeButton" customModule="Jword" customModuleProvider="target">
+                                        <rect key="frame" x="175.5" y="0.0" width="151.5" height="93.5"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" constant="90" id="vfE-ow-1AC"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="OSO-G5-lFP">
+                                <rect key="frame" x="24" y="617" width="327" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDj-g9-Qwg" customClass="HomeButton" customModule="Jword" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="151.5" height="30"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3D-If-asy" customClass="HomeButton" customModule="Jword" customModuleProvider="target">
+                                        <rect key="frame" x="175.5" y="0.0" width="151.5" height="30"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" priority="250" constant="90" id="PXq-Qb-YhI"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="l6D-tY-0Si" firstAttribute="trailing" secondItem="OSO-G5-lFP" secondAttribute="trailing" constant="24" id="0jF-ix-lnt"/>
+                            <constraint firstItem="OSO-G5-lFP" firstAttribute="leading" secondItem="l6D-tY-0Si" secondAttribute="leading" constant="24" id="AuW-F5-3sa"/>
+                            <constraint firstItem="OSO-G5-lFP" firstAttribute="top" secondItem="Oeo-bj-BnP" secondAttribute="bottom" constant="20" id="Ggx-pI-peJ"/>
+                            <constraint firstItem="l6D-tY-0Si" firstAttribute="bottom" secondItem="OSO-G5-lFP" secondAttribute="bottom" constant="20" id="UnR-gB-GGz"/>
+                            <constraint firstItem="Oeo-bj-BnP" firstAttribute="leading" secondItem="l6D-tY-0Si" secondAttribute="leading" constant="24" id="lwk-8l-y81"/>
+                            <constraint firstItem="l6D-tY-0Si" firstAttribute="trailing" secondItem="Oeo-bj-BnP" secondAttribute="trailing" constant="24" id="rl7-iU-SEn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="l6D-tY-0Si"/>
                     </view>
                     <connections>
-                        <outlet property="jwButton" destination="mnt-NI-SFj" id="Vbq-ta-zCt"/>
+                        <outlet property="row1Stack" destination="Oeo-bj-BnP" id="iSQ-yH-TQK"/>
+                        <outlet property="row2Stack" destination="OSO-G5-lFP" id="f43-Ie-0Yh"/>
+                        <outlet property="searchButton" destination="XnG-cN-4Ot" id="gUD-On-Wtm"/>
+                        <outlet property="settingButton" destination="S3D-If-asy" id="Qyl-xe-aW4"/>
+                        <outlet property="studyButton" destination="zDj-g9-Qwg" id="ype-mJ-5RC"/>
+                        <outlet property="todayButton" destination="Np4-Ch-t2S" id="UAR-xg-4HJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfD-lB-q7C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -481,7 +510,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FaN-Ku-QJ7"/>
-        <segue reference="lLS-nN-bWc"/>
+        <segue reference="Xzi-Ql-0hy"/>
     </inferredMetricsTieBreakers>
 </document>

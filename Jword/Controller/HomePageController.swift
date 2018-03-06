@@ -10,17 +10,30 @@ import UIKit
 
 final class HomePageController: UIViewController {
 
-  @IBOutlet weak var jwButton: JWButton!
+  @IBOutlet weak var row1Stack: UIStackView!
+  @IBOutlet weak var row2Stack: UIStackView!
+  
+  @IBOutlet weak var todayButton: HomeButton!
+  @IBOutlet weak var studyButton: HomeButton!
+  @IBOutlet weak var searchButton: HomeButton!
+  @IBOutlet weak var settingButton: HomeButton!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = ColorManager.background
     
-    UIView.addRadius(views: [jwButton])
-    jwButton.backgroundColor = ColorManager.tint
-    jwButton.setTitle("Forget", for: .normal)
-    jwButton.setTitleColor(ColorManager.background, for: .normal)
-    //jwButton.addTarget(self, action: #selector(addOrForget), for: .touchUpInside)
+    todayButton.load(type: .wordToday)
+    studyButton.load(type: .study)
+    searchButton.load(type: .search)
+    settingButton.load(type: .setting)
+    print(todayButton.bounds)
+    todayButton.loadGradient()
   }
 
+//  override func viewDidAppear(_ animated: Bool) {
+//    super.viewDidAppear(animated)
+//    todayButton.loadGradient()
+//    print(todayButton.bounds)
+//    print("viewWillLayoutSubviews")
+//  }
 }

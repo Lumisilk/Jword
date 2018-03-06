@@ -23,6 +23,7 @@
 		BB5997D52042BF8A009138D4 /* StudyContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5997D42042BF8A009138D4 /* StudyContainerController.swift */; };
 		BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FB202D505700FE6F75 /* WorkBook.swift */; };
 		BB67F0FE202D542000FE6F75 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FD202D542000FE6F75 /* BookManager.swift */; };
+		BB6B0CDA204E72CE00394F12 /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6B0CD9204E72CE00394F12 /* HomeButton.swift */; };
 		BB772D3E202DAA98008DFE85 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Other.swift */; };
 		BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D41202DEB1F008DFE85 /* UserDataManager.swift */; };
 		BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */; };
@@ -86,6 +87,7 @@
 		BB5997D42042BF8A009138D4 /* StudyContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyContainerController.swift; sourceTree = "<group>"; };
 		BB67F0FB202D505700FE6F75 /* WorkBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBook.swift; sourceTree = "<group>"; };
 		BB67F0FD202D542000FE6F75 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
+		BB6B0CD9204E72CE00394F12 /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
 		BB772D3D202DAA98008DFE85 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		BB772D41202DEB1F008DFE85 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				BBA052F9204B9B32002A095D /* JWButton.swift */,
+				BB6B0CD9204E72CE00394F12 /* HomeButton.swift */,
 				BB2DC6C32034228C000D6AB2 /* CardView.swift */,
 				BBC0D379203C138D00DCF4B3 /* WordPage */,
 			);
@@ -411,6 +414,7 @@
 				BBEC0512202F3DBB00CD7A54 /* WordPageController.swift in Sources */,
 				BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */,
 				BBDA3D9D202BFAF10038BE8B /* AppDelegate.swift in Sources */,
+				BB6B0CDA204E72CE00394F12 /* HomeButton.swift in Sources */,
 				BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */,
 				BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */,
 				BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */,
