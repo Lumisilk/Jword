@@ -41,6 +41,9 @@ final class KnowQuizController: UIViewController {
     UIView.addRadius(views: [labelContainer, sentenceContainer, KnowButtonContainer], radius: 16)
     sentenceContainer.isHidden = true
     //UIView.addShadows(views: [labelContainer, sentenceContainer, KnowButtonContainer])
+    let inset = UIEdgeInsetsMake(0, 20, 0, 0)
+    yesButton.titleEdgeInsets = inset
+    noButton.titleEdgeInsets = inset
   }
   private func applyTheme() {
     view.backgroundColor = ColorManager.background

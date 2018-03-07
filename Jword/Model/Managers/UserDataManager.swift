@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class UserDataManager {
+enum UserDataManager {
 
   static var countToLearnEveryday: Int {
     get {

@@ -11,7 +11,7 @@ import RealmSwift
 
 final class BookManager {
   
-  private static weak var instance: BookManager? = nil
+  static let shared = BookManager()
   
   let realm: Realm
   
@@ -25,23 +25,20 @@ final class BookManager {
     realm = try! Realm(configuration: config)
   }
   
-  static func shared() -> BookManager {
-    if let res = BookManager.instance {
-      return res
-    } else {
-      let res = BookManager()
-      BookManager.instance = res
-      return res
-    }
-  }
-  
+  // MARK: Fetch Method
   func getWordRecord(entryID: Int) -> WordRecord? {
     return realm.object(ofType: WordRecord.self, forPrimaryKey: entryID)
+  }
+  func getWordToday() -> [WordToday] {
+    return Array(realm.objects(WordToday.self))
   }
   
   // MARK: Daily Check
   func dailyCheck() {
-    
+    if !Calendar.current.isDate(Date(), inSameDayAs: UserDataManager.lastUpdateDate) {
+      supplyWorkbench()
+      refreshWordToday()
+    }
   }
   
   func supplyWorkbench() {

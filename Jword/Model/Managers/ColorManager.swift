@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ColorManager {
+enum ColorManager {
   
   enum Theme: Int {
     case night = 0
@@ -43,6 +43,7 @@ final class ColorManager {
   /// A color for sub text, usually is gray.
   static var subText: UIColor!
   
+  static var homeButtonTint: UIColor!
   static var gradientStartColor: UIColor!
   static var gradientEndColor: UIColor!
   
@@ -64,7 +65,7 @@ final class ColorManager {
       line = UIColor(r: 200, g: 200, b: 200)
       text = .black
       subText = .gray
-      
+      homeButtonTint = UIColor(r: 55, g: 111, b: 181)
       gradientStartColor = UIColor(r: 71, g: 183, b: 255)
       gradientEndColor = UIColor(r: 34, g: 129, b: 255)
 

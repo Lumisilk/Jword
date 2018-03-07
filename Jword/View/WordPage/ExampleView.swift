@@ -19,13 +19,14 @@ final class ExampleView: CardView {
   //private var otherConstraints = [NSLayoutConstraint]()
   
   init(examples: [TNKExample]) {
-    super.init(title: "例文")
+    super.init(title: "Example")
     initView()
     loadExamples(examples)
   }
   
   required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    super.init(title: "Example")
+    initView()
   }
   
   private func initView() {

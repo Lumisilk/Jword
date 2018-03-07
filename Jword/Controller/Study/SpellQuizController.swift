@@ -17,8 +17,8 @@ final class SpellQuizController: UIViewController {
   @IBOutlet weak var quizLabel: UILabel!
   @IBOutlet weak var inputContainer: UIView!
   @IBOutlet weak var inputTextField: UITextField!
-  @IBOutlet weak var forgetButton: JWButton!
-  @IBOutlet weak var confirmButton: JWButton!
+  @IBOutlet weak var forgetButton: ShrinkButton!
+  @IBOutlet weak var confirmButton: ShrinkButton!
   
   weak var studyManager: StudyManager?
   var entry: JMEntry!

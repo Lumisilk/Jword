@@ -26,14 +26,17 @@ final class HomePageController: UIViewController {
     studyButton.load(type: .study)
     searchButton.load(type: .search)
     settingButton.load(type: .setting)
-    print(todayButton.bounds)
-    todayButton.loadGradient()
   }
 
-//  override func viewDidAppear(_ animated: Bool) {
-//    super.viewDidAppear(animated)
-//    todayButton.loadGradient()
-//    print(todayButton.bounds)
-//    print("viewWillLayoutSubviews")
-//  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if let id = segue.identifier {
+      let nv = segue.destination as! UINavigationController
+      let vc = nv.topViewController as! WordListConrtoller
+      if id == "showWordTodayList" {
+        vc.isForSearching = false
+      } else if id == "showSearchList" {
+        vc.isForSearching = true
+      }
+    }
+  }
 }

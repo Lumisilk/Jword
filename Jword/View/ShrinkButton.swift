@@ -8,7 +8,7 @@
 
 import UIKit
 
-class JWButton: UIButton {
+class ShrinkButton: UIButton {
   override var isHighlighted: Bool {
     didSet {
       let xScale : CGFloat = isHighlighted ? 0.95 : 1.0

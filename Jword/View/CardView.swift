@@ -16,16 +16,25 @@ class CardView: UIView {
   internal let verticalBigSpace: CGFloat = 10
   internal let verticalSmallSpace: CGFloat = 4
   
+  var title: String = ""
   internal let line = UIView()
   
   init(title: String?) {
     super.init(frame: CGRect.zero)
-    // self
+    self.title = title ?? ""
+    initView()
+  }
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    initView()
+  }
+  
+  private func initView() {
     backgroundColor = ColorManager.frontBackground
     UIView.addRadius(views: [self])
     //UIView.addShadows(views: [self])
     
-    if let title = title {
+    if !title.isEmpty {
       // init subView
       let titleLabel = UILabel()
       titleLabel.text = title
@@ -44,7 +53,5 @@ class CardView: UIView {
       addConstraints([lineTop, lineLeft, lineRight, lineHeight])
     }
   }
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
+  
 }

@@ -43,6 +43,12 @@ final class DictManager {
     return realm.object(ofType: JMEntry.self, forPrimaryKey: id)!
   }
   
+  func getEntries(of wordToday: [WordToday]) -> [JMEntry] {
+    return wordToday.map({ (wordToday) -> JMEntry in
+      return getEntry(id: wordToday.entryId)
+    })
+  }
+  
   private func entrySorter(_ e1: JMEntry, _ e2: JMEntry) -> Bool {
     if e1.kanji.count != e2.kanji.count {
       return e1.kanji.count < e2.kanji.count

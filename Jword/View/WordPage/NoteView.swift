@@ -16,12 +16,13 @@ final class NoteView: CardView {
   private var textViewConstraints = [NSLayoutConstraint]()
   
   init(note: String?) {
-    super.init(title: "ノート")
+    super.init(title: "Note")
     initViews()
     loadNote(note)
   }
   required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+    super.init(title: "Note")
+    initViews()
   }
   
   private func initViews() {

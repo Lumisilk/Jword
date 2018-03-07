@@ -13,6 +13,7 @@ fileprivate let margin: CGFloat = 20
 final class WordPageController: UIViewController {
   
   enum openMethod {
+    case wordList
     case search
     case failed
     case passed
@@ -21,39 +22,37 @@ final class WordPageController: UIViewController {
   // MARK: View Property
   @IBOutlet weak var scrollView: UIScrollView!
   @IBOutlet weak var stackView: UIStackView!
-  //private let stackView = UIStackView()
-  var entryView = EntryView(entry: nil)
-  var exampleView = ExampleView(examples: [])
-  var noteView = NoteView(note: nil)
+  @IBOutlet weak var entryView: EntryView!
+  @IBOutlet weak var exampleView: ExampleView!
+  @IBOutlet weak var noteView: NoteView!
   
   @IBOutlet weak var buttonStack: UIStackView!
-  private let forgetButton = JWButton()
-  private let continueButton = JWButton()
+  private let forgetButton = ShrinkButton()
+  private let continueButton = ShrinkButton()
   
   @IBOutlet weak var buttonStackRightCons: NSLayoutConstraint!
   @IBOutlet weak var buttonStackLeftCons: NSLayoutConstraint!
   
   // MARK: Variable Property
-  let bookManager = BookManager.shared()
+  let bookManager = BookManager.shared
   weak var studyManager: StudyManager?
   var entry: JMEntry!
   var record: WordRecord?
+  var method: openMethod = .wordList
+  var isPropertyLoaded = false
   
   // MARK: ViewController Method
   override func viewDidLoad() {
     initView()
     applyTheme()
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    reloadscrollViewSize()
+    if isPropertyLoaded {
+      updateView()
+      updateRecord()
+    }
   }
   
   // MARK: View Method
   private func initView() {
-    stackView.addArrangedSubview(entryView)
-    stackView.addArrangedSubview(exampleView)
-    stackView.addArrangedSubview(noteView)
     changeButtonStackLength(isShort: true)
     
     //UIView.addShadows(views: [forgetButton, continueButton])
@@ -72,8 +71,9 @@ final class WordPageController: UIViewController {
     continueButton.backgroundColor = ColorManager.tint
   }
   
-  private func reloadscrollViewSize() {
+  private func reloadContentSize() {
     view.layoutIfNeeded()
+    guard method != .wordList else { return }
     var size = stackView.frame.size
     size.height += 14 + margin * 2 + buttonStack.frame.height
     scrollView.contentSize = size
@@ -88,7 +88,7 @@ final class WordPageController: UIViewController {
       noteView.isHidden = true
     }
     if isViewLoaded {
-      reloadscrollViewSize()
+      reloadContentSize()
     }
   }
   
@@ -105,7 +105,15 @@ final class WordPageController: UIViewController {
   func load(entry: JMEntry, method: openMethod, record: WordRecord? = nil) {
     self.entry = entry
     self.record = method == .search ? bookManager.getWordRecord(entryID: entry.id) : record
-    
+    self.method = method
+    isPropertyLoaded = true
+    if isViewLoaded {
+      updateView()
+      updateRecord()
+    }
+  }
+  
+  func updateView() {
     // entry and example
     entryView.loadEntry(entry)
     if !entry.examples.isEmpty {
@@ -115,9 +123,11 @@ final class WordPageController: UIViewController {
     } else {
       exampleView.isHidden = true
     }
-    
     // button
     switch method {
+    case .wordList:
+      forgetButton.isHidden = true
+      continueButton.isHidden = true
     case .search:
       if record == nil {
         forgetButton.setTitle("Add", for: .normal)
@@ -132,10 +142,7 @@ final class WordPageController: UIViewController {
       forgetButton.isHidden = true
       continueButton.isHidden = false
     }
-    
-    if isViewLoaded {
-      reloadscrollViewSize()
-    }
+    reloadContentSize()
   }
   
   // MARK: Action Method

@@ -12,7 +12,7 @@ import RealmSwift
 final class StudyManager {
   
   private let dicManager = DictManager.shared()
-  private let bookManager = BookManager.shared()
+  private let bookManager = BookManager.shared
   private let realm: Realm
   
   var wordsTolearn: [WordToday]
@@ -70,10 +70,8 @@ final class StudyManager {
       case .wait, .master:
         assert(true)
       case .ready, .familiar:
-        // prepare KnowQuiz
-//        knowQuizController.load(entry: presentEntry)
-//        containerController.view.addSubview(knowQuizController.view)
-        fallthrough
+        knowQuizController.load(entry: presentEntry)
+        containerController.view.addSubview(knowQuizController.view)
       case .know, .spell:
         spellQuizController.load(entry: presentEntry)
         containerController.view.addSubview(spellQuizController.view)

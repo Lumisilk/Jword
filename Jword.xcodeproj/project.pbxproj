@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BB105840203F024000DE6BDC /* KnowQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10583F203F024000DE6BDC /* KnowQuizController.swift */; };
 		BB105842203F024B00DE6BDC /* SpellQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB105841203F024B00DE6BDC /* SpellQuizController.swift */; };
+		BB2D8F94204FF01300B9B558 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = BB2D8F93204FF01300B9B558 /* search.png */; };
 		BB2DC6BE20340F57000D6AB2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */; };
 		BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BF203410D9000D6AB2 /* NoteView.swift */; };
 		BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6C120341E61000D6AB2 /* ColorDot.swift */; };
@@ -27,9 +28,12 @@
 		BB772D3E202DAA98008DFE85 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Other.swift */; };
 		BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D41202DEB1F008DFE85 /* UserDataManager.swift */; };
 		BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */; };
-		BBA052FA204B9B32002A095D /* JWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA052F9204B9B32002A095D /* JWButton.swift */; };
+		BB850485204FF1C500B16699 /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = BB850484204FF1C500B16699 /* pen.png */; };
+		BB850487204FF71C00B16699 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = BB850486204FF71C00B16699 /* setting.png */; };
+		BB9076C5204FF8CA00F9ADCC /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9076C4204FF8CA00F9ADCC /* book.png */; };
+		BBA052FA204B9B32002A095D /* ShrinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA052F9204B9B32002A095D /* ShrinkButton.swift */; };
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
-		BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* SearchPageController.swift */; };
+		BBC75E5C202EF87600255050 /* WordListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* WordListController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
 		BBD6B1E720469ACB0005E827 /* SupplyWorkbench.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1E620469ACB0005E827 /* SupplyWorkbench.swift */; };
 		BBD6B1EF20469B1D0005E827 /* AddNewRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1EE20469B1D0005E827 /* AddNewRecords.swift */; };
@@ -73,6 +77,7 @@
 /* Begin PBXFileReference section */
 		BB10583F203F024000DE6BDC /* KnowQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowQuizController.swift; sourceTree = "<group>"; };
 		BB105841203F024B00DE6BDC /* SpellQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellQuizController.swift; sourceTree = "<group>"; };
+		BB2D8F93204FF01300B9B558 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = ../../../../../Desktop/search.png; sourceTree = "<group>"; };
 		BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		BB2DC6BF203410D9000D6AB2 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		BB2DC6C120341E61000D6AB2 /* ColorDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDot.swift; sourceTree = "<group>"; };
@@ -91,9 +96,12 @@
 		BB772D3D202DAA98008DFE85 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		BB772D41202DEB1F008DFE85 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
-		BBA052F9204B9B32002A095D /* JWButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JWButton.swift; path = Jword/View/JWButton.swift; sourceTree = SOURCE_ROOT; };
+		BB850484204FF1C500B16699 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen.png; sourceTree = "<group>"; };
+		BB850486204FF71C00B16699 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		BB9076C4204FF8CA00F9ADCC /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
+		BBA052F9204B9B32002A095D /* ShrinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShrinkButton.swift; path = Jword/View/ShrinkButton.swift; sourceTree = SOURCE_ROOT; };
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
-		BBC75E5B202EF87600255050 /* SearchPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageController.swift; sourceTree = "<group>"; };
+		BBC75E5B202EF87600255050 /* WordListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
 		BBD6B1E420469ACB0005E827 /* BookManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD6B1E620469ACB0005E827 /* SupplyWorkbench.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyWorkbench.swift; sourceTree = "<group>"; };
@@ -131,15 +139,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BB110712204C30A40013633A /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				BBC75E5B202EF87600255050 /* SearchPageController.swift */,
-				BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */,
-			);
-			path = Search;
-			sourceTree = "<group>";
-		};
 		BB110713204C30AE0013633A /* Study */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +177,10 @@
 		BBA052F8204B949C002A095D /* Icon */ = {
 			isa = PBXGroup;
 			children = (
+				BB9076C4204FF8CA00F9ADCC /* book.png */,
+				BB2D8F93204FF01300B9B558 /* search.png */,
+				BB850484204FF1C500B16699 /* pen.png */,
+				BB850486204FF71C00B16699 /* setting.png */,
 			);
 			path = Icon;
 			sourceTree = "<group>";
@@ -229,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				BBA052F8204B949C002A095D /* Icon */,
-				BBDA3DA8202BFAF10038BE8B /* Info.plist */,
 				BBDA3DB8202BFBB20038BE8B /* SupportFiles */,
 				BBDA3DAE202BFAFC0038BE8B /* Model */,
 				BBDA3DB0202BFB090038BE8B /* View */,
@@ -251,7 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				BB2DC6C520355B60000D6AB2 /* HomePageController.swift */,
-				BB110712204C30A40013633A /* Search */,
+				BBC75E5B202EF87600255050 /* WordListController.swift */,
+				BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */,
 				BB110713204C30AE0013633A /* Study */,
 			);
 			path = Controller;
@@ -260,7 +263,7 @@
 		BBDA3DB0202BFB090038BE8B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BBA052F9204B9B32002A095D /* JWButton.swift */,
+				BBA052F9204B9B32002A095D /* ShrinkButton.swift */,
 				BB6B0CD9204E72CE00394F12 /* HomeButton.swift */,
 				BB2DC6C32034228C000D6AB2 /* CardView.swift */,
 				BBC0D379203C138D00DCF4B3 /* WordPage */,
@@ -271,6 +274,7 @@
 		BBDA3DB8202BFBB20038BE8B /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				BBDA3DA8202BFAF10038BE8B /* Info.plist */,
 				BBDA3D9C202BFAF10038BE8B /* AppDelegate.swift */,
 				BBDA3DA0202BFAF10038BE8B /* Main.storyboard */,
 				BBDA3DA3202BFAF10038BE8B /* Assets.xcassets */,
@@ -373,7 +377,11 @@
 			files = (
 				BBDA3DA7202BFAF10038BE8B /* LaunchScreen.storyboard in Resources */,
 				BBDA3DA4202BFAF10038BE8B /* Assets.xcassets in Resources */,
+				BB2D8F94204FF01300B9B558 /* search.png in Resources */,
+				BB850487204FF71C00B16699 /* setting.png in Resources */,
+				BB850485204FF1C500B16699 /* pen.png in Resources */,
 				BBDA3DA2202BFAF10038BE8B /* Main.storyboard in Resources */,
+				BB9076C5204FF8CA00F9ADCC /* book.png in Resources */,
 				BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,14 +434,14 @@
 				BB2DC6C620355B60000D6AB2 /* HomePageController.swift in Sources */,
 				BB2E7794202C642200548A6D /* JMSense.swift in Sources */,
 				BB2E778D202C5D7E00548A6D /* JMEntry.swift in Sources */,
-				BBA052FA204B9B32002A095D /* JWButton.swift in Sources */,
+				BBA052FA204B9B32002A095D /* ShrinkButton.swift in Sources */,
 				BB2DC6C42034228C000D6AB2 /* CardView.swift in Sources */,
 				BB105840203F024000DE6BDC /* KnowQuizController.swift in Sources */,
 				BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */,
 				BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */,
 				BB2E7790202C62BD00548A6D /* Enumeration.swift in Sources */,
 				BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */,
-				BBC75E5C202EF87600255050 /* SearchPageController.swift in Sources */,
+				BBC75E5C202EF87600255050 /* WordListController.swift in Sources */,
 				BB772D3E202DAA98008DFE85 /* Other.swift in Sources */,
 				BB2E7798202C66B100548A6D /* DictManager.swift in Sources */,
 			);
@@ -475,7 +483,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				INFOPLIST_FILE = BookManagerTests/Info.plist;
+				INFOPLIST_FILE = BookManagerTests/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ribilynn.BookManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -491,7 +499,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				INFOPLIST_FILE = BookManagerTests/Info.plist;
+				INFOPLIST_FILE = BookManagerTests/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ribilynn.BookManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -617,7 +625,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Jword/Info.plist;
+				INFOPLIST_FILE = Jword/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ribilynn.Jword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -635,7 +643,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Jword/Info.plist;
+				INFOPLIST_FILE = Jword/SupportFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ribilynn.Jword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
