@@ -11,7 +11,7 @@ import RealmSwift
 
 final class StudyManager {
   
-  private let dicManager = DictManager.shared()
+  private let dicManager = DictManager.shared
   private let bookManager = BookManager.shared
   private let realm: Realm
   
@@ -80,6 +80,7 @@ final class StudyManager {
       wordsTolearn = Array(realm.objects(WordToday.self).filter("privateState != 1")).shuffled()
       if wordsTolearn.isEmpty {
         // TODO: complete all word today
+        print("complete all word today")
       } else {
         processNextQuiz()
       }

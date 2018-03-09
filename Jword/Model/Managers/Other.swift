@@ -57,6 +57,11 @@ extension UIView {
       view.layer.shadowRadius = 14
     }
   }
+  static func changeBackground(views: [UIView], color: UIColor) {
+    for view in views {
+      view.backgroundColor = color
+    }
+  }
 }
 
 extension UIStoryboard {

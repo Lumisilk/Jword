@@ -11,7 +11,7 @@ import RealmSwift
 
 final class DictManager {
 
-  private static weak var instance: DictManager?
+  static let shared = DictManager()
   
   private let realm: Realm
   
@@ -23,16 +23,16 @@ final class DictManager {
     config.schemaVersion = 2
     realm = try! Realm(configuration: config)
   }
-  
-  static func shared() -> DictManager {
-    if let res = DictManager.instance {
-      return res
-    } else {
-      let res = DictManager()
-      DictManager.instance = res
-      return res
-    }
-  }
+//
+//  static func shared() -> DictManager {
+//    if let res = DictManager.instance {
+//      return res
+//    } else {
+//      let res = DictManager()
+//      DictManager.instance = res
+//      return res
+//    }
+//  }
   
   func search(kanji: String) -> [JMEntry] {
     let res = realm.objects(JMEntry.self).filter("kanji contains %@", kanji)

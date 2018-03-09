@@ -11,8 +11,8 @@ import XCTest
 
 class AddNewRecords: XCTestCase {
   
-  var dictManager = DictManager.shared()
-  var bookManager = BookManager.shared()
+  var dictManager = DictManager.shared
+  var bookManager = BookManager.shared
   let wordsToAdd = [
     "反る", "練る", "煙る", "募る", "図る", "勝る", "操る", "誤る", "群がる", "連なる",
     "交わる", "老いる", "強いる", "率いる", "恥じる", "重んじる", "帯びる", "省みる", "試みる", "経る",
@@ -36,7 +36,7 @@ class AddNewRecords: XCTestCase {
         bookManager.addOrForget(entryID: e.id)
       }
     }
-    bookManager.printAmount()
+    bookManager.printCount(isTotal: false)
   }
   
   func testPerformanceExample() {

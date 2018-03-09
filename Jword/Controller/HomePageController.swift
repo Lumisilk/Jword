@@ -18,6 +18,8 @@ final class HomePageController: UIViewController {
   @IBOutlet weak var searchButton: HomeButton!
   @IBOutlet weak var settingButton: HomeButton!
   
+  private let bookManager = BookManager.shared
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = ColorManager.background

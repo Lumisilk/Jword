@@ -53,8 +53,9 @@ final class WordPageController: UIViewController {
   
   // MARK: View Method
   private func initView() {
-    changeButtonStackLength(isShort: true)
+    self.navigationController?.navigationBar.shadowImage = UIImage()
     
+    changeButtonStackLength(isShort: true)
     //UIView.addShadows(views: [forgetButton, continueButton])
     UIView.addRadius(views: [forgetButton,continueButton], radius: 18)
     forgetButton.addTarget(self, action: #selector(addOrForget), for: .touchUpInside)

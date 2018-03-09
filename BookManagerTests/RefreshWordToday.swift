@@ -11,7 +11,7 @@ import XCTest
 
 class RefreshWordToday: XCTestCase {
   
-  let bookManager = BookManager.shared()
+  let bookManager = BookManager.shared
   
   override func setUp() {
     super.setUp()
@@ -25,7 +25,7 @@ class RefreshWordToday: XCTestCase {
   func testExample() {
     UserDataManager.countToLearnEveryday = 20
     bookManager.refreshWordToday()
-    bookManager.printAmount()
+    bookManager.printCount(isTotal: false)
   }
   
   func testPerformanceExample() {

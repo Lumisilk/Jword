@@ -12,7 +12,7 @@ final class WordListConrtoller: UITableViewController {
   
   //let searchController = UISearchController(searchResultsController: nil)
   
-  let dictManager = DictManager.shared()
+  let dictManager = DictManager.shared
   let bookManager = BookManager.shared
   var wordList = [JMEntry]()
   

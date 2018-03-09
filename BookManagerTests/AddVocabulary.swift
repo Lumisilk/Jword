@@ -1,15 +1,15 @@
 //
-//  BookManagerTests.swift
+//  AddN1Vocabulary.swift
 //  BookManagerTests
 //
-//  Created by usagilynn on 2/28/18.
+//  Created by usagilynn on 3/8/18.
 //  Copyright © 2018 ribilynn. All rights reserved.
 //
 
 import XCTest
 @testable import Jword
 
-class SupplyWorkbench: XCTestCase {
+class AddVocabulary: XCTestCase {
   
   let bookManager = BookManager.shared
   
@@ -22,14 +22,13 @@ class SupplyWorkbench: XCTestCase {
   }
   
   func testExample() {
-    UserDataManager.countToLearnEveryday = 10
-    bookManager.supplyWorkbench()
-    bookManager.printCount(isTotal: false)
+    bookManager.deleteAll()
+    let count = bookManager.addVocabularyBook(book: .N1)
+    print("Count of words added is \(count)")
   }
   
   func testPerformanceExample() {
     self.measure {
-      
     }
   }
 }

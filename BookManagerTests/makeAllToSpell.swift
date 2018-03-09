@@ -1,15 +1,15 @@
 //
-//  BookManagerTests.swift
+//  makeAllToSpell.swift
 //  BookManagerTests
 //
-//  Created by usagilynn on 2/28/18.
+//  Created by usagilynn on 3/9/18.
 //  Copyright © 2018 ribilynn. All rights reserved.
 //
 
 import XCTest
 @testable import Jword
 
-class SupplyWorkbench: XCTestCase {
+class makeAllToSpell: XCTestCase {
   
   let bookManager = BookManager.shared
   
@@ -22,9 +22,7 @@ class SupplyWorkbench: XCTestCase {
   }
   
   func testExample() {
-    UserDataManager.countToLearnEveryday = 10
-    bookManager.supplyWorkbench()
-    bookManager.printCount(isTotal: false)
+    print(bookManager.makeWorkbenchAllToSpellLevel())
   }
   
   func testPerformanceExample() {

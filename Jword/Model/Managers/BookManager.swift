@@ -34,10 +34,16 @@ final class BookManager {
   }
   
   // MARK: Daily Check
+  //complete: (_ wordsTodayCount: Int, _ progress: Int) -> ()
   func dailyCheck() {
-    if !Calendar.current.isDate(Date(), inSameDayAs: UserDataManager.lastUpdateDate) {
+    let now = Date()
+    print(now)
+    if !Calendar.current.isDate(now, inSameDayAs: UserDataManager.lastUpdateDate) {
+      print("last: \(UserDataManager.lastUpdateDate)")
       supplyWorkbench()
       refreshWordToday()
+      UserDataManager.lastUpdateDate = now
+      print("freshed")
     }
   }
   
@@ -113,12 +119,60 @@ final class BookManager {
     }
   }
   
-  // MARK: Functiton for Test
-  func printAmount() {
-    let records = realm.objects(WordRecord.self)
-    for i in 0...5 {
-      let count = records.filter("privateLevel = %@", i).count
-      print("level=\(i): \(count)")
+  // MARK: Add Vocabulary Book Method
+  enum VocabularyBook: String {
+    case N1
+  }
+  func addVocabularyBook(book: VocabularyBook) -> Int {
+    var count = 0
+    let file = Bundle.main.url(forResource: book.rawValue, withExtension: "txt")
+    guard let url = file else { return 0 }
+    guard let t1 = try? String.init(contentsOf: url, encoding: .utf8) else {
+      return 0
     }
+    let t2 = t1.components(separatedBy: " ")
+    try? realm.write {
+      for s in t2 {
+        guard let id = Int(s) else { continue }
+        if realm.object(ofType: WordRecord.self, forPrimaryKey: id) == nil {
+          let newRecord = WordRecord()
+          newRecord.entryId = id
+          realm.add(newRecord)
+          count += 1
+        }
+      }
+    }
+    return count
+  }
+  
+  // MARK: Functiton for Test
+  func printCount(isTotal: Bool) {
+    let records = realm.objects(WordRecord.self)
+    if isTotal {
+      print(records.count)
+    } else {
+      for i in 0...5 {
+        let count = records.filter("privateLevel = %@", i).count
+        if count != 0 {
+          print("level=\(i): \(count)")
+        }
+      }
+    }
+  }
+  
+  func deleteAll() {
+    try? realm.write {
+      realm.deleteAll()
+    }
+  }
+  
+  func makeWorkbenchAllToSpellLevel() -> Int {
+    let words = realm.objects(WordRecord.self).filter("privateLevel != 0 AND privateLevel != 5")
+    try! realm.write {
+      for word in words {
+        word.state = WordRecord.State.know
+      }
+    }
+    return words.count
   }
 }

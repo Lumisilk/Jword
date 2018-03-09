@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BB105840203F024000DE6BDC /* KnowQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10583F203F024000DE6BDC /* KnowQuizController.swift */; };
 		BB105842203F024B00DE6BDC /* SpellQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB105841203F024B00DE6BDC /* SpellQuizController.swift */; };
-		BB2D8F94204FF01300B9B558 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = BB2D8F93204FF01300B9B558 /* search.png */; };
 		BB2DC6BE20340F57000D6AB2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */; };
 		BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BF203410D9000D6AB2 /* NoteView.swift */; };
 		BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6C120341E61000D6AB2 /* ColorDot.swift */; };
@@ -21,10 +20,13 @@
 		BB2E7794202C642200548A6D /* JMSense.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7793202C642200548A6D /* JMSense.swift */; };
 		BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7795202C649C00548A6D /* TNKExample.swift */; };
 		BB2E7798202C66B100548A6D /* DictManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7797202C66B100548A6D /* DictManager.swift */; };
+		BB38A49B2051141500D485AA /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = BB38A49A2051141500D485AA /* search.png */; };
+		BB38A49D20511DFB00D485AA /* DailyCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38A49C20511DFB00D485AA /* DailyCheck.swift */; };
 		BB5997D52042BF8A009138D4 /* StudyContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5997D42042BF8A009138D4 /* StudyContainerController.swift */; };
 		BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FB202D505700FE6F75 /* WorkBook.swift */; };
 		BB67F0FE202D542000FE6F75 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FD202D542000FE6F75 /* BookManager.swift */; };
 		BB6B0CDA204E72CE00394F12 /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6B0CD9204E72CE00394F12 /* HomeButton.swift */; };
+		BB741E6320527C56009F8E17 /* makeAllToSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB741E6220527C56009F8E17 /* makeAllToSpell.swift */; };
 		BB772D3E202DAA98008DFE85 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Other.swift */; };
 		BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D41202DEB1F008DFE85 /* UserDataManager.swift */; };
 		BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */; };
@@ -32,12 +34,14 @@
 		BB850487204FF71C00B16699 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = BB850486204FF71C00B16699 /* setting.png */; };
 		BB9076C5204FF8CA00F9ADCC /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9076C4204FF8CA00F9ADCC /* book.png */; };
 		BBA052FA204B9B32002A095D /* ShrinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA052F9204B9B32002A095D /* ShrinkButton.swift */; };
+		BBB806B8205131280074DB97 /* N1.txt in Resources */ = {isa = PBXBuildFile; fileRef = BBB806B7205131280074DB97 /* N1.txt */; };
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
 		BBC75E5C202EF87600255050 /* WordListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* WordListController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
 		BBD6B1E720469ACB0005E827 /* SupplyWorkbench.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1E620469ACB0005E827 /* SupplyWorkbench.swift */; };
 		BBD6B1EF20469B1D0005E827 /* AddNewRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1EE20469B1D0005E827 /* AddNewRecords.swift */; };
 		BBD6B1F12046A1CF0005E827 /* RefreshWordToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1F02046A1CF0005E827 /* RefreshWordToday.swift */; };
+		BBD876F8205122CE0071D0D5 /* AddVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD876F7205122CE0071D0D5 /* AddVocabulary.swift */; };
 		BBDA3D9D202BFAF10038BE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDA3D9C202BFAF10038BE8B /* AppDelegate.swift */; };
 		BBDA3DA2202BFAF10038BE8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDA3DA0202BFAF10038BE8B /* Main.storyboard */; };
 		BBDA3DA4202BFAF10038BE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBDA3DA3202BFAF10038BE8B /* Assets.xcassets */; };
@@ -77,7 +81,6 @@
 /* Begin PBXFileReference section */
 		BB10583F203F024000DE6BDC /* KnowQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowQuizController.swift; sourceTree = "<group>"; };
 		BB105841203F024B00DE6BDC /* SpellQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellQuizController.swift; sourceTree = "<group>"; };
-		BB2D8F93204FF01300B9B558 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = ../../../../../Desktop/search.png; sourceTree = "<group>"; };
 		BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		BB2DC6BF203410D9000D6AB2 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		BB2DC6C120341E61000D6AB2 /* ColorDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDot.swift; sourceTree = "<group>"; };
@@ -89,10 +92,13 @@
 		BB2E7793202C642200548A6D /* JMSense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMSense.swift; sourceTree = "<group>"; };
 		BB2E7795202C649C00548A6D /* TNKExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNKExample.swift; sourceTree = "<group>"; };
 		BB2E7797202C66B100548A6D /* DictManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictManager.swift; sourceTree = "<group>"; };
+		BB38A49A2051141500D485AA /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		BB38A49C20511DFB00D485AA /* DailyCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCheck.swift; sourceTree = "<group>"; };
 		BB5997D42042BF8A009138D4 /* StudyContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyContainerController.swift; sourceTree = "<group>"; };
 		BB67F0FB202D505700FE6F75 /* WorkBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBook.swift; sourceTree = "<group>"; };
 		BB67F0FD202D542000FE6F75 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		BB6B0CD9204E72CE00394F12 /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
+		BB741E6220527C56009F8E17 /* makeAllToSpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeAllToSpell.swift; sourceTree = "<group>"; };
 		BB772D3D202DAA98008DFE85 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		BB772D41202DEB1F008DFE85 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 		BB850486204FF71C00B16699 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		BB9076C4204FF8CA00F9ADCC /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
 		BBA052F9204B9B32002A095D /* ShrinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShrinkButton.swift; path = Jword/View/ShrinkButton.swift; sourceTree = SOURCE_ROOT; };
+		BBB806B7205131280074DB97 /* N1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = N1.txt; sourceTree = "<group>"; };
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		BBC75E5B202EF87600255050 /* WordListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
@@ -108,6 +115,7 @@
 		BBD6B1E820469ACB0005E827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBD6B1EE20469B1D0005E827 /* AddNewRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewRecords.swift; sourceTree = "<group>"; };
 		BBD6B1F02046A1CF0005E827 /* RefreshWordToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshWordToday.swift; sourceTree = "<group>"; };
+		BBD876F7205122CE0071D0D5 /* AddVocabulary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVocabulary.swift; sourceTree = "<group>"; };
 		BBDA3D99202BFAF10038BE8B /* Jword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBDA3D9C202BFAF10038BE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBDA3DA1202BFAF10038BE8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -178,11 +186,19 @@
 			isa = PBXGroup;
 			children = (
 				BB9076C4204FF8CA00F9ADCC /* book.png */,
-				BB2D8F93204FF01300B9B558 /* search.png */,
 				BB850484204FF1C500B16699 /* pen.png */,
+				BB38A49A2051141500D485AA /* search.png */,
 				BB850486204FF71C00B16699 /* setting.png */,
 			);
 			path = Icon;
+			sourceTree = "<group>";
+		};
+		BBB806B9205135700074DB97 /* Vocabulary */ = {
+			isa = PBXGroup;
+			children = (
+				BBB806B7205131280074DB97 /* N1.txt */,
+			);
+			path = Vocabulary;
 			sourceTree = "<group>";
 		};
 		BBC0D379203C138D00DCF4B3 /* WordPage */ = {
@@ -199,6 +215,9 @@
 		BBD6B1E520469ACB0005E827 /* BookManagerTests */ = {
 			isa = PBXGroup;
 			children = (
+				BB741E6220527C56009F8E17 /* makeAllToSpell.swift */,
+				BBD876F7205122CE0071D0D5 /* AddVocabulary.swift */,
+				BB38A49C20511DFB00D485AA /* DailyCheck.swift */,
 				BBD6B1F02046A1CF0005E827 /* RefreshWordToday.swift */,
 				BBD6B1EE20469B1D0005E827 /* AddNewRecords.swift */,
 				BBD6B1E620469ACB0005E827 /* SupplyWorkbench.swift */,
@@ -210,6 +229,7 @@
 		BBDA3D90202BFAF00038BE8B = {
 			isa = PBXGroup;
 			children = (
+				BBB806B9205135700074DB97 /* Vocabulary */,
 				BBC75E5D202F1BBD00255050 /* JMDict.realm */,
 				BBDA3DB1202BFB960038BE8B /* Realm.framework */,
 				BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */,
@@ -377,9 +397,10 @@
 			files = (
 				BBDA3DA7202BFAF10038BE8B /* LaunchScreen.storyboard in Resources */,
 				BBDA3DA4202BFAF10038BE8B /* Assets.xcassets in Resources */,
-				BB2D8F94204FF01300B9B558 /* search.png in Resources */,
 				BB850487204FF71C00B16699 /* setting.png in Resources */,
+				BB38A49B2051141500D485AA /* search.png in Resources */,
 				BB850485204FF1C500B16699 /* pen.png in Resources */,
+				BBB806B8205131280074DB97 /* N1.txt in Resources */,
 				BBDA3DA2202BFAF10038BE8B /* Main.storyboard in Resources */,
 				BB9076C5204FF8CA00F9ADCC /* book.png in Resources */,
 				BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */,
@@ -409,8 +430,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB38A49D20511DFB00D485AA /* DailyCheck.swift in Sources */,
 				BBD6B1E720469ACB0005E827 /* SupplyWorkbench.swift in Sources */,
 				BBD6B1EF20469B1D0005E827 /* AddNewRecords.swift in Sources */,
+				BB741E6320527C56009F8E17 /* makeAllToSpell.swift in Sources */,
+				BBD876F8205122CE0071D0D5 /* AddVocabulary.swift in Sources */,
 				BBD6B1F12046A1CF0005E827 /* RefreshWordToday.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +507,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				INFOPLIST_FILE = BookManagerTests/SupportFiles/Info.plist;
+				INFOPLIST_FILE = BookManagerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ribilynn.BookManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -499,7 +523,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-				INFOPLIST_FILE = BookManagerTests/SupportFiles/Info.plist;
+				INFOPLIST_FILE = BookManagerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ribilynn.BookManagerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
