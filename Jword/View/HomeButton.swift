@@ -20,9 +20,14 @@ final class HomeButton: ShrinkButton {
   private let sideMargin: CGFloat = 16
   private let topMargin: CGFloat = 16
   
-  let mainLabel = UILabel()
-  let subLabel = UILabel()
-  var subTitle: String = ""
+  private let gradientLayer = CAGradientLayer()
+  private let mainLabel = UILabel()
+  private let subLabel = UILabel()
+  var subTitle: String = "" {
+    didSet {
+      subLabel.text = subTitle
+    }
+  }
   
   init() {
     super.init(frame: CGRect.zero)
@@ -31,18 +36,17 @@ final class HomeButton: ShrinkButton {
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     initView()
+    applyTheme()
   }
   
   private func initView() {
-    imageView?.tintColor = ColorManager.homeButtonTint
+    
     imageView?.contentMode = .scaleAspectFit
     let leftInset = bounds.width * 0.3
     imageEdgeInsets = UIEdgeInsetsMake(10, leftInset, 10, 0)
     
-    mainLabel.textColor = ColorManager.frontBackground
     mainLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     mainLabel.adjustsFontSizeToFitWidth = true
-    subLabel.textColor = ColorManager.frontBackground
     subLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     subLabel.textAlignment = .right
     
@@ -60,9 +64,7 @@ final class HomeButton: ShrinkButton {
 
     addConstraints([mainTop, mainLeft, mainRight, subLeft, subRight, subBottom])
 
-    let gradientLayer = CAGradientLayer()
     gradientLayer.cornerRadius = 10
-    gradientLayer.colors = [ColorManager.gradientStartColor.cgColor, ColorManager.gradientEndColor.cgColor]
     gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
     gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
     gradientLayer.locations = [0.0, 1.0]
@@ -72,8 +74,15 @@ final class HomeButton: ShrinkButton {
     UIView.addShadows(views: [self])
   }
   
-  func load(type: Entrance, subtitle: String = "") {
-    subLabel.text = subTitle
+  func applyTheme() {
+    imageView?.tintColor = ColorManager.homeButtonTint
+    mainLabel.textColor = ColorManager.frontBackground
+    subLabel.textColor = ColorManager.frontBackground
+    gradientLayer.colors = [ColorManager.gradientStartColor.cgColor, ColorManager.gradientEndColor.cgColor]
+  }
+  
+  func load(type: Entrance, subTitle: String = "") {
+    self.subTitle = subTitle
     var origImage: UIImage?
     switch type {
     case .wordToday:
@@ -92,4 +101,5 @@ final class HomeButton: ShrinkButton {
     let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
     setImage(tintedImage, for: .normal)
   }
+  
 }

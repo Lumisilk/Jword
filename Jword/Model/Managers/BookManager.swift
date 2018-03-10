@@ -14,6 +14,7 @@ final class BookManager {
   static let shared = BookManager()
   
   let realm: Realm
+  let wordsToday: Results<WordToday>
   
   private init() {
     var config = Realm.Configuration()
@@ -23,27 +24,28 @@ final class BookManager {
     config.objectTypes = [WordRecord.self, WordToday.self]
     config.schemaVersion = 0
     realm = try! Realm(configuration: config)
+    wordsToday = realm.objects(WordToday.self)
   }
   
-  // MARK: Fetch Method
+  // MARK: Query Method
   func getWordRecord(entryID: Int) -> WordRecord? {
     return realm.object(ofType: WordRecord.self, forPrimaryKey: entryID)
   }
-  func getWordToday() -> [WordToday] {
-    return Array(realm.objects(WordToday.self))
+  func getProgress() -> Int {
+    let count = wordsToday.filter("privateState != 1").count
+    return count * 100 / wordsToday.count
   }
   
   // MARK: Daily Check
-  //complete: (_ wordsTodayCount: Int, _ progress: Int) -> ()
   func dailyCheck() {
+    let lastUpdate = UserDataManager.lastUpdateDate ?? Date().addingTimeInterval(TimeInterval(-86400))
     let now = Date()
+    print(lastUpdate)
     print(now)
-    if !Calendar.current.isDate(now, inSameDayAs: UserDataManager.lastUpdateDate) {
-      print("last: \(UserDataManager.lastUpdateDate)")
+    if !Calendar.current.isDate(now, inSameDayAs: lastUpdate) {
       supplyWorkbench()
       refreshWordToday()
       UserDataManager.lastUpdateDate = now
-      print("freshed")
     }
   }
   
@@ -123,7 +125,7 @@ final class BookManager {
   enum VocabularyBook: String {
     case N1
   }
-  func addVocabularyBook(book: VocabularyBook) -> Int {
+  func addVocabularyBook(book: VocabularyBook, refreshOldWords: Bool) -> Int {
     var count = 0
     let file = Bundle.main.url(forResource: book.rawValue, withExtension: "txt")
     guard let url = file else { return 0 }
@@ -132,13 +134,29 @@ final class BookManager {
     }
     let t2 = t1.components(separatedBy: " ")
     try? realm.write {
-      for s in t2 {
-        guard let id = Int(s) else { continue }
-        if realm.object(ofType: WordRecord.self, forPrimaryKey: id) == nil {
-          let newRecord = WordRecord()
-          newRecord.entryId = id
-          realm.add(newRecord)
-          count += 1
+      if refreshOldWords {
+        for s in t2 {
+          guard let id = Int(s) else { continue }
+          if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: id) {
+            record.forget()
+            if let word = realm.object(ofType: WordToday.self, forPrimaryKey: id) {
+              word.forget()
+            }
+          } else {
+            let newRecord = WordRecord()
+            newRecord.entryId = id
+            realm.add(newRecord)
+          }
+        }
+      } else {
+        for s in t2 {
+          guard let id = Int(s) else { continue }
+          if realm.object(ofType: WordRecord.self, forPrimaryKey: id) == nil {
+            let newRecord = WordRecord()
+            newRecord.entryId = id
+            realm.add(newRecord)
+            count += 1
+          }
         }
       }
     }

@@ -35,6 +35,8 @@
 		BB9076C5204FF8CA00F9ADCC /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9076C4204FF8CA00F9ADCC /* book.png */; };
 		BBA052FA204B9B32002A095D /* ShrinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA052F9204B9B32002A095D /* ShrinkButton.swift */; };
 		BBB806B8205131280074DB97 /* N1.txt in Resources */ = {isa = PBXBuildFile; fileRef = BBB806B7205131280074DB97 /* N1.txt */; };
+		BBBAE82A2053E431005C96D1 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBAE8292053E431005C96D1 /* home.png */; };
+		BBBAE8302053FEB0005C96D1 /* BarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAE82F2053FEB0005C96D1 /* BarItem.swift */; };
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
 		BBC75E5C202EF87600255050 /* WordListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* WordListController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
@@ -105,8 +107,10 @@
 		BB850484204FF1C500B16699 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen.png; sourceTree = "<group>"; };
 		BB850486204FF71C00B16699 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		BB9076C4204FF8CA00F9ADCC /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
-		BBA052F9204B9B32002A095D /* ShrinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShrinkButton.swift; path = Jword/View/ShrinkButton.swift; sourceTree = SOURCE_ROOT; };
+		BBA052F9204B9B32002A095D /* ShrinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShrinkButton.swift; path = Jword/View/General/ShrinkButton.swift; sourceTree = SOURCE_ROOT; };
 		BBB806B7205131280074DB97 /* N1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = N1.txt; sourceTree = "<group>"; };
+		BBBAE8292053E431005C96D1 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		BBBAE82F2053FEB0005C96D1 /* BarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarItem.swift; sourceTree = "<group>"; };
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		BBC75E5B202EF87600255050 /* WordListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				BB850484204FF1C500B16699 /* pen.png */,
 				BB38A49A2051141500D485AA /* search.png */,
 				BB850486204FF71C00B16699 /* setting.png */,
+				BBBAE8292053E431005C96D1 /* home.png */,
 			);
 			path = Icon;
 			sourceTree = "<group>";
@@ -199,6 +204,16 @@
 				BBB806B7205131280074DB97 /* N1.txt */,
 			);
 			path = Vocabulary;
+			sourceTree = "<group>";
+		};
+		BBBAE82C2053EA6F005C96D1 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				BBA052F9204B9B32002A095D /* ShrinkButton.swift */,
+				BB2DC6C32034228C000D6AB2 /* CardView.swift */,
+				BBBAE82F2053FEB0005C96D1 /* BarItem.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		BBC0D379203C138D00DCF4B3 /* WordPage */ = {
@@ -283,9 +298,8 @@
 		BBDA3DB0202BFB090038BE8B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BBA052F9204B9B32002A095D /* ShrinkButton.swift */,
 				BB6B0CD9204E72CE00394F12 /* HomeButton.swift */,
-				BB2DC6C32034228C000D6AB2 /* CardView.swift */,
+				BBBAE82C2053EA6F005C96D1 /* General */,
 				BBC0D379203C138D00DCF4B3 /* WordPage */,
 			);
 			path = View;
@@ -401,6 +415,7 @@
 				BB38A49B2051141500D485AA /* search.png in Resources */,
 				BB850485204FF1C500B16699 /* pen.png in Resources */,
 				BBB806B8205131280074DB97 /* N1.txt in Resources */,
+				BBBAE82A2053E431005C96D1 /* home.png in Resources */,
 				BBDA3DA2202BFAF10038BE8B /* Main.storyboard in Resources */,
 				BB9076C5204FF8CA00F9ADCC /* book.png in Resources */,
 				BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */,
@@ -465,6 +480,7 @@
 				BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */,
 				BB2E7790202C62BD00548A6D /* Enumeration.swift in Sources */,
 				BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */,
+				BBBAE8302053FEB0005C96D1 /* BarItem.swift in Sources */,
 				BBC75E5C202EF87600255050 /* WordListController.swift in Sources */,
 				BB772D3E202DAA98008DFE85 /* Other.swift in Sources */,
 				BB2E7798202C66B100548A6D /* DictManager.swift in Sources */,

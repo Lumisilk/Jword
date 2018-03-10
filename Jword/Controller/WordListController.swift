@@ -33,8 +33,11 @@ final class WordListConrtoller: UITableViewController {
       navigationItem.hidesSearchBarWhenScrolling = false
     } else {
       navigationItem.title = "Words Today"
-      let wordToday = bookManager.getWordToday()
-      wordList = dictManager.getEntries(of: wordToday)
+      let wordToday = Array(bookManager.wordsToday)
+      let ids = wordToday.map({ (w) -> Int in
+        return w.entryId
+      })
+      wordList = dictManager.getEntries(id: ids)
     }
   }
   
@@ -63,6 +66,7 @@ final class WordListConrtoller: UITableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.navigationItem.searchController?.searchBar.resignFirstResponder()
     let entry = wordList[indexPath.row]
+    if isForSearching { UserDataManager.addSearchHistory(entryID: entry.id) }
     performSegue(withIdentifier: "showWordPage", sender: entry)
   }
   
@@ -91,8 +95,12 @@ final class WordListConrtoller: UITableViewController {
 // MARK: - UISearchResultsUpdating Delegate
 extension WordListConrtoller: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
-    guard !searchController.searchBar.text!.isEmpty else { return }
-    wordList = dictManager.search(kanji: searchController.searchBar.text!)
+    if searchController.searchBar.text!.isEmpty {
+      let history = UserDataManager.searchHistory
+      wordList = dictManager.getEntries(id: history)
+    } else {
+      wordList = dictManager.search(kanji: searchController.searchBar.text!)
+    }
     tableView.reloadData()
   }
 }

@@ -43,9 +43,9 @@ final class DictManager {
     return realm.object(ofType: JMEntry.self, forPrimaryKey: id)!
   }
   
-  func getEntries(of wordToday: [WordToday]) -> [JMEntry] {
-    return wordToday.map({ (wordToday) -> JMEntry in
-      return getEntry(id: wordToday.entryId)
+  func getEntries(id: [Int]) -> [JMEntry] {
+    return id.map({ (i) -> JMEntry in
+      return getEntry(id: i)
     })
   }
   

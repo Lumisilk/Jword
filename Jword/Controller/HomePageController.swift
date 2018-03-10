@@ -23,11 +23,15 @@ final class HomePageController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = ColorManager.background
-    
     todayButton.load(type: .wordToday)
     studyButton.load(type: .study)
     searchButton.load(type: .search)
     settingButton.load(type: .setting)
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    todayButton.subTitle = bookManager.wordsToday.count.description
+    studyButton.subTitle = "\(bookManager.getProgress())%"
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
