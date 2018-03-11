@@ -12,19 +12,14 @@ final class StudyContainerController: UIViewController {
   
   var studyManager: StudyManager!
   
-  @IBOutlet weak var homeButton: UIBarButtonItem!
-  
   override func viewDidLoad() {
+    super.viewDidLoad()
     studyManager = StudyManager(containerView: self)
-    initView()
-    studyManager.processNextQuiz()
+    studyManager.prepareWordsAndProcessNextPage()
   }
-  
+
   @IBAction func returnToHome(_ sender: Any) {
     dismiss(animated: true, completion: nil)
   }
-  
-  private func initView() {
-    
-  }
+
 }

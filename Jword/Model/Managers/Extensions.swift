@@ -8,6 +8,7 @@
 
 import UIKit
 
+// MARK: - Fundation
 extension Int {
   static func random(_ upper: Int) -> Int {
     return Int(arc4random_uniform(UInt32(upper)))
@@ -17,6 +18,11 @@ extension Int {
 extension Array {
   
   func randomPick(n: Int) -> [Element] {
+    if n == count {
+      return self.shuffled()
+    } else if n > count {
+      fatalError("n is bigger than count")
+    }
     var copy = self
     for i in stride(from: count-1, to: count-n-1, by: -1) {
       copy.swapAt(i, Int.random(i+1))
@@ -40,25 +46,23 @@ extension Array {
   }
 }
 
-extension UIView {
-  var isPresented: Bool {
-    return superview != nil
-  }
-  static func addRadius(views: [UIView], radius: CGFloat = 20) {
-    for view in views {
+// MARK: - UIKit
+extension Array where Element: UIView {
+  func addRadius(_ radius: CGFloat = 20) {
+    for view in self {
       view.layer.cornerRadius = radius
     }
   }
-  static func addShadows(views: [UIView]) {
-    for view in views {
+  func addShadows() {
+    for view in self {
       view.layer.shadowColor = UIColor.gray.cgColor
       view.layer.shadowOpacity = 0.6
       view.layer.shadowOffset = CGSize(width: 0, height: 3)
       view.layer.shadowRadius = 14
     }
   }
-  static func changeBackground(views: [UIView], color: UIColor) {
-    for view in views {
+  func changeBackground(color: UIColor) {
+    for view in self {
       view.backgroundColor = color
     }
   }
@@ -74,5 +78,27 @@ extension UIStoryboard {
 extension UIColor {
   convenience init(r: Int, g: Int, b: Int, alpha: CGFloat = 1) {
     self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: alpha)
+  }
+}
+
+extension UINavigationItem {
+  func addHomeBarItem(action: Selector) {
+    let button = UIButton()
+    button.setImage(#imageLiteral(resourceName: "home.png"), for: .normal)
+    button.addTarget(self, action: action, for: .touchUpInside)
+    let barItem = UIBarButtonItem(customView: button)
+    barItem.customView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
+    barItem.customView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
+    leftBarButtonItem = barItem
+  }
+  
+  func addSearchBarItem(action: Selector) {
+    let button = UIButton()
+    button.setImage(#imageLiteral(resourceName: "search.png"), for: .normal)
+    button.addTarget(self, action: action, for: .touchUpInside)
+    let barItem = UIBarButtonItem(customView: button)
+    barItem.customView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
+    barItem.customView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
+    rightBarButtonItem = barItem
   }
 }

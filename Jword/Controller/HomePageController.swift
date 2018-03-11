@@ -30,8 +30,10 @@ final class HomePageController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    todayButton.subTitle = bookManager.wordsToday.count.description
-    studyButton.subTitle = "\(bookManager.getProgress())%"
+    let count = bookManager.wordsToday.count
+    todayButton.subTitle = count != 0 ? count.description : ""
+    let progress = bookManager.progress
+    studyButton.subTitle = progress != 0 ? "\(progress)%" : ""
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,4 +47,6 @@ final class HomePageController: UIViewController {
       }
     }
   }
+  
+  
 }

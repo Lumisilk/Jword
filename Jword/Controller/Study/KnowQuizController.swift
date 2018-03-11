@@ -29,16 +29,14 @@ final class KnowQuizController: UIViewController {
   private var entry: JMEntry?
   private var state: State = .start
   
+  // MARK: - ViewController
   override func viewDidLoad() {
     initView()
     applyTheme()
-    if entry != nil {
-      loadPage()
-    }
   }
   
   private func initView() {
-    UIView.addRadius(views: [labelContainer, sentenceContainer, KnowButtonContainer], radius: 16)
+    [labelContainer, sentenceContainer, KnowButtonContainer].addRadius(16)
     sentenceContainer.isHidden = true
     //UIView.addShadows(views: [labelContainer, sentenceContainer, KnowButtonContainer])
     let inset = UIEdgeInsetsMake(0, 20, 0, 0)
@@ -52,7 +50,7 @@ final class KnowQuizController: UIViewController {
     KnowButtonContainer.backgroundColor = ColorManager.frontBackground
   }
   
-  private func loadPage() {
+  private func updateView() {
     kanjiLabel.text = entry?.kanji
     if let example = entry?.pickOneExample() {
       sentenceLabel.text = example.japanese
@@ -61,13 +59,12 @@ final class KnowQuizController: UIViewController {
     }
   }
   
+  // MARK: - Data Interface
   func load(entry: JMEntry) {
     self.entry = entry
     state = .start
     sentenceContainer.isHidden = true
-    if isViewLoaded {
-      loadPage()
-    }
+    updateView()
   }
 
   @IBAction func pressKnow(_ sender: Any) {

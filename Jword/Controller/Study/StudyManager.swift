@@ -11,25 +11,20 @@ import RealmSwift
 
 final class StudyManager {
   
-  private let dicManager = DictManager.shared
+  private let dictManager = DictManager.shared
   private let bookManager = BookManager.shared
-  private let realm: Realm
   
-  var wordsTolearn: [WordToday]
-  var presentEntry = JMEntry()
-  var presentRecord = WordRecord()
-  var presentWordToday = WordToday()
+  private var wordsTolearn = [WordToday]()
+  private var presentEntry = JMEntry()
+  private var presentRecord = WordRecord()
+  private var presentWordToday = WordToday()
   
-  unowned let containerController: StudyContainerController
-  let wordPageController: WordPageController
-  let knowQuizController: KnowQuizController
-  let spellQuizController: SpellQuizController
+  private unowned let containerController: StudyContainerController
+  private let wordPageController: WordPageController
+  private let knowQuizController: KnowQuizController
+  private let spellQuizController: SpellQuizController
   
   init(containerView: StudyContainerController) {
-    realm = bookManager.realm
-
-    wordsTolearn = Array(realm.objects(WordToday.self).filter("privateState != 1")).shuffled()
-
     self.containerController = containerView
     wordPageController = UIStoryboard.instantiateController(identifier: "WordPageController") as! WordPageController
     knowQuizController = UIStoryboard.instantiateController(identifier: "KnowQuizController") as! KnowQuizController
@@ -57,50 +52,53 @@ final class StudyManager {
     controller.removeFromParentViewController()
   }
 
-  // MARK: Process Method
+  // MARK: - Process
+  func prepareWordsAndProcessNextPage() {
+    wordsTolearn = Array(bookManager.wordsToday.filter(WordToday.wordTodayToLearn)).shuffled()
+    if wordsTolearn.isEmpty {
+      // TODO: complete all word today
+      print("complete all word today")
+    } else {
+      processNextQuiz()
+    }
+  }
+  
   func processNextQuiz() {
-
     if let nextWord = wordsTolearn.last {
       wordsTolearn.removeLast()
       presentWordToday = nextWord
       presentRecord = bookManager.getWordRecord(entryID: nextWord.entryId)!
-      presentEntry = dicManager.getEntry(id: nextWord.entryId)
+      presentEntry = dictManager.getEntry(id: nextWord.entryId)
       // prepare next quiz
       switch presentRecord.state {
-      case .wait, .master:
-        assert(true)
       case .ready, .familiar:
         knowQuizController.load(entry: presentEntry)
         containerController.view.addSubview(knowQuizController.view)
       case .know, .spell:
         spellQuizController.load(entry: presentEntry)
         containerController.view.addSubview(spellQuizController.view)
+      default:
+        assert(true)
       }
     } else {
-      wordsTolearn = Array(realm.objects(WordToday.self).filter("privateState != 1")).shuffled()
-      if wordsTolearn.isEmpty {
-        // TODO: complete all word today
-        print("complete all word today")
-      } else {
-        processNextQuiz()
-      }
+      prepareWordsAndProcessNextPage()
     }
   }
   
   func showWordPage(method: WordPageController.openMethod) {
-    wordPageController.load(entry: presentEntry, method: method, record: presentRecord)
+    wordPageController.loadData(entry: presentEntry, method: method, record: presentRecord)
     containerController.view.addSubview(wordPageController.view)
   }
   
-  // MARK: Word Operation Method
+  // MARK: - Word Operation
   func forget() {
-    try? realm.write {
+    try? bookManager.realm.write {
       presentWordToday.forget()
       presentRecord.forget()
     }
   }
   func pass() {
-    try? realm.write {
+    try? bookManager.realm.write {
       presentWordToday.pass()
       presentRecord.pass()
     }

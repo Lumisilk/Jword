@@ -13,14 +13,15 @@ final class JWBarItem: UIBarButtonItem {
   let button = UIButton()
   
   init(isHomeButtonOrSearch: Bool, target: Selector) {
+    super.init()
     if isHomeButtonOrSearch {
       button.setImage(#imageLiteral(resourceName: "home.png"), for: .normal)
       button.addTarget(self, action: target, for: .touchUpInside)
     }
-    super.init(customView: button)
-    let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 24)
+    customView = button
+    let currWidth = customView?.widthAnchor.constraint(equalToConstant: 24)
     currWidth?.isActive = true
-    let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 24)
+    let currHeight = customView?.heightAnchor.constraint(equalToConstant: 24)
     currHeight?.isActive = true
   }
   

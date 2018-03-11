@@ -9,7 +9,6 @@
 import Foundation
 import RealmSwift
 
-
 final class WordRecord: Object {
   
   enum State: Int {
@@ -21,19 +20,17 @@ final class WordRecord: Object {
     case master = 5
   }
   
+  // MARK: Properties for realm
   @objc dynamic var entryId: Int = 0
   @objc dynamic var needCheck: Bool = false
   @objc dynamic var lastUpdate: Date = Date()
   @objc dynamic var note: String? = nil
-  
   @objc dynamic private var privateLevel: Int = 0
+  
+  // MARK: Properties for Jword
   var state: State {
-    get {
-      return State(rawValue: privateLevel)!
-    }
-    set {
-      privateLevel = newValue.rawValue
-    }
+    get { return State(rawValue: privateLevel)! }
+    set { privateLevel = newValue.rawValue }
   }
   
   override static func primaryKey() -> String? {
@@ -62,6 +59,10 @@ final class WordRecord: Object {
     needCheck = false
     lastUpdate = Date()
   }
+  
+  // MARK: Static Query Statement
+  static let wordRecordsInWorkbench = "privateLevel != 0 AND privateLevel != 5"
+  static let wordRecordsWaiting = "privateLevel = 0"
 }
 
 final class WordToday: Object {
@@ -95,4 +96,6 @@ final class WordToday: Object {
       privateState += 1
     }
   }
+  
+  static let wordTodayToLearn = "privateState != 1"
 }

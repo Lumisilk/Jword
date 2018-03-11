@@ -10,15 +10,13 @@ import UIKit
 
 final class WordListConrtoller: UITableViewController {
   
-  //let searchController = UISearchController(searchResultsController: nil)
-  
   let dictManager = DictManager.shared
   let bookManager = BookManager.shared
   var wordList = [JMEntry]()
-  
-  /// A boolean value indicates this page is searching page or wordToday list.
+  /// A boolean value indicates this page is a searching page or a wordToday list.
   var isForSearching = true
   
+  // MARK: - ViewController
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationController?.navigationBar.prefersLargeTitles = true
@@ -34,10 +32,8 @@ final class WordListConrtoller: UITableViewController {
     } else {
       navigationItem.title = "Words Today"
       let wordToday = Array(bookManager.wordsToday)
-      let ids = wordToday.map({ (w) -> Int in
-        return w.entryId
-      })
-      wordList = dictManager.getEntries(id: ids)
+      let IDs: [Int] = wordToday.map{$0.entryId}
+      wordList = dictManager.getEntries(id: IDs)
     }
   }
   
@@ -50,6 +46,26 @@ final class WordListConrtoller: UITableViewController {
     }
   }
   
+  @IBAction func dismiss(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+    dismiss(animated: true, completion: nil)
+  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "showWordPage" {
+      let entry = sender as! JMEntry
+      let controller = segue.destination as! WordPageController
+      if isForSearching {
+        controller.loadData(entry: entry, method: .search)
+      } else {
+        controller.loadData(entry: entry, method: .wordList)
+      }
+    }
+  }
+  
+  // TODO: complete drag to dismiss
+  //  override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+  //
+  //  }
   
   // MARK: - TableView
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,26 +86,6 @@ final class WordListConrtoller: UITableViewController {
     performSegue(withIdentifier: "showWordPage", sender: entry)
   }
   
-  override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-    // TODO: send dismiss
-  }
-
-  // MARK: - View Function
-  @IBAction func dismiss(_ sender: Any) {
-    dismiss(animated: true, completion: nil)
-    dismiss(animated: true, completion: nil)
-  }
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "showWordPage" {
-      let entry = sender as! JMEntry
-      let controller = segue.destination as! WordPageController
-      if isForSearching {
-        controller.load(entry: entry, method: .search)
-      } else {
-        controller.load(entry: entry, method: .wordList)
-      }
-    }
-  }
 }
 
 // MARK: - UISearchResultsUpdating Delegate

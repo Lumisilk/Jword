@@ -31,11 +31,10 @@ class CardView: UIView {
   
   private func initView() {
     backgroundColor = ColorManager.frontBackground
-    UIView.addRadius(views: [self])
-    //UIView.addShadows(views: [self])
+   [self].addRadius()
     
     if !title.isEmpty {
-      // init subView
+      
       let titleLabel = UILabel()
       titleLabel.text = title
       titleLabel.font = UIFont.systemFont(ofSize: 13)
@@ -44,7 +43,7 @@ class CardView: UIView {
       addSubview(titleLabel)
       line.backgroundColor = ColorManager.label
       addSubview(line)
-      // add constraints
+      
       line.translatesAutoresizingMaskIntoConstraints = false
       let lineTop = NSLayoutConstraint(item: line, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1, constant: 8)
       let lineLeft = NSLayoutConstraint(item: line, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)

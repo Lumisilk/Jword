@@ -28,6 +28,7 @@ final class SpellQuizController: UIViewController {
   var answer = ""
   var isAnswerDeformed = true
   
+  // MARK: - ViewController
   override func viewDidLoad() {
     initView()
     applyTheme()
@@ -35,23 +36,18 @@ final class SpellQuizController: UIViewController {
   
   private func initView() {
     resultLabel.isHidden = true
-    UIView.addRadius(views: [senseContainer, quizContainer, resultContainer, forgetButton, confirmButton])
+    [senseContainer, quizContainer, resultContainer, forgetButton, confirmButton].addRadius()
     dot.translatesAutoresizingMaskIntoConstraints = false
   }
   
   private func applyTheme() {
     view.backgroundColor = ColorManager.background
-    UIView.changeBackground(views: [senseContainer, quizContainer, resultContainer], color: ColorManager.frontBackground)
+    [senseContainer, quizContainer, resultContainer].changeBackground(color: ColorManager.frontBackground)
     senseLabel.textColor = ColorManager.subText
     forgetButton.backgroundColor = ColorManager.forgetButton
     forgetButton.setTitleColor(ColorManager.frontBackground, for: .normal)
     confirmButton.backgroundColor = ColorManager.tint
     confirmButton.setTitleColor(ColorManager.frontBackground, for: .normal)
-  }
-  
-  func load(entry: JMEntry) {
-    self.entry = entry
-    updateView()
   }
   
   private func updateView() {
@@ -82,14 +78,13 @@ final class SpellQuizController: UIViewController {
     print("reading:\(entry.reading)")
     print("answer: \(answer)")
   }
-
+  
   enum Result {
     case forget
     case wrong
     case partiallyRight
     case right
   }
-  
   private func showResult(_ result: Result) {
     inputTextField.isEnabled = false
     forgetButton.isHidden = true
@@ -110,7 +105,14 @@ final class SpellQuizController: UIViewController {
     }
     isResultShowing = true
   }
+
+  // MARK: - Data Interface
+  func load(entry: JMEntry) {
+    self.entry = entry
+    updateView()
+  }
   
+  // MARK: - Action
   @IBAction func pressForget(_ sender: Any) {
     inputTextField.isHidden = true
     showResult(.forget)

@@ -31,7 +31,8 @@ final class BookManager {
   func getWordRecord(entryID: Int) -> WordRecord? {
     return realm.object(ofType: WordRecord.self, forPrimaryKey: entryID)
   }
-  func getProgress() -> Int {
+  var progress: Int {
+    guard wordsToday.count != 0 else { return 0 }
     let count = wordsToday.filter("privateState != 1").count
     return count * 100 / wordsToday.count
   }
@@ -51,73 +52,44 @@ final class BookManager {
   
   func supplyWorkbench() {
     let workbenchCount = UserDataManager.countOfWorkbench
-    let currentCount = realm.objects(WordRecord.self).filter("privateLevel != 0 AND privateLevel != 5").count
+    let currentCount = realm.objects(WordRecord.self).filter(WordRecord.wordRecordsInWorkbench).count
     if currentCount < workbenchCount {
       let need = workbenchCount - currentCount
-      var wordReadyToLearn = Array(realm.objects(WordRecord.self).filter("privateLevel = 0"))
+      var wordReadyToLearn = Array(realm.objects(WordRecord.self).filter(WordRecord.wordRecordsWaiting))
       if need < wordReadyToLearn.count {
         wordReadyToLearn = wordReadyToLearn.randomPick(n: need)
       }
-      try? realm.write {
-        for word in wordReadyToLearn {
-          word.state = .ready
-        }
+      for word in wordReadyToLearn {
+        word.state = .ready
       }
     }
   }
   
   func refreshWordToday() {
-    try? realm.write {
-      let amountToLearnEveryday = UserDataManager.countToLearnEveryday
-      var workbench = Array(realm.objects(WordRecord.self).filter("privateLevel != 0 AND privateLevel != 5"))
-      let wordsToday = realm.objects(WordToday.self)
-      realm.delete(wordsToday)
-      if workbench.count > amountToLearnEveryday {
-        workbench = workbench.randomPick(n: amountToLearnEveryday)
-      }
-      for word in workbench {
-        let wordToday = WordToday()
-        wordToday.entryId = word.entryId
-        realm.add(wordToday)
-      }
+    let amountToLearnEveryday = UserDataManager.countToLearnEveryday
+    var workbench = Array(realm.objects(WordRecord.self).filter(WordRecord.wordRecordsInWorkbench))
+    realm.delete(realm.objects(WordToday.self))
+    if workbench.count > amountToLearnEveryday {
+      workbench = workbench.randomPick(n: amountToLearnEveryday)
+    }
+    for word in workbench {
+      let wordToday = WordToday()
+      wordToday.entryId = word.entryId
+      realm.add(wordToday)
     }
   }
   
   // MARK: Word Operation
   func addOrForget(entryID: Int) {
-    try? realm.write {
-      if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: entryID) {
-        record.forget()
-        if let word = realm.object(ofType: WordToday.self, forPrimaryKey: entryID) {
-          word.forget()
-        }
-      } else {
-        let newRecord = WordRecord()
-        newRecord.entryId = entryID
-        realm.add(newRecord)
+    if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: entryID) {
+      record.forget()
+      if let word = realm.object(ofType: WordToday.self, forPrimaryKey: entryID) {
+        word.forget()
       }
-    }
-  }
-  
-  func pass(entryID: Int) {
-    try? realm.write {
-      if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: entryID) {
-        record.pass()
-        if let word = realm.object(ofType: WordToday.self, forPrimaryKey: entryID) {
-          word.pass()
-        }
-      }
-    }
-  }
-  
-  func tooEasy(entryID: Int) {
-    try? realm.write {
-      if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: entryID) {
-        record.pass()
-        if let word = realm.object(ofType: WordToday.self, forPrimaryKey: entryID) {
-          word.pass()
-        }
-      }
+    } else {
+      let newRecord = WordRecord()
+      newRecord.entryId = entryID
+      realm.add(newRecord)
     }
   }
   
@@ -125,38 +97,23 @@ final class BookManager {
   enum VocabularyBook: String {
     case N1
   }
-  func addVocabularyBook(book: VocabularyBook, refreshOldWords: Bool) -> Int {
+  func addVocabularyBook(_ book: VocabularyBook, refreshOldWords: Bool) -> Int {
     var count = 0
     let file = Bundle.main.url(forResource: book.rawValue, withExtension: "txt")
     guard let url = file else { return 0 }
     guard let t1 = try? String.init(contentsOf: url, encoding: .utf8) else {
       return 0
     }
-    let t2 = t1.components(separatedBy: " ")
-    try? realm.write {
-      if refreshOldWords {
-        for s in t2 {
-          guard let id = Int(s) else { continue }
-          if let record = realm.object(ofType: WordRecord.self, forPrimaryKey: id) {
-            record.forget()
-            if let word = realm.object(ofType: WordToday.self, forPrimaryKey: id) {
-              word.forget()
-            }
-          } else {
-            let newRecord = WordRecord()
-            newRecord.entryId = id
-            realm.add(newRecord)
-          }
-        }
-      } else {
-        for s in t2 {
-          guard let id = Int(s) else { continue }
-          if realm.object(ofType: WordRecord.self, forPrimaryKey: id) == nil {
-            let newRecord = WordRecord()
-            newRecord.entryId = id
-            realm.add(newRecord)
-            count += 1
-          }
+    let IDs: [Int] = t1.components(separatedBy: " ").map{Int($0)!}
+    if refreshOldWords {
+      IDs.forEach(addOrForget(entryID:))
+    } else {
+      for id in IDs {
+        if realm.object(ofType: WordRecord.self, forPrimaryKey: id) == nil {
+          let newRecord = WordRecord()
+          newRecord.entryId = id
+          realm.add(newRecord)
+          count += 1
         }
       }
     }
@@ -179,18 +136,12 @@ final class BookManager {
   }
   
   func deleteAll() {
-    try? realm.write {
-      realm.deleteAll()
-    }
+    realm.deleteAll()
   }
   
   func makeWorkbenchAllToSpellLevel() -> Int {
-    let words = realm.objects(WordRecord.self).filter("privateLevel != 0 AND privateLevel != 5")
-    try! realm.write {
-      for word in words {
-        word.state = WordRecord.State.know
-      }
-    }
+    let words = realm.objects(WordRecord.self).filter(WordRecord.wordRecordsInWorkbench)
+    words.forEach{$0.state = .know}
     return words.count
   }
 }

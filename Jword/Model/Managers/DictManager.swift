@@ -23,30 +23,17 @@ final class DictManager {
     config.schemaVersion = 2
     realm = try! Realm(configuration: config)
   }
-//
-//  static func shared() -> DictManager {
-//    if let res = DictManager.instance {
-//      return res
-//    } else {
-//      let res = DictManager()
-//      DictManager.instance = res
-//      return res
-//    }
-//  }
-  
-  func search(kanji: String) -> [JMEntry] {
-    let res = realm.objects(JMEntry.self).filter("kanji contains %@", kanji)
-    return res.sorted(by: entrySorter(_:_:))
-  }
   
   func getEntry(id: Int) -> JMEntry {
     return realm.object(ofType: JMEntry.self, forPrimaryKey: id)!
   }
-  
   func getEntries(id: [Int]) -> [JMEntry] {
-    return id.map({ (i) -> JMEntry in
-      return getEntry(id: i)
-    })
+    return id.map(getEntry(id:))
+  }
+  
+  func search(kanji: String) -> [JMEntry] {
+    let res = realm.objects(JMEntry.self).filter("kanji contains %@", kanji)
+    return res.sorted(by: entrySorter(_:_:))
   }
   
   private func entrySorter(_ e1: JMEntry, _ e2: JMEntry) -> Bool {

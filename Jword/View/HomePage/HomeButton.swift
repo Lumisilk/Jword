@@ -71,7 +71,7 @@ final class HomeButton: ShrinkButton {
     gradientLayer.frame = self.bounds
     layer.insertSublayer(gradientLayer, at: 0)
     
-    UIView.addShadows(views: [self])
+    [self].addShadows()
   }
   
   func applyTheme() {
