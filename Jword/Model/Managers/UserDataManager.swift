@@ -30,18 +30,19 @@ enum UserDataManager {
   
   static private(set) var searchHistory: [Int] {
     get {
-      let arr = UserDefaults.standard.array(forKey: "searchHistory") as? [Int] ?? [Int]()
-      return arr.reversed()
+      return UserDefaults.standard.array(forKey: "searchHistory") as? [Int] ?? [Int]()
     }
     set { UserDefaults.standard.set(newValue, forKey: "searchHistory") }
   }
   static func addSearchHistory(entryID: Int) {
     var arr = searchHistory
+    if let idx = arr.index(of: entryID) {
+      arr.remove(at: idx)
+    }
     arr.insert(entryID, at: 0)
     if arr.count > 20 {
       arr.removeLast()
     }
     searchHistory = arr
   }
-  
 }

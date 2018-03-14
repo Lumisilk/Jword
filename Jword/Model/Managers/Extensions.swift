@@ -8,6 +8,18 @@
 
 import UIKit
 
+// MARK: - Custom
+extension TNKExample {
+  func coloredString(kanji: String) -> NSAttributedString {
+    let str = NSMutableAttributedString(string: japanese)
+    guard let idx = words.index(of: kanji) else { return str }
+    let deform = deformations[idx]
+    guard let nsRange = japanese.nsRange(subString: deform) else { return str }
+    str.addAttribute(.foregroundColor, value: ColorManager.tint, range: nsRange)
+    return str
+  }
+}
+
 // MARK: - Fundation
 extension Int {
   static func random(_ upper: Int) -> Int {
@@ -46,6 +58,15 @@ extension Array {
   }
 }
 
+extension String {
+  func nsRange(subString: String) -> NSRange? {
+    guard let range = self.range(of: subString) else { return nil }
+    let startPos = self.distance(from: self.startIndex, to: range.lowerBound)
+    let endPos = self.distance(from: self.startIndex, to: range.upperBound)
+    return NSMakeRange(startPos, endPos - startPos)
+  }
+}
+
 // MARK: - UIKit
 extension Array where Element: UIView {
   func addRadius(_ radius: CGFloat = 20) {
@@ -69,9 +90,9 @@ extension Array where Element: UIView {
 }
 
 extension UIStoryboard {
-  static func instantiateController(identifier: String) -> UIViewController {
-    let sb = UIStoryboard(name: "Main", bundle: nil)
-    return sb.instantiateViewController(withIdentifier: identifier)
+  static func instantiateController(isMainOrStudy: Bool, id: String) -> UIViewController {
+    let sb = UIStoryboard(name: isMainOrStudy ? "Main" : "Study", bundle: nil)
+    return sb.instantiateViewController(withIdentifier: id)
   }
 }
 
@@ -102,3 +123,4 @@ extension UINavigationItem {
     rightBarButtonItem = barItem
   }
 }
+

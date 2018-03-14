@@ -27,7 +27,7 @@ enum ColorManager {
   static var background: UIColor!
   
   /// Like card view's background, or label's color in view whose background color is blod.
-  static var frontBackground: UIColor!
+  static var foreground: UIColor!
   
   /// A bold color close to main theme.
   static var tint: UIColor!
@@ -58,7 +58,7 @@ enum ColorManager {
       break
     case .blue:
       background = UIColor(r: 233, g: 244, b: 255) // light blue
-      frontBackground = .white
+      foreground = .white
       tint = UIColor(r: 34, g: 129, b: 255) // bold blue
       forgetButton = UIColor(r: 227, g: 55, b: 36) // light red
       label = UIColor(r: 153, g: 153, b: 153)

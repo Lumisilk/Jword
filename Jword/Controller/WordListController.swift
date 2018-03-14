@@ -33,7 +33,7 @@ final class WordListConrtoller: UITableViewController {
       navigationItem.title = "Words Today"
       let wordToday = Array(bookManager.wordsToday)
       let IDs: [Int] = wordToday.map{$0.entryId}
-      wordList = dictManager.getEntries(id: IDs)
+      wordList = dictManager.getEntries(IDs: IDs)
     }
   }
   
@@ -61,12 +61,7 @@ final class WordListConrtoller: UITableViewController {
       }
     }
   }
-  
-  // TODO: complete drag to dismiss
-  //  override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-  //
-  //  }
-  
+
   // MARK: - TableView
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return wordList.count
@@ -93,7 +88,7 @@ extension WordListConrtoller: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     if searchController.searchBar.text!.isEmpty {
       let history = UserDataManager.searchHistory
-      wordList = dictManager.getEntries(id: history)
+      wordList = dictManager.getEntries(IDs: history)
     } else {
       wordList = dictManager.search(kanji: searchController.searchBar.text!)
     }

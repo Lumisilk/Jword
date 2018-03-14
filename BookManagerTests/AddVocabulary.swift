@@ -23,7 +23,7 @@ class AddVocabulary: XCTestCase {
   
   func testExample() {
     bookManager.deleteAll()
-    let count = bookManager.addVocabularyBook(book: .N1)
+    let count = bookManager.addVocabularyBook(.N1, refreshOldWords: true)
     print("Count of words added is \(count)")
   }
   

@@ -18,10 +18,9 @@ final class ExampleView: CardView {
   private var labels = [UILabel]()
   //private var otherConstraints = [NSLayoutConstraint]()
   
-  init(examples: [TNKExample]) {
+  init() {
     super.init(title: "Example")
     initView()
-    loadExamples(examples)
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -45,7 +44,7 @@ final class ExampleView: CardView {
     
   }
   
-  func loadExamples(_ examples: [TNKExample]) {
+  func loadEntry(_ entry: JMEntry) {
     
     smallStacks.forEach({$0.removeFromSuperview()})
     smallStacks.removeAll()
@@ -53,8 +52,8 @@ final class ExampleView: CardView {
     dots.removeAll()
     labels.forEach({$0.removeFromSuperview()})
     labels.removeAll()
-    //removeConstraints(otherConstraints)
-    //otherConstraints.removeAll()
+    
+    let examples: [TNKExample] = entry.examples.count > 3 ? Array(entry.examples).randomPick(n: 3) : Array(entry.examples)
     
     for exp in examples {
       
@@ -67,9 +66,10 @@ final class ExampleView: CardView {
       stackView.addArrangedSubview(newStack)
       
       let japLabel = UILabel()
-      japLabel.text = exp.japanese
-      japLabel.font = UIFont.systemFont(ofSize: 17)
-      japLabel.textColor = ColorManager.text
+      let str = exp.coloredString(kanji: entry.kanji)
+      japLabel.attributedText = str
+//      japLabel.font = UIFont.systemFont(ofSize: 17)
+//      japLabel.textColor = ColorManager.text
       japLabel.lineBreakMode = .byWordWrapping
       japLabel.numberOfLines = 0
       labels.append(japLabel)
@@ -98,5 +98,3 @@ final class ExampleView: CardView {
   }
   
 }
-
-

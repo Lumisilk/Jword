@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB0F75832057B461005312C0 /* SettingListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0F75822057B461005312C0 /* SettingListController.swift */; };
+		BB0F75852057B9A1005312C0 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0F75842057B9A1005312C0 /* Setting.storyboard */; };
 		BB105840203F024000DE6BDC /* KnowQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10583F203F024000DE6BDC /* KnowQuizController.swift */; };
 		BB105842203F024B00DE6BDC /* SpellQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB105841203F024B00DE6BDC /* SpellQuizController.swift */; };
 		BB2B7517205578FF00CD1B75 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = BB2B7512205578FF00CD1B75 /* setting.png */; };
@@ -29,6 +31,7 @@
 		BB5997D52042BF8A009138D4 /* StudyContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5997D42042BF8A009138D4 /* StudyContainerController.swift */; };
 		BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FB202D505700FE6F75 /* WorkBook.swift */; };
 		BB67F0FE202D542000FE6F75 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FD202D542000FE6F75 /* BookManager.swift */; };
+		BB682CFA20565BBF008A9106 /* Study.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB682CF920565BBF008A9106 /* Study.storyboard */; };
 		BB6B0CDA204E72CE00394F12 /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6B0CD9204E72CE00394F12 /* HomeButton.swift */; };
 		BB741E6320527C56009F8E17 /* makeAllToSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB741E6220527C56009F8E17 /* makeAllToSpell.swift */; };
 		BB772D3E202DAA98008DFE85 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Extensions.swift */; };
@@ -81,6 +84,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BB0F75822057B461005312C0 /* SettingListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingListController.swift; sourceTree = "<group>"; };
+		BB0F75842057B9A1005312C0 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		BB10583F203F024000DE6BDC /* KnowQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowQuizController.swift; sourceTree = "<group>"; };
 		BB105841203F024B00DE6BDC /* SpellQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellQuizController.swift; sourceTree = "<group>"; };
 		BB2B7512205578FF00CD1B75 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
@@ -103,6 +108,7 @@
 		BB5997D42042BF8A009138D4 /* StudyContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyContainerController.swift; sourceTree = "<group>"; };
 		BB67F0FB202D505700FE6F75 /* WorkBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBook.swift; sourceTree = "<group>"; };
 		BB67F0FD202D542000FE6F75 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
+		BB682CF920565BBF008A9106 /* Study.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Study.storyboard; sourceTree = "<group>"; };
 		BB6B0CD9204E72CE00394F12 /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
 		BB741E6220527C56009F8E17 /* makeAllToSpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeAllToSpell.swift; sourceTree = "<group>"; };
 		BB772D3D202DAA98008DFE85 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -296,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				BB2DC6C520355B60000D6AB2 /* HomePageController.swift */,
+				BB0F75822057B461005312C0 /* SettingListController.swift */,
 				BBC75E5B202EF87600255050 /* WordListController.swift */,
 				BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */,
 				BB110713204C30AE0013633A /* Study */,
@@ -319,6 +326,8 @@
 				BBDA3DA8202BFAF10038BE8B /* Info.plist */,
 				BBDA3D9C202BFAF10038BE8B /* AppDelegate.swift */,
 				BBDA3DA0202BFAF10038BE8B /* Main.storyboard */,
+				BB682CF920565BBF008A9106 /* Study.storyboard */,
+				BB0F75842057B9A1005312C0 /* Setting.storyboard */,
 				BBDA3DA3202BFAF10038BE8B /* Assets.xcassets */,
 				BBDA3DA5202BFAF10038BE8B /* LaunchScreen.storyboard */,
 			);
@@ -417,6 +426,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB682CFA20565BBF008A9106 /* Study.storyboard in Resources */,
 				BBDA3DA7202BFAF10038BE8B /* LaunchScreen.storyboard in Resources */,
 				BB2B752120557AE200CD1B75 /* home.png in Resources */,
 				BB2B751B205578FF00CD1B75 /* pen.png in Resources */,
@@ -427,6 +437,7 @@
 				BBB806B8205131280074DB97 /* N1.txt in Resources */,
 				BBDA3DA2202BFAF10038BE8B /* Main.storyboard in Resources */,
 				BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */,
+				BB0F75852057B9A1005312C0 /* Setting.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +497,7 @@
 				BB105840203F024000DE6BDC /* KnowQuizController.swift in Sources */,
 				BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */,
 				BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */,
+				BB0F75832057B461005312C0 /* SettingListController.swift in Sources */,
 				BB2E7790202C62BD00548A6D /* Enumeration.swift in Sources */,
 				BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */,
 				BBBAE8302053FEB0005C96D1 /* JWBarItem.swift in Sources */,

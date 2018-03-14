@@ -48,6 +48,7 @@ final class WordPageController: UIViewController {
     if isDataLoaded {
       updateViewFromEntry()
       updateViewFromRecord()
+      reloadContentSize()
     }
   }
   
@@ -94,8 +95,7 @@ final class WordPageController: UIViewController {
     // entry and example
     entryView.loadEntry(entry)
     if !entry.examples.isEmpty {
-      let exp: [TNKExample] = entry.examples.count > 3 ? Array(entry.examples).randomPick(n: 3) : Array(entry.examples)
-      exampleView.loadExamples(exp)
+      exampleView.loadEntry(entry)
       exampleView.isHidden = false
     } else {
       exampleView.isHidden = true
@@ -150,7 +150,7 @@ final class WordPageController: UIViewController {
     } else {
       bookManager.addOrForget(entryID: entry.id)
     }
-    forgetButton.backgroundColor = ColorManager.frontBackground
+    forgetButton.backgroundColor = ColorManager.foreground
     forgetButton.setTitleColor(ColorManager.label, for: .normal)
     forgetButton.setTitle("Added to word book", for: .normal)
     forgetButton.layer.borderWidth = 1

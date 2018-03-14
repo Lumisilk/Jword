@@ -25,7 +25,7 @@ final class KnowQuizController: UIViewController {
   @IBOutlet weak var yesButton: UIButton!
   @IBOutlet weak var noButton: UIButton!
   
-  weak var studyManager: StudyManager?
+  weak var studyManager: StudyManager!
   private var entry: JMEntry?
   private var state: State = .start
   
@@ -45,9 +45,9 @@ final class KnowQuizController: UIViewController {
   }
   private func applyTheme() {
     view.backgroundColor = ColorManager.background
-    labelContainer.backgroundColor = ColorManager.frontBackground
-    sentenceContainer.backgroundColor = ColorManager.frontBackground
-    KnowButtonContainer.backgroundColor = ColorManager.frontBackground
+    labelContainer.backgroundColor = ColorManager.foreground
+    sentenceContainer.backgroundColor = ColorManager.foreground
+    KnowButtonContainer.backgroundColor = ColorManager.foreground
   }
   
   private func updateView() {
@@ -68,8 +68,8 @@ final class KnowQuizController: UIViewController {
   }
 
   @IBAction func pressKnow(_ sender: Any) {
-    studyManager?.pass()
-    studyManager?.showWordPage(method: .passed)
+    studyManager.pass()
+    studyManager.showWordPage(method: .passed)
   }
   @IBAction func pressNotKnow(_ sender: Any) {
     switch state {
@@ -77,8 +77,8 @@ final class KnowQuizController: UIViewController {
       sentenceContainer.isHidden = false
       state = .showedSentence
     case .showedSentence:
-      studyManager?.forget()
-      studyManager?.showWordPage(method: .failed)
+      studyManager.forget()
+      studyManager.showWordPage(method: .failed)
     }
   }
 }

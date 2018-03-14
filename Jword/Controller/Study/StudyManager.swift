@@ -26,10 +26,10 @@ final class StudyManager {
   
   init(containerView: StudyContainerController) {
     self.containerController = containerView
-    wordPageController = UIStoryboard.instantiateController(identifier: "WordPageController") as! WordPageController
-    knowQuizController = UIStoryboard.instantiateController(identifier: "KnowQuizController") as! KnowQuizController
-    spellQuizController = UIStoryboard.instantiateController(identifier: "SpellQuizController") as! SpellQuizController
-    
+    wordPageController = UIStoryboard.instantiateController(isMainOrStudy: true, id: "WordPageController") as! WordPageController
+    knowQuizController = UIStoryboard.instantiateController(isMainOrStudy: false, id: "KnowQuizController") as! KnowQuizController
+    spellQuizController = UIStoryboard.instantiateController(isMainOrStudy: false, id: "SpellQuizController") as! SpellQuizController
+
     wordPageController.studyManager = self
     knowQuizController.studyManager = self
     spellQuizController.studyManager = self
@@ -56,7 +56,7 @@ final class StudyManager {
   func prepareWordsAndProcessNextPage() {
     wordsTolearn = Array(bookManager.wordsToday.filter(WordToday.wordTodayToLearn)).shuffled()
     if wordsTolearn.isEmpty {
-      // TODO: complete all word today
+      containerController.view.bringSubview(toFront: containerController.completeView)
       print("complete all word today")
     } else {
       processNextQuiz()
@@ -92,13 +92,13 @@ final class StudyManager {
   
   // MARK: - Word Operation
   func forget() {
-    try? bookManager.realm.write {
+    try! bookManager.realm.write {
       presentWordToday.forget()
       presentRecord.forget()
     }
   }
   func pass() {
-    try? bookManager.realm.write {
+    try! bookManager.realm.write {
       presentWordToday.pass()
       presentRecord.pass()
     }

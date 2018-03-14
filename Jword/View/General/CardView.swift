@@ -30,7 +30,7 @@ class CardView: UIView {
   }
   
   private func initView() {
-    backgroundColor = ColorManager.frontBackground
+    backgroundColor = ColorManager.foreground
    [self].addRadius()
     
     if !title.isEmpty {

@@ -27,8 +27,8 @@ final class DictManager {
   func getEntry(id: Int) -> JMEntry {
     return realm.object(ofType: JMEntry.self, forPrimaryKey: id)!
   }
-  func getEntries(id: [Int]) -> [JMEntry] {
-    return id.map(getEntry(id:))
+  func getEntries(IDs: [Int]) -> [JMEntry] {
+    return IDs.map(getEntry(id:))
   }
   
   func search(kanji: String) -> [JMEntry] {

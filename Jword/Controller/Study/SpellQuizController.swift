@@ -23,7 +23,7 @@ final class SpellQuizController: UIViewController {
   @IBOutlet weak var confirmButton: ShrinkButton!
   private var isResultShowing = false
   
-  weak var studyManager: StudyManager?
+  weak var studyManager: StudyManager!
   var entry: JMEntry!
   var answer = ""
   var isAnswerDeformed = true
@@ -42,12 +42,12 @@ final class SpellQuizController: UIViewController {
   
   private func applyTheme() {
     view.backgroundColor = ColorManager.background
-    [senseContainer, quizContainer, resultContainer].changeBackground(color: ColorManager.frontBackground)
+    [senseContainer, quizContainer, resultContainer].changeBackground(color: ColorManager.foreground)
     senseLabel.textColor = ColorManager.subText
     forgetButton.backgroundColor = ColorManager.forgetButton
-    forgetButton.setTitleColor(ColorManager.frontBackground, for: .normal)
+    forgetButton.setTitleColor(ColorManager.foreground, for: .normal)
     confirmButton.backgroundColor = ColorManager.tint
-    confirmButton.setTitleColor(ColorManager.frontBackground, for: .normal)
+    confirmButton.setTitleColor(ColorManager.foreground, for: .normal)
   }
   
   private func updateView() {
@@ -92,20 +92,20 @@ final class SpellQuizController: UIViewController {
     switch result {
     case .forget:
       resultLabel.text = "Answer: \(answer)"
-      studyManager?.forget()
+      studyManager.forget()
     case .wrong:
       resultLabel.text = "Wrong\nAnswer: \(answer)"
-      studyManager?.forget()
+      studyManager.forget()
     case .partiallyRight:
       resultLabel.text = "Partially right. It should be deformed.\nCorrect answer: \(answer)"
-      studyManager?.pass()
+      studyManager.pass()
     case .right:
       resultLabel.text = "Excellent!"
-      studyManager?.pass()
+      studyManager.pass()
     }
     isResultShowing = true
   }
-
+  
   // MARK: - Data Interface
   func load(entry: JMEntry) {
     self.entry = entry
@@ -137,7 +137,7 @@ final class SpellQuizController: UIViewController {
         }
       }
     } else {
-      studyManager?.showWordPage(method: .passed)
+      studyManager.showWordPage(method: .passed)
     }
   }
   

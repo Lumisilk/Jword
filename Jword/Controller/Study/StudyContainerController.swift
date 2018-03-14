@@ -10,6 +10,8 @@ import UIKit
 
 final class StudyContainerController: UIViewController {
   
+  @IBOutlet weak var completeView: UIView!
+  
   var studyManager: StudyManager!
   
   override func viewDidLoad() {
@@ -23,3 +25,4 @@ final class StudyContainerController: UIViewController {
   }
 
 }
+
