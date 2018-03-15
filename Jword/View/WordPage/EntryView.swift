@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EntryView: CardView {
+final class EntryView: CardView, Colorizable {
   
   private let senseSpace: CGFloat = 10
   
@@ -20,7 +20,7 @@ final class EntryView: CardView {
   private var otherConstraints: [NSLayoutConstraint] = []
   
   init(entry: JMEntry?) {
-    super.init(title: nil)
+    super.init(title: "")
     initView()
     if let entry = entry {
       loadEntry(entry)
@@ -28,21 +28,19 @@ final class EntryView: CardView {
   }
   
   required init?(coder aDecoder: NSCoder) {
-    super.init(title: nil)
+    super.init(title: "")
     initView()
   }
   
   private func initView() {
     
     kanjiLabel.font = UIFont.systemFont(ofSize: 36)
-    kanjiLabel.textColor = ColorManager.text
     kanjiLabel.lineBreakMode = .byWordWrapping
     kanjiLabel.numberOfLines = 0
     kanjiLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(kanjiLabel)
     
     readingLabel.font = UIFont.systemFont(ofSize: 19)
-    readingLabel.textColor = ColorManager.subText
     readingLabel.lineBreakMode = .byWordWrapping
     readingLabel.numberOfLines = 0
     readingLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -70,6 +68,18 @@ final class EntryView: CardView {
     addConstraints([kanjiTop, kanjiLeft, kanjiRight, readingTop, readingLeft, readingRight, stackTop, stackLeft, stackRight, selfBottom])
   }
   
+  override func applyTheme() {
+    super.applyTheme()
+    kanjiLabel.textColor = Theme.text
+    readingLabel.textColor = Theme.subText
+    for label in senseLabels {
+      label.textColor = Theme.subText
+    }
+    for dot in dots {
+      dot.backgroundColor = Theme.tint
+    }
+  }
+  
   func loadEntry(_ entry: JMEntry) {
     
     kanjiLabel.text = entry.kanji
@@ -87,13 +97,13 @@ final class EntryView: CardView {
       let label = UILabel()
       label.text = sense.gloss.replacingOccurrences(of: "@", with: "\n")
       label.font = UIFont.systemFont(ofSize: 17)
-      label.textColor = ColorManager.subText
+      label.textColor = Theme.subText
       label.lineBreakMode = .byWordWrapping
       label.numberOfLines = 0
       senseLabels.append(label)
       stackView.addArrangedSubview(label)
       
-      let dot = ColorDot(color: ColorManager.tint)
+      let dot = ColorDot(color: Theme.tint)
       dot.translatesAutoresizingMaskIntoConstraints = false
       dots.append(dot)
       addSubview(dot)
@@ -107,3 +117,4 @@ final class EntryView: CardView {
     addConstraints(otherConstraints)
   }
 }
+

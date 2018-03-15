@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class HomePageController: UIViewController {
+final class HomePageController: UIViewController, Colorizable {
 
   @IBOutlet weak var row1Stack: UIStackView!
   @IBOutlet weak var row2Stack: UIStackView!
@@ -22,11 +22,11 @@ final class HomePageController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = ColorManager.background
     todayButton.load(type: .wordToday)
     studyButton.load(type: .study)
     searchButton.load(type: .search)
     settingButton.load(type: .setting)
+    Theme.addObserver(view: self)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -48,5 +48,9 @@ final class HomePageController: UIViewController {
     }
   }
   
+  func applyTheme() {
+    view.backgroundColor = Theme.background
+    [todayButton, searchButton, studyButton, settingButton].applyTheme()
+  }
   
 }

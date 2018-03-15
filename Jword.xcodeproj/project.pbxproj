@@ -16,7 +16,7 @@
 		BB2B751B205578FF00CD1B75 /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = BB2B7516205578FF00CD1B75 /* pen.png */; };
 		BB2B752120557AE200CD1B75 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = BB2B752020557AE200CD1B75 /* home.png */; };
 		BB2B752320557BB200CD1B75 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = BB2B752220557BB200CD1B75 /* book.png */; };
-		BB2DC6BE20340F57000D6AB2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */; };
+		BB2DC6BE20340F57000D6AB2 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BD20340F57000D6AB2 /* Theme.swift */; };
 		BB2DC6C0203410D9000D6AB2 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6BF203410D9000D6AB2 /* NoteView.swift */; };
 		BB2DC6C220341E61000D6AB2 /* ColorDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6C120341E61000D6AB2 /* ColorDot.swift */; };
 		BB2DC6C42034228C000D6AB2 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2DC6C32034228C000D6AB2 /* CardView.swift */; };
@@ -39,7 +39,6 @@
 		BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */; };
 		BBA052FA204B9B32002A095D /* ShrinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA052F9204B9B32002A095D /* ShrinkButton.swift */; };
 		BBB806B8205131280074DB97 /* N1.txt in Resources */ = {isa = PBXBuildFile; fileRef = BBB806B7205131280074DB97 /* N1.txt */; };
-		BBBAE8302053FEB0005C96D1 /* JWBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBAE82F2053FEB0005C96D1 /* JWBarItem.swift */; };
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
 		BBC75E5C202EF87600255050 /* WordListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* WordListController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
@@ -93,7 +92,7 @@
 		BB2B7516205578FF00CD1B75 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen.png; sourceTree = "<group>"; };
 		BB2B752020557AE200CD1B75 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		BB2B752220557BB200CD1B75 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
-		BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		BB2DC6BD20340F57000D6AB2 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		BB2DC6BF203410D9000D6AB2 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		BB2DC6C120341E61000D6AB2 /* ColorDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDot.swift; sourceTree = "<group>"; };
 		BB2DC6C32034228C000D6AB2 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -116,7 +115,6 @@
 		BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		BBA052F9204B9B32002A095D /* ShrinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShrinkButton.swift; path = Jword/View/General/ShrinkButton.swift; sourceTree = SOURCE_ROOT; };
 		BBB806B7205131280074DB97 /* N1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = N1.txt; sourceTree = "<group>"; };
-		BBBAE82F2053FEB0005C96D1 /* JWBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWBarItem.swift; sourceTree = "<group>"; };
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		BBC75E5B202EF87600255050 /* WordListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
@@ -194,7 +192,7 @@
 				BB2E7797202C66B100548A6D /* DictManager.swift */,
 				BB67F0FD202D542000FE6F75 /* BookManager.swift */,
 				BB772D41202DEB1F008DFE85 /* UserDataManager.swift */,
-				BB2DC6BD20340F57000D6AB2 /* ColorManager.swift */,
+				BB2DC6BD20340F57000D6AB2 /* Theme.swift */,
 				BB772D3D202DAA98008DFE85 /* Extensions.swift */,
 			);
 			path = Managers;
@@ -225,7 +223,6 @@
 			children = (
 				BBA052F9204B9B32002A095D /* ShrinkButton.swift */,
 				BB2DC6C32034228C000D6AB2 /* CardView.swift */,
-				BBBAE82F2053FEB0005C96D1 /* JWBarItem.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -258,6 +255,7 @@
 		BBDA3D90202BFAF00038BE8B = {
 			isa = PBXGroup;
 			children = (
+				BBA052F8204B949C002A095D /* Icon */,
 				BBB806B9205135700074DB97 /* Vocabulary */,
 				BBC75E5D202F1BBD00255050 /* JMDict.realm */,
 				BBDA3DB1202BFB960038BE8B /* Realm.framework */,
@@ -280,7 +278,6 @@
 		BBDA3D9B202BFAF10038BE8B /* Jword */ = {
 			isa = PBXGroup;
 			children = (
-				BBA052F8204B949C002A095D /* Icon */,
 				BBDA3DB8202BFBB20038BE8B /* SupportFiles */,
 				BBDA3DAE202BFAFC0038BE8B /* Model */,
 				BBDA3DB0202BFB090038BE8B /* View */,
@@ -485,7 +482,7 @@
 				BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */,
 				BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */,
 				BB105842203F024B00DE6BDC /* SpellQuizController.swift in Sources */,
-				BB2DC6BE20340F57000D6AB2 /* ColorManager.swift in Sources */,
+				BB2DC6BE20340F57000D6AB2 /* Theme.swift in Sources */,
 				BB2DC6C820357E9D000D6AB2 /* EntryView.swift in Sources */,
 				BB5997D52042BF8A009138D4 /* StudyContainerController.swift in Sources */,
 				BB67F0FE202D542000FE6F75 /* BookManager.swift in Sources */,
@@ -500,7 +497,6 @@
 				BB0F75832057B461005312C0 /* SettingListController.swift in Sources */,
 				BB2E7790202C62BD00548A6D /* Enumeration.swift in Sources */,
 				BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */,
-				BBBAE8302053FEB0005C96D1 /* JWBarItem.swift in Sources */,
 				BBC75E5C202EF87600255050 /* WordListController.swift in Sources */,
 				BB772D3E202DAA98008DFE85 /* Extensions.swift in Sources */,
 				BB2E7798202C66B100548A6D /* DictManager.swift in Sources */,

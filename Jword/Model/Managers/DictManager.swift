@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class DictManager {
+struct DictManager {
 
   static let shared = DictManager()
   

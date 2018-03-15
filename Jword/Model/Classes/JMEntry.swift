@@ -22,8 +22,8 @@ final class JMEntry: Object {
 
   var info: Set<EntryInfo> {
     var set = Set<EntryInfo>()
-    for i in privateInfo.components(separatedBy: "@") {
-      if let t = EntryInfo(rawValue: i) {
+    for i in privateInfo.split(separator: "@") {
+      if let t = EntryInfo(rawValue: String(i)) {
         set.insert(t)
       }
     }

@@ -16,32 +16,25 @@ class CardView: UIView {
   internal let verticalBigSpace: CGFloat = 10
   internal let verticalSmallSpace: CGFloat = 4
   
-  var title: String = ""
+  let titleLabel = UILabel()
   internal let line = UIView()
   
-  init(title: String?) {
+  init(title: String) {
     super.init(frame: CGRect.zero)
-    self.title = title ?? ""
-    initView()
-  }
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    initView()
+    initView(title)
   }
   
-  private func initView() {
-    backgroundColor = ColorManager.foreground
-   [self].addRadius()
-    
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  private func initView(_ title: String) {
+    [self].addRadius()
     if !title.isEmpty {
-      
-      let titleLabel = UILabel()
       titleLabel.text = title
       titleLabel.font = UIFont.systemFont(ofSize: 13)
-      titleLabel.textColor = ColorManager.label
       titleLabel.frame = CGRect(x: 16, y: 9, width: 50, height: 13)
       addSubview(titleLabel)
-      line.backgroundColor = ColorManager.label
       addSubview(line)
       
       line.translatesAutoresizingMaskIntoConstraints = false
@@ -51,6 +44,12 @@ class CardView: UIView {
       let lineHeight = NSLayoutConstraint(item: line, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 0, constant: 1)
       addConstraints([lineTop, lineLeft, lineRight, lineHeight])
     }
+  }
+  
+  func applyTheme() {
+    backgroundColor = Theme.foreground
+    titleLabel.textColor = Theme.label
+    line.backgroundColor = Theme.label
   }
   
 }

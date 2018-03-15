@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class BookManager {
+struct BookManager {
   
   static let shared = BookManager()
   
@@ -114,19 +114,17 @@ final class BookManager {
     guard let t1 = try? String.init(contentsOf: url, encoding: .utf8) else {
       return 0
     }
-    let IDs: [Int] = t1.components(separatedBy: " ").map{Int($0)!}
+    let IDs: [Int] = t1.split(separator: " ").map{Int($0)!}
     try! realm.write {
       if refreshOldWords {
         count = IDs.count
-        IDs.forEach(addOrForget(entryID:))
+        IDs.forEach(privateForget(entryID:))
       } else {
-        for id in IDs {
-          if realm.object(ofType: WordRecord.self, forPrimaryKey: id) == nil {
-            let newRecord = WordRecord()
-            newRecord.entryId = id
-            realm.add(newRecord)
-            count += 1
-          }
+        for id in IDs where realm.object(ofType: WordRecord.self, forPrimaryKey: id) == nil {
+          let newRecord = WordRecord()
+          newRecord.entryId = id
+          realm.add(newRecord)
+          count += 1
         }
       }
     }

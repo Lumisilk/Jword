@@ -44,10 +44,10 @@ final class KnowQuizController: UIViewController {
     noButton.titleEdgeInsets = inset
   }
   private func applyTheme() {
-    view.backgroundColor = ColorManager.background
-    labelContainer.backgroundColor = ColorManager.foreground
-    sentenceContainer.backgroundColor = ColorManager.foreground
-    KnowButtonContainer.backgroundColor = ColorManager.foreground
+    view.backgroundColor = Theme.background
+    labelContainer.backgroundColor = Theme.foreground
+    sentenceContainer.backgroundColor = Theme.foreground
+    KnowButtonContainer.backgroundColor = Theme.foreground
   }
   
   private func updateView() {

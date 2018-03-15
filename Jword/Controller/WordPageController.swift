@@ -10,7 +10,7 @@ import UIKit
 
 fileprivate let margin: CGFloat = 20
 
-final class WordPageController: UIViewController {
+final class WordPageController: UIViewController, Colorizable {
   
   enum openMethod {
     case wordList
@@ -44,12 +44,12 @@ final class WordPageController: UIViewController {
   // MARK: - ViewController
   override func viewDidLoad() {
     initView()
-    applyTheme()
     if isDataLoaded {
       updateViewFromEntry()
       updateViewFromRecord()
       reloadContentSize()
     }
+    Theme.addObserver(view: self)
   }
   
   private func initView() {
@@ -67,9 +67,11 @@ final class WordPageController: UIViewController {
   }
   
   func applyTheme() {
-    view.backgroundColor = ColorManager.background
-    forgetButton.setTitleColor(ColorManager.background, for: .normal)
-    continueButton.backgroundColor = ColorManager.tint
+    entryView.applyTheme()
+    exampleView.applyTheme()
+    view.backgroundColor = Theme.background
+    forgetButton.setTitleColor(Theme.background, for: .normal)
+    continueButton.backgroundColor = Theme.tint
   }
   
   private func reloadContentSize() {
@@ -108,10 +110,10 @@ final class WordPageController: UIViewController {
     case .search:
       if record == nil {
         forgetButton.setTitle("Add", for: .normal)
-        forgetButton.backgroundColor = ColorManager.tint
+        forgetButton.backgroundColor = Theme.tint
       } else {
         forgetButton.setTitle("Forget", for: .normal)
-        forgetButton.backgroundColor = ColorManager.forgetButton
+        forgetButton.backgroundColor = Theme.forgetButton
       }
       continueButton.isHidden = true
       forgetButton.isHidden = false
@@ -150,11 +152,11 @@ final class WordPageController: UIViewController {
     } else {
       bookManager.addOrForget(entryID: entry.id)
     }
-    forgetButton.backgroundColor = ColorManager.foreground
-    forgetButton.setTitleColor(ColorManager.label, for: .normal)
+    forgetButton.backgroundColor = Theme.foreground
+    forgetButton.setTitleColor(Theme.label, for: .normal)
     forgetButton.setTitle("Added to word book", for: .normal)
     forgetButton.layer.borderWidth = 1
-    forgetButton.layer.borderColor = ColorManager.label.cgColor
+    forgetButton.layer.borderColor = Theme.label.cgColor
     forgetButton.isEnabled = false
   }
   @objc private func processNext() {

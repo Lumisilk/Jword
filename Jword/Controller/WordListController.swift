@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class WordListConrtoller: UITableViewController {
+final class WordListConrtoller: UITableViewController, Colorizable {
   
   let dictManager = DictManager.shared
   let bookManager = BookManager.shared
@@ -35,6 +35,7 @@ final class WordListConrtoller: UITableViewController {
       let IDs: [Int] = wordToday.map{$0.entryId}
       wordList = dictManager.getEntries(IDs: IDs)
     }
+    Theme.addObserver(view: self)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -44,6 +45,10 @@ final class WordListConrtoller: UITableViewController {
         self.navigationItem.searchController?.searchBar.becomeFirstResponder()
       }
     }
+  }
+  
+  func applyTheme() {
+    tableView.backgroundColor = Theme.foreground
   }
   
   @IBAction func dismiss(_ sender: Any) {

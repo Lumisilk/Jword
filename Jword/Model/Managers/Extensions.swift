@@ -15,7 +15,7 @@ extension TNKExample {
     guard let idx = words.index(of: kanji) else { return str }
     let deform = deformations[idx]
     guard let nsRange = japanese.nsRange(subString: deform) else { return str }
-    str.addAttribute(.foregroundColor, value: ColorManager.tint, range: nsRange)
+    str.addAttribute(.foregroundColor, value: Theme.tint, range: nsRange)
     return str
   }
 }
@@ -86,6 +86,12 @@ extension Array where Element: UIView {
     for view in self {
       view.backgroundColor = color
     }
+  }
+}
+
+extension Array where Element: Colorizable {
+  func applyTheme() {
+    forEach{$0.applyTheme()}
   }
 }
 

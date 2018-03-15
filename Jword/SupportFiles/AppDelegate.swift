@@ -15,9 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    ColorManager.applyTheme()
-    UINavigationBar.appearance().barTintColor = ColorManager.background
-    UISearchBar.appearance().barTintColor = ColorManager.background
+    Theme.applyTheme()
     return true
   }
 

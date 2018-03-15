@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class HomeButton: ShrinkButton {
+final class HomeButton: ShrinkButton, Colorizable {
   
   enum Entrance {
     case wordToday
@@ -30,13 +30,12 @@ final class HomeButton: ShrinkButton {
   }
   
   init() {
-    super.init(frame: CGRect.zero)
+    fatalError("init() has not been implemented")
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     initView()
-    applyTheme()
   }
   
   private func initView() {
@@ -75,10 +74,10 @@ final class HomeButton: ShrinkButton {
   }
   
   func applyTheme() {
-    imageView?.tintColor = ColorManager.homeButtonTint
-    mainLabel.textColor = ColorManager.foreground
-    subLabel.textColor = ColorManager.foreground
-    gradientLayer.colors = [ColorManager.gradientStartColor.cgColor, ColorManager.gradientEndColor.cgColor]
+    imageView?.tintColor = Theme.homeButtonTint
+    mainLabel.textColor = Theme.foreground
+    subLabel.textColor = Theme.foreground
+    gradientLayer.colors = [Theme.gradientStartColor.cgColor, Theme.gradientEndColor.cgColor]
   }
   
   func load(type: Entrance, subTitle: String = "") {

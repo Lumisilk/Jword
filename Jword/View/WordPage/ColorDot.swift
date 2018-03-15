@@ -9,6 +9,7 @@
 import UIKit
 
 final class ColorDot: UIView {
+  
   init(color: UIColor) {
     super.init(frame: CGRect(x: 0, y: 0, width: 5, height: 15))
     backgroundColor = color
@@ -23,4 +24,5 @@ final class ColorDot: UIView {
     let c2 = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 0, constant: 5)
     return [c1,c2]
   }
+
 }

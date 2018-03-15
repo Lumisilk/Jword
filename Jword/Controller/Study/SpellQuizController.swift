@@ -11,7 +11,7 @@ import UIKit
 final class SpellQuizController: UIViewController {
   
   @IBOutlet weak var senseContainer: UIView!
-  private var dot = ColorDot(color: ColorManager.tint)
+  private var dot = ColorDot(color: Theme.tint)
   @IBOutlet weak var senseLabel: UILabel!
   @IBOutlet weak var quizContainer: UIView!
   @IBOutlet weak var quizLabel: UILabel!
@@ -41,13 +41,13 @@ final class SpellQuizController: UIViewController {
   }
   
   private func applyTheme() {
-    view.backgroundColor = ColorManager.background
-    [senseContainer, quizContainer, resultContainer].changeBackground(color: ColorManager.foreground)
-    senseLabel.textColor = ColorManager.subText
-    forgetButton.backgroundColor = ColorManager.forgetButton
-    forgetButton.setTitleColor(ColorManager.foreground, for: .normal)
-    confirmButton.backgroundColor = ColorManager.tint
-    confirmButton.setTitleColor(ColorManager.foreground, for: .normal)
+    view.backgroundColor = Theme.background
+    [senseContainer, quizContainer, resultContainer].changeBackground(color: Theme.foreground)
+    senseLabel.textColor = Theme.subText
+    forgetButton.backgroundColor = Theme.forgetButton
+    forgetButton.setTitleColor(Theme.foreground, for: .normal)
+    confirmButton.backgroundColor = Theme.tint
+    confirmButton.setTitleColor(Theme.foreground, for: .normal)
   }
   
   private func updateView() {

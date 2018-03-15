@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class ExampleView: CardView {
+final class ExampleView: CardView, Colorizable {
   
   // SubViews
   private let stackView = UIStackView()
@@ -16,7 +16,6 @@ final class ExampleView: CardView {
   
   private var dots = [ColorDot]()
   private var labels = [UILabel]()
-  //private var otherConstraints = [NSLayoutConstraint]()
   
   init() {
     super.init(title: "Example")
@@ -41,6 +40,16 @@ final class ExampleView: CardView {
     let stackRight = NSLayoutConstraint(item: stackView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -sideMargin)
     let selfBottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: stackView, attribute: .bottom, multiplier: 1, constant: topBottomMargin)
     addConstraints([stackTop, stackLeft, stackRight, selfBottom])
+  }
+  
+  override func applyTheme() {
+    super.applyTheme()
+    for label in labels {
+      label.textColor = Theme.subText
+    }
+    for dot in dots {
+      dot.backgroundColor = Theme.tint
+    }
     
   }
   
@@ -68,8 +77,6 @@ final class ExampleView: CardView {
       let japLabel = UILabel()
       let str = exp.coloredString(kanji: entry.kanji)
       japLabel.attributedText = str
-//      japLabel.font = UIFont.systemFont(ofSize: 17)
-//      japLabel.textColor = ColorManager.text
       japLabel.lineBreakMode = .byWordWrapping
       japLabel.numberOfLines = 0
       labels.append(japLabel)
@@ -78,13 +85,13 @@ final class ExampleView: CardView {
       let engLabel = UILabel()
       engLabel.text = exp.english
       engLabel.font = UIFont.systemFont(ofSize: 17)
-      engLabel.textColor = ColorManager.subText
+      engLabel.textColor = Theme.subText
       engLabel.lineBreakMode = .byWordWrapping
       engLabel.numberOfLines = 0
       labels.append(engLabel)
       newStack.addArrangedSubview(engLabel)
       
-      let dot = ColorDot(color: ColorManager.tint)
+      let dot = ColorDot(color: Theme.tint)
       dot.translatesAutoresizingMaskIntoConstraints = false
       dots.append(dot)
       addSubview(dot)

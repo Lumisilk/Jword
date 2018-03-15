@@ -21,8 +21,8 @@ final class JMSense: Object {
   
   var pos: Set<SensePos> {
     var set = Set<SensePos>()
-    for i in privatePos.components(separatedBy: "@") {
-      if let t = SensePos(rawValue: i) {
+    for i in privatePos.split(separator: "@") {
+      if let t = SensePos(rawValue: String(i)) {
         set.insert(t)
       }
     }
@@ -30,8 +30,8 @@ final class JMSense: Object {
   }
   var info: Set<SenseInfo> {
     var set = Set<SenseInfo>()
-    for i in privateInfo.components(separatedBy: "@") {
-      if let t = SenseInfo(rawValue: i) {
+    for i in privateInfo.split(separator: "@") {
+      if let t = SenseInfo(rawValue: String(i)) {
         set.insert(t)
       }
     }
@@ -45,10 +45,10 @@ final class JMSense: Object {
   }
   var source: [SenseSource: String] {
     var res: [SenseSource: String] = [:]
-    for i in lsource.components(separatedBy: "@") {
-      let j = i.components(separatedBy: "^")
-      if let lan = SenseSource(rawValue: j[0]) {
-        res[lan] = j[1]
+    for i in lsource.split(separator: "@") {
+      let j = i.split(separator: "^")
+      if let lan = SenseSource(rawValue: String(j[0])) {
+        res[lan] = String(j[1])
       }
     }
     return res
