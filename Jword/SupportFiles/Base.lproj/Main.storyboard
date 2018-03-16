@@ -43,6 +43,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -178,9 +179,6 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3D-If-asy" customClass="HomeButton" customModule="Jword" customModuleProvider="target">
                                         <rect key="frame" x="195" y="0.0" width="171" height="105.66666666666667"/>
-                                        <connections>
-                                            <segue destination="FKB-2G-YLi" kind="presentation" id="KDc-ok-g3l"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -200,8 +198,6 @@
                         <viewLayoutGuide key="safeArea" id="l6D-tY-0Si"/>
                     </view>
                     <connections>
-                        <outlet property="row1Stack" destination="Oeo-bj-BnP" id="iSQ-yH-TQK"/>
-                        <outlet property="row2Stack" destination="OSO-G5-lFP" id="f43-Ie-0Yh"/>
                         <outlet property="searchButton" destination="XnG-cN-4Ot" id="gUD-On-Wtm"/>
                         <outlet property="settingButton" destination="S3D-If-asy" id="Qyl-xe-aW4"/>
                         <outlet property="studyButton" destination="zDj-g9-Qwg" id="ype-mJ-5RC"/>
@@ -218,7 +214,7 @@
                 <viewControllerPlaceholder storyboardName="Study" referencedIdentifier="StudyNavigationController" id="aYa-jV-JQX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3O-yr-UJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1933" y="402"/>
+            <point key="canvasLocation" x="-1959" y="402"/>
         </scene>
         <!--SettingListController-->
         <scene sceneID="z5o-b3-WrY">

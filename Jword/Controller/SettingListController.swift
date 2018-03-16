@@ -14,4 +14,8 @@ final class SettingListController: UITableViewController {
     
   }
   
+  @IBAction func returnToHome(_ sender: Any) {
+    dismiss(animated: true, completion: nil)
+  }
+  
 }

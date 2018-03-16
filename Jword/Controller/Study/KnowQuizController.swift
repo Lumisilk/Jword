@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class KnowQuizController: UIViewController {
+final class KnowQuizController: UIViewController, Colorizable {
   
   private enum State {
     case start
@@ -32,7 +32,7 @@ final class KnowQuizController: UIViewController {
   // MARK: - ViewController
   override func viewDidLoad() {
     initView()
-    applyTheme()
+    Theme.addObserver(controller: self)
   }
   
   private func initView() {
@@ -43,11 +43,13 @@ final class KnowQuizController: UIViewController {
     yesButton.titleEdgeInsets = inset
     noButton.titleEdgeInsets = inset
   }
-  private func applyTheme() {
+  func applyTheme() {
     view.backgroundColor = Theme.background
     labelContainer.backgroundColor = Theme.foreground
     sentenceContainer.backgroundColor = Theme.foreground
     KnowButtonContainer.backgroundColor = Theme.foreground
+    kanjiLabel.textColor = Theme.text
+    sentenceLabel.textColor = Theme.text
   }
   
   private func updateView() {

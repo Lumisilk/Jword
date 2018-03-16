@@ -35,7 +35,7 @@ final class WordListConrtoller: UITableViewController, Colorizable {
       let IDs: [Int] = wordToday.map{$0.entryId}
       wordList = dictManager.getEntries(IDs: IDs)
     }
-    Theme.addObserver(view: self)
+    Theme.addObserver(controller: self)
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -48,7 +48,16 @@ final class WordListConrtoller: UITableViewController, Colorizable {
   }
   
   func applyTheme() {
+    navigationController?.navigationBar.backgroundColor = Theme.background
+    navigationController?.navigationBar.tintColor = Theme.tint
+    navigationController?.navigationBar.barStyle = Theme.barStyle
+    navigationItem.searchController?.searchBar.tintColor = Theme.tint
+    
     tableView.backgroundColor = Theme.foreground
+    for cell in tableView.visibleCells {
+      cell.textLabel?.textColor = Theme.text
+      cell.detailTextLabel?.textColor = Theme.subText
+    }
   }
   
   @IBAction func dismiss(_ sender: Any) {
@@ -76,7 +85,9 @@ final class WordListConrtoller: UITableViewController, Colorizable {
     let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPageCell", for: indexPath)
     let entry = wordList[indexPath.row]
     cell.textLabel?.text = entry.kanji
+    cell.textLabel?.textColor = Theme.text
     cell.detailTextLabel?.text = entry.reading
+    cell.detailTextLabel?.textColor = Theme.subText
     return cell
   }
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

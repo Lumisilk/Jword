@@ -26,9 +26,9 @@ final class StudyManager {
   
   init(containerView: StudyContainerController) {
     self.containerController = containerView
-    wordPageController = UIStoryboard.instantiateController(isMainOrStudy: true, id: "WordPageController") as! WordPageController
-    knowQuizController = UIStoryboard.instantiateController(isMainOrStudy: false, id: "KnowQuizController") as! KnowQuizController
-    spellQuizController = UIStoryboard.instantiateController(isMainOrStudy: false, id: "SpellQuizController") as! SpellQuizController
+    wordPageController = UIStoryboard.instantiateController(name: "Main", id: "WordPageController") as! WordPageController
+    knowQuizController = UIStoryboard.instantiateController(name: "Study", id: "KnowQuizController") as! KnowQuizController
+    spellQuizController = UIStoryboard.instantiateController(name: "Study", id: "SpellQuizController") as! SpellQuizController
 
     wordPageController.studyManager = self
     knowQuizController.studyManager = self
@@ -45,19 +45,12 @@ final class StudyManager {
       controller.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
   }
-  
-  private func removeChildController(_ controller: UIViewController) {
-    controller.willMove(toParentViewController: nil)
-    controller.view.removeFromSuperview()
-    controller.removeFromParentViewController()
-  }
 
   // MARK: - Process
   func prepareWordsAndProcessNextPage() {
     wordsTolearn = Array(bookManager.wordsToday.filter(WordToday.wordTodayToLearn)).shuffled()
     if wordsTolearn.isEmpty {
       containerController.view.bringSubview(toFront: containerController.completeView)
-      print("complete all word today")
     } else {
       processNextQuiz()
     }
@@ -90,7 +83,7 @@ final class StudyManager {
     containerController.view.addSubview(wordPageController.view)
   }
   
-  // MARK: - Word Operation
+  // MARK: - Word Operation 
   func forget() {
     try! bookManager.realm.write {
       presentWordToday.forget()

@@ -11,8 +11,18 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  var window: UIWindow?
-
+  //var window: UIWindow?
+  
+  var _shakeDetectingWindow: ShakeDetectingWindow?
+  var window: UIWindow? {
+    get {
+      return _shakeDetectingWindow ?? {
+        _shakeDetectingWindow = ShakeDetectingWindow(frame: UIScreen.main.bounds)
+        return _shakeDetectingWindow
+        }()
+    }
+    set {}
+  }
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     Theme.applyTheme()

@@ -29,11 +29,12 @@ class CardView: UIView {
   }
   
   private func initView(_ title: String) {
+    [self].addShadows()
     [self].addRadius()
     if !title.isEmpty {
       titleLabel.text = title
       titleLabel.font = UIFont.systemFont(ofSize: 13)
-      titleLabel.frame = CGRect(x: 16, y: 9, width: 50, height: 13)
+      titleLabel.frame = CGRect(x: 16, y: 9, width: 100, height: 13)
       addSubview(titleLabel)
       addSubview(line)
       

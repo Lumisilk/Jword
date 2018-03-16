@@ -77,9 +77,10 @@ extension Array where Element: UIView {
   func addShadows() {
     for view in self {
       view.layer.shadowColor = UIColor.gray.cgColor
-      view.layer.shadowOpacity = 0.6
+      view.layer.shadowOpacity = 0.4
       view.layer.shadowOffset = CGSize(width: 0, height: 3)
       view.layer.shadowRadius = 14
+      view.layer.shouldRasterize = true
     }
   }
   func changeBackground(color: UIColor) {
@@ -96,8 +97,8 @@ extension Array where Element: Colorizable {
 }
 
 extension UIStoryboard {
-  static func instantiateController(isMainOrStudy: Bool, id: String) -> UIViewController {
-    let sb = UIStoryboard(name: isMainOrStudy ? "Main" : "Study", bundle: nil)
+  static func instantiateController(name: String, id: String) -> UIViewController {
+    let sb = UIStoryboard(name: name, bundle: nil)
     return sb.instantiateViewController(withIdentifier: id)
   }
 }
@@ -105,28 +106,6 @@ extension UIStoryboard {
 extension UIColor {
   convenience init(r: Int, g: Int, b: Int, alpha: CGFloat = 1) {
     self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: alpha)
-  }
-}
-
-extension UINavigationItem {
-  func addHomeBarItem(action: Selector) {
-    let button = UIButton()
-    button.setImage(#imageLiteral(resourceName: "home.png"), for: .normal)
-    button.addTarget(self, action: action, for: .touchUpInside)
-    let barItem = UIBarButtonItem(customView: button)
-    barItem.customView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
-    barItem.customView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
-    leftBarButtonItem = barItem
-  }
-  
-  func addSearchBarItem(action: Selector) {
-    let button = UIButton()
-    button.setImage(#imageLiteral(resourceName: "search.png"), for: .normal)
-    button.addTarget(self, action: action, for: .touchUpInside)
-    let barItem = UIBarButtonItem(customView: button)
-    barItem.customView?.widthAnchor.constraint(equalToConstant: 25).isActive = true
-    barItem.customView?.heightAnchor.constraint(equalToConstant: 25).isActive = true
-    rightBarButtonItem = barItem
   }
 }
 

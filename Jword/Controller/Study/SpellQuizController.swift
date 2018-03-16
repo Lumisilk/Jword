@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SpellQuizController: UIViewController {
+final class SpellQuizController: UIViewController, Colorizable {
   
   @IBOutlet weak var senseContainer: UIView!
   private var dot = ColorDot(color: Theme.tint)
@@ -31,7 +31,7 @@ final class SpellQuizController: UIViewController {
   // MARK: - ViewController
   override func viewDidLoad() {
     initView()
-    applyTheme()
+    Theme.addObserver(controller: self)
   }
   
   private func initView() {
@@ -40,7 +40,7 @@ final class SpellQuizController: UIViewController {
     dot.translatesAutoresizingMaskIntoConstraints = false
   }
   
-  private func applyTheme() {
+  func applyTheme() {
     view.backgroundColor = Theme.background
     [senseContainer, quizContainer, resultContainer].changeBackground(color: Theme.foreground)
     senseLabel.textColor = Theme.subText

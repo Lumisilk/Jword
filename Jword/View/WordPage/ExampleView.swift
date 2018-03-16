@@ -15,7 +15,8 @@ final class ExampleView: CardView, Colorizable {
   private var smallStacks: [UIStackView] = []
   
   private var dots = [ColorDot]()
-  private var labels = [UILabel]()
+  private var japLabels = [UILabel]()
+  private var engLabels = [UILabel]()
   
   init() {
     super.init(title: "Example")
@@ -44,7 +45,10 @@ final class ExampleView: CardView, Colorizable {
   
   override func applyTheme() {
     super.applyTheme()
-    for label in labels {
+    for label in japLabels {
+      label.textColor = Theme.text
+    }
+    for label in engLabels {
       label.textColor = Theme.subText
     }
     for dot in dots {
@@ -59,8 +63,10 @@ final class ExampleView: CardView, Colorizable {
     smallStacks.removeAll()
     dots.forEach({$0.removeFromSuperview()})
     dots.removeAll()
-    labels.forEach({$0.removeFromSuperview()})
-    labels.removeAll()
+    japLabels.forEach({$0.removeFromSuperview()})
+    japLabels.removeAll()
+    engLabels.forEach({$0.removeFromSuperview()})
+    engLabels.removeAll()
     
     let examples: [TNKExample] = entry.examples.count > 3 ? Array(entry.examples).randomPick(n: 3) : Array(entry.examples)
     
@@ -75,11 +81,14 @@ final class ExampleView: CardView, Colorizable {
       stackView.addArrangedSubview(newStack)
       
       let japLabel = UILabel()
-      let str = exp.coloredString(kanji: entry.kanji)
-      japLabel.attributedText = str
+      //let str = exp.coloredString(kanji: entry.kanji)
+      //japLabel.attributedText = str
+      japLabel.text = exp.japanese
+      japLabel.font = UIFont.systemFont(ofSize: 19)
+      japLabel.textColor = Theme.text
       japLabel.lineBreakMode = .byWordWrapping
       japLabel.numberOfLines = 0
-      labels.append(japLabel)
+      japLabels.append(japLabel)
       newStack.addArrangedSubview(japLabel)
       
       let engLabel = UILabel()
@@ -88,7 +97,7 @@ final class ExampleView: CardView, Colorizable {
       engLabel.textColor = Theme.subText
       engLabel.lineBreakMode = .byWordWrapping
       engLabel.numberOfLines = 0
-      labels.append(engLabel)
+      engLabels.append(engLabel)
       newStack.addArrangedSubview(engLabel)
       
       let dot = ColorDot(color: Theme.tint)

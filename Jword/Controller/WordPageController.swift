@@ -40,6 +40,7 @@ final class WordPageController: UIViewController, Colorizable {
   var record: WordRecord?
   var method: openMethod = .wordList
   var isDataLoaded = false
+  var isForgotten = false
   
   // MARK: - ViewController
   override func viewDidLoad() {
@@ -49,12 +50,11 @@ final class WordPageController: UIViewController, Colorizable {
       updateViewFromRecord()
       reloadContentSize()
     }
-    Theme.addObserver(view: self)
+    Theme.addObserver(controller: self)
   }
   
   private func initView() {
     self.navigationController?.navigationBar.shadowImage = UIImage()
-    
     changeButtonStackLength(isShort: true)
     //UIView.addShadows(views: [forgetButton, continueButton])
     [forgetButton, continueButton].addRadius(18)
@@ -71,6 +71,7 @@ final class WordPageController: UIViewController, Colorizable {
     exampleView.applyTheme()
     view.backgroundColor = Theme.background
     forgetButton.setTitleColor(Theme.background, for: .normal)
+    forgetButton.backgroundColor = isForgotten ? Theme.foreground : Theme.tint
     continueButton.backgroundColor = Theme.tint
   }
   
@@ -81,6 +82,9 @@ final class WordPageController: UIViewController, Colorizable {
     size.height += 14 + margin * 2 + buttonStack.frame.height
     scrollView.contentSize = size
     scrollView.setContentOffset(CGPoint.zero, animated: false)
+    
+    entryView.layer.shadowPath = UIBezierPath(rect: entryView.bounds).cgPath
+    exampleView.layer.shadowPath = UIBezierPath(rect: exampleView.bounds).cgPath
   }
   
   private func changeButtonStackLength(isShort: Bool) {
