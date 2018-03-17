@@ -79,7 +79,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Qbw-zC-o53">
-                                        <rect key="frame" x="20" y="20" width="374" height="424"/>
+                                        <rect key="frame" x="20" y="20" width="374" height="276"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cF7-xT-bIx" customClass="EntryView" customModule="Jword" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
@@ -87,10 +87,6 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uWq-vs-EIL" customClass="ExampleView" customModule="Jword" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="148" width="374" height="128"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Hw-1i-zNC" customClass="NoteView" customModule="Jword" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="296" width="374" height="128"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
@@ -131,7 +127,6 @@
                         <outlet property="buttonStackRightCons" destination="otv-Xu-HVC" id="4jG-xb-pST"/>
                         <outlet property="entryView" destination="cF7-xT-bIx" id="xeh-f5-moQ"/>
                         <outlet property="exampleView" destination="uWq-vs-EIL" id="18R-9m-bda"/>
-                        <outlet property="noteView" destination="1Hw-1i-zNC" id="1Po-gQ-V19"/>
                         <outlet property="scrollView" destination="a8z-yT-xex" id="trG-Tz-Wm1"/>
                         <outlet property="stackView" destination="Qbw-zC-o53" id="Ds9-qV-iFa"/>
                     </connections>

@@ -24,7 +24,7 @@ final class WordPageController: UIViewController, Colorizable {
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var entryView: EntryView!
   @IBOutlet weak var exampleView: ExampleView!
-  @IBOutlet weak var noteView: NoteView!
+  //@IBOutlet weak var noteView: NoteView!
   
   @IBOutlet weak var buttonStack: UIStackView!
   private let forgetButton = ShrinkButton()
@@ -47,14 +47,13 @@ final class WordPageController: UIViewController, Colorizable {
     initView()
     if isDataLoaded {
       updateViewFromEntry()
-      updateViewFromRecord()
+      //updateViewFromRecord()
       reloadContentSize()
     }
     Theme.addObserver(controller: self)
   }
   
   private func initView() {
-    self.navigationController?.navigationBar.shadowImage = UIImage()
     changeButtonStackLength(isShort: true)
     //UIView.addShadows(views: [forgetButton, continueButton])
     [forgetButton, continueButton].addRadius(18)
@@ -127,14 +126,14 @@ final class WordPageController: UIViewController, Colorizable {
     }
   }
   
-  private func updateViewFromRecord() {
-    if let record = record {
-      noteView.loadNote(record.note)
-      noteView.isHidden = false
-    } else {
-      noteView.isHidden = true
-    }
-  }
+//  private func updateViewFromRecord() {
+//    if let record = record {
+//      noteView.loadNote(record.note)
+//      noteView.isHidden = false
+//    } else {
+//      noteView.isHidden = true
+//    }
+//  }
   
   // MARK: - Data Interface
   func loadData(entry: JMEntry, method: openMethod, record: WordRecord? = nil) {
@@ -144,7 +143,7 @@ final class WordPageController: UIViewController, Colorizable {
     isDataLoaded = true
     if isViewLoaded {
       updateViewFromEntry()
-      updateViewFromRecord()
+      //updateViewFromRecord()
       reloadContentSize()
     }
   }

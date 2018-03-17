@@ -40,7 +40,7 @@ final class EntryView: CardView, Colorizable {
     kanjiLabel.translatesAutoresizingMaskIntoConstraints = false
     addSubview(kanjiLabel)
     
-    readingLabel.font = UIFont.systemFont(ofSize: 19)
+    readingLabel.font = UIFont.systemFont(ofSize: 20)
     readingLabel.lineBreakMode = .byWordWrapping
     readingLabel.numberOfLines = 0
     readingLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +63,7 @@ final class EntryView: CardView, Colorizable {
     let stackTop = NSLayoutConstraint(item: stackView, attribute: .top, relatedBy: .equal, toItem: readingLabel, attribute: .bottom, multiplier: 1, constant: verticalBigSpace)
     let stackLeft = NSLayoutConstraint(item: stackView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: sideMargin + 15)
     let stackRight = NSLayoutConstraint(item: stackView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -sideMargin)
-    let selfBottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: stackView, attribute: .bottom, multiplier: 1, constant: topBottomMargin)
+    let selfBottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: stackView, attribute: .bottom, multiplier: 1, constant: topBottomMargin + 2)
     
     addConstraints([kanjiTop, kanjiLeft, kanjiRight, readingTop, readingLeft, readingRight, stackTop, stackLeft, stackRight, selfBottom])
   }
@@ -96,7 +96,7 @@ final class EntryView: CardView, Colorizable {
       
       let label = UILabel()
       label.text = sense.gloss.replacingOccurrences(of: "@", with: "\n")
-      label.font = UIFont.systemFont(ofSize: 17)
+      label.font = UIFont.systemFont(ofSize: 19)
       label.textColor = Theme.subText
       label.lineBreakMode = .byWordWrapping
       label.numberOfLines = 0

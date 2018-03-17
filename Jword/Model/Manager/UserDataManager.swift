@@ -34,6 +34,7 @@ enum UserDataManager {
     }
     set { UserDefaults.standard.set(newValue, forKey: "searchHistory") }
   }
+  
   static func addSearchHistory(entryID: Int) {
     var arr = searchHistory
     if let idx = arr.index(of: entryID) {

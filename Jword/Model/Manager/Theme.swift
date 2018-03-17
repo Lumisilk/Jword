@@ -74,10 +74,10 @@ enum Theme: Int {
       gradientStartColor = UIColor(r: 71, g: 183, b: 255)
       gradientEndColor = UIColor(r: 34, g: 129, b: 255)
     case .blue:
-      background = UIColor(r: 234, g: 240, b: 255)
+      background = UIColor(r: 227, g: 239, b: 254)
       foreground = .white
-      tint = UIColor(r: 34, g: 129, b: 255)
-      forgetButton = UIColor(r: 227, g: 55, b: 36)
+      tint = UIColor(r: 57, g: 124, b: 255)
+      forgetButton = UIColor(r: 238, g: 47, b: 48)
       label = UIColor(r: 153, g: 153, b: 153)
       text = .black
       subText = .gray
@@ -129,19 +129,4 @@ enum Theme: Int {
   }
 }
 
-final class ShakeDetectingWindow: UIWindow {
-  override public func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-    if motion == .motionShake {
-      Theme.switchTheme()
-      return
-    }
-    super.motionEnded(motion, with: event)
-  }
-}
 
-struct WeakReference {
-  weak var object: Colorizable?
-  init(_ object: Colorizable) {
-    self.object = object
-  }
-}

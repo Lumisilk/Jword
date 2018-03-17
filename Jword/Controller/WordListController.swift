@@ -20,6 +20,12 @@ final class WordListConrtoller: UITableViewController, Colorizable {
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationController?.navigationBar.prefersLargeTitles = true
+//    navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//    navigationController?.navigationBar.shadowImage = UIImage()
+//    navigationController?.navigationBar.isTranslucent = true
+//    navigationController?.navigationBar.backgroundColor = .clear
+//    navigationController?.view.backgroundColor = .clear
+    
     if isForSearching {
       navigationItem.title = "Search"
       let searchController = UISearchController(searchResultsController: nil)
@@ -48,7 +54,8 @@ final class WordListConrtoller: UITableViewController, Colorizable {
   }
   
   func applyTheme() {
-    navigationController?.navigationBar.backgroundColor = Theme.background
+    tableView.backgroundColor = Theme.background
+    //navigationController?.navigationBar.backgroundColor = Theme.background
     navigationController?.navigationBar.tintColor = Theme.tint
     navigationController?.navigationBar.barStyle = Theme.barStyle
     navigationItem.searchController?.searchBar.tintColor = Theme.tint
@@ -83,7 +90,8 @@ final class WordListConrtoller: UITableViewController, Colorizable {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPageCell", for: indexPath)
-    let entry = wordList[indexPath.row]
+    let row = indexPath.row
+    let entry = wordList[row]
     cell.textLabel?.text = entry.kanji
     cell.textLabel?.textColor = Theme.text
     cell.detailTextLabel?.text = entry.reading

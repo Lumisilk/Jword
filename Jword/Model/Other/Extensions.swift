@@ -77,7 +77,7 @@ extension Array where Element: UIView {
   func addShadows() {
     for view in self {
       view.layer.shadowColor = UIColor.gray.cgColor
-      view.layer.shadowOpacity = 0.4
+      view.layer.shadowOpacity = 0.2
       view.layer.shadowOffset = CGSize(width: 0, height: 3)
       view.layer.shadowRadius = 14
       view.layer.shouldRasterize = true

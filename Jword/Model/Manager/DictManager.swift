@@ -9,7 +9,15 @@
 import Foundation
 import RealmSwift
 
-struct DictManager {
+protocol JMDictProtocol {
+  func getEntry(id: Int) -> JMEntry
+  func getEntries(IDs: [Int]) -> [JMEntry]
+  func search(kanji: String) -> [JMEntry]
+  func search(hiragana: String) -> [JMEntry]
+  func search(english: String) -> [JMEntry]
+}
+
+struct DictManager: JMDictProtocol {
 
   static let shared = DictManager()
   
@@ -34,6 +42,16 @@ struct DictManager {
   func search(kanji: String) -> [JMEntry] {
     let res = realm.objects(JMEntry.self).filter("kanji contains %@", kanji)
     return res.sorted(by: entrySorter(_:_:))
+  }
+  
+  func search(hiragana: String) -> [JMEntry] {
+    let res = realm.objects(JMEntry.self).filter("reading contains %@", hiragana)
+    return res.sorted(by: entrySorter(_:_:))
+  }
+  
+  func search(english: String) -> [JMEntry] {
+    let res = realm.objects(JMEntry.self).filter("english contains %@", english)
+    return Array(res.sorted(byKeyPath: "priority"))
   }
   
   private func entrySorter(_ e1: JMEntry, _ e2: JMEntry) -> Bool {

@@ -23,6 +23,11 @@
 		BB2E7794202C642200548A6D /* JMSense.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7793202C642200548A6D /* JMSense.swift */; };
 		BB2E7796202C649C00548A6D /* TNKExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7795202C649C00548A6D /* TNKExample.swift */; };
 		BB2E7798202C66B100548A6D /* DictManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2E7797202C66B100548A6D /* DictManager.swift */; };
+		BB2EBCE0205D3D99003231F2 /* N5.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB2EBCDC205D3D98003231F2 /* N5.txt */; };
+		BB2EBCE1205D3D99003231F2 /* N3.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB2EBCDD205D3D98003231F2 /* N3.txt */; };
+		BB2EBCE2205D3D99003231F2 /* N4.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB2EBCDE205D3D99003231F2 /* N4.txt */; };
+		BB2EBCE3205D3D99003231F2 /* N2.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB2EBCDF205D3D99003231F2 /* N2.txt */; };
+		BB2EBCE8205D5381003231F2 /* Study2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2EBCE7205D5381003231F2 /* Study2.storyboard */; };
 		BB38A49D20511DFB00D485AA /* DailyCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB38A49C20511DFB00D485AA /* DailyCheck.swift */; };
 		BB5997D52042BF8A009138D4 /* StudyContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5997D42042BF8A009138D4 /* StudyContainerController.swift */; };
 		BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB67F0FB202D505700FE6F75 /* WorkBook.swift */; };
@@ -38,6 +43,7 @@
 		BBC75E58202EF2B800255050 /* StudyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E57202EF2B800255050 /* StudyManager.swift */; };
 		BBC75E5C202EF87600255050 /* WordListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC75E5B202EF87600255050 /* WordListController.swift */; };
 		BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */ = {isa = PBXBuildFile; fileRef = BBC75E5D202F1BBD00255050 /* JMDict.realm */; };
+		BBD1B25A205CBEBD0014FC14 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD1B259205CBEBD0014FC14 /* Other.swift */; };
 		BBD6B1E720469ACB0005E827 /* SupplyWorkbench.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1E620469ACB0005E827 /* SupplyWorkbench.swift */; };
 		BBD6B1EF20469B1D0005E827 /* AddNewRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1EE20469B1D0005E827 /* AddNewRecords.swift */; };
 		BBD6B1F12046A1CF0005E827 /* RefreshWordToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6B1F02046A1CF0005E827 /* RefreshWordToday.swift */; };
@@ -99,6 +105,11 @@
 		BB2E7793202C642200548A6D /* JMSense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMSense.swift; sourceTree = "<group>"; };
 		BB2E7795202C649C00548A6D /* TNKExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNKExample.swift; sourceTree = "<group>"; };
 		BB2E7797202C66B100548A6D /* DictManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictManager.swift; sourceTree = "<group>"; };
+		BB2EBCDC205D3D98003231F2 /* N5.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = N5.txt; sourceTree = "<group>"; };
+		BB2EBCDD205D3D98003231F2 /* N3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = N3.txt; sourceTree = "<group>"; };
+		BB2EBCDE205D3D99003231F2 /* N4.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = N4.txt; sourceTree = "<group>"; };
+		BB2EBCDF205D3D99003231F2 /* N2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = N2.txt; sourceTree = "<group>"; };
+		BB2EBCE7205D5381003231F2 /* Study2.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Study2.storyboard; sourceTree = "<group>"; };
 		BB38A49C20511DFB00D485AA /* DailyCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCheck.swift; sourceTree = "<group>"; };
 		BB5997D42042BF8A009138D4 /* StudyContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyContainerController.swift; sourceTree = "<group>"; };
 		BB67F0FB202D505700FE6F75 /* WorkBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkBook.swift; sourceTree = "<group>"; };
@@ -114,6 +125,7 @@
 		BBC75E57202EF2B800255050 /* StudyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyManager.swift; sourceTree = "<group>"; };
 		BBC75E5B202EF87600255050 /* WordListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListController.swift; sourceTree = "<group>"; };
 		BBC75E5D202F1BBD00255050 /* JMDict.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = JMDict.realm; sourceTree = "<group>"; };
+		BBD1B259205CBEBD0014FC14 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
 		BBD6B1E420469ACB0005E827 /* BookManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD6B1E620469ACB0005E827 /* SupplyWorkbench.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplyWorkbench.swift; sourceTree = "<group>"; };
 		BBD6B1E820469ACB0005E827 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,6 +186,17 @@
 			path = HomePage;
 			sourceTree = "<group>";
 		};
+		BB2EBCE4205D5352003231F2 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				BBDA3DA0202BFAF10038BE8B /* Main.storyboard */,
+				BB682CF920565BBF008A9106 /* Study.storyboard */,
+				BB0F75842057B9A1005312C0 /* Setting.storyboard */,
+				BB2EBCE7205D5381003231F2 /* Study2.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
 		BB772D3F202DB03A008DFE85 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +216,6 @@
 				BB67F0FD202D542000FE6F75 /* BookManager.swift */,
 				BB772D41202DEB1F008DFE85 /* UserDataManager.swift */,
 				BB2DC6BD20340F57000D6AB2 /* Theme.swift */,
-				BB772D3D202DAA98008DFE85 /* Extensions.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -214,6 +236,10 @@
 			isa = PBXGroup;
 			children = (
 				BBB806B7205131280074DB97 /* N1.txt */,
+				BB2EBCDF205D3D99003231F2 /* N2.txt */,
+				BB2EBCDD205D3D98003231F2 /* N3.txt */,
+				BB2EBCDE205D3D99003231F2 /* N4.txt */,
+				BB2EBCDC205D3D98003231F2 /* N5.txt */,
 			);
 			path = Vocabulary;
 			sourceTree = "<group>";
@@ -236,6 +262,15 @@
 				BB2DC6BF203410D9000D6AB2 /* NoteView.swift */,
 			);
 			path = WordPage;
+			sourceTree = "<group>";
+		};
+		BBD1B258205CBE910014FC14 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				BB772D3D202DAA98008DFE85 /* Extensions.swift */,
+				BBD1B259205CBEBD0014FC14 /* Other.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		BBD6B1E520469ACB0005E827 /* BookManagerTests */ = {
@@ -278,6 +313,7 @@
 		BBDA3D9B202BFAF10038BE8B /* Jword */ = {
 			isa = PBXGroup;
 			children = (
+				BB2EBCE4205D5352003231F2 /* StoryBoard */,
 				BBDA3DB8202BFBB20038BE8B /* SupportFiles */,
 				BBDA3DAE202BFAFC0038BE8B /* Model */,
 				BBDA3DB0202BFB090038BE8B /* View */,
@@ -291,6 +327,7 @@
 			children = (
 				BB772D40202DB041008DFE85 /* Manager */,
 				BB772D3F202DB03A008DFE85 /* Class */,
+				BBD1B258205CBE910014FC14 /* Other */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,9 +359,6 @@
 			children = (
 				BBDA3DA8202BFAF10038BE8B /* Info.plist */,
 				BBDA3D9C202BFAF10038BE8B /* AppDelegate.swift */,
-				BBDA3DA0202BFAF10038BE8B /* Main.storyboard */,
-				BB682CF920565BBF008A9106 /* Study.storyboard */,
-				BB0F75842057B9A1005312C0 /* Setting.storyboard */,
 				BBDA3DA3202BFAF10038BE8B /* Assets.xcassets */,
 				BBDA3DA5202BFAF10038BE8B /* LaunchScreen.storyboard */,
 			);
@@ -429,10 +463,15 @@
 				BBED3D1B205BA266000E5833 /* search.png in Resources */,
 				BB2B752120557AE200CD1B75 /* home.png in Resources */,
 				BBDA3DA4202BFAF10038BE8B /* Assets.xcassets in Resources */,
+				BB2EBCE0205D3D99003231F2 /* N5.txt in Resources */,
+				BB2EBCE1205D3D99003231F2 /* N3.txt in Resources */,
+				BB2EBCE2205D3D99003231F2 /* N4.txt in Resources */,
+				BB2EBCE3205D3D99003231F2 /* N2.txt in Resources */,
 				BBB806B8205131280074DB97 /* N1.txt in Resources */,
 				BBED3D19205BA266000E5833 /* setting.png in Resources */,
 				BBED3D1A205BA266000E5833 /* book.png in Resources */,
 				BBDA3DA2202BFAF10038BE8B /* Main.storyboard in Resources */,
+				BB2EBCE8205D5381003231F2 /* Study2.storyboard in Resources */,
 				BBC75E5E202F1BBD00255050 /* JMDict.realm in Resources */,
 				BB0F75852057B9A1005312C0 /* Setting.storyboard in Resources */,
 			);
@@ -489,6 +528,7 @@
 				BB2DC6C620355B60000D6AB2 /* HomePageController.swift in Sources */,
 				BB2E7794202C642200548A6D /* JMSense.swift in Sources */,
 				BB2E778D202C5D7E00548A6D /* JMEntry.swift in Sources */,
+				BBD1B25A205CBEBD0014FC14 /* Other.swift in Sources */,
 				BBA052FA204B9B32002A095D /* ShrinkButton.swift in Sources */,
 				BB2DC6C42034228C000D6AB2 /* CardView.swift in Sources */,
 				BB105840203F024000DE6BDC /* KnowQuizController.swift in Sources */,

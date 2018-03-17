@@ -40,13 +40,10 @@ struct BookManager {
   // MARK: Daily Check
   func dailyCheck() {
     let lastUpdate = UserDataManager.lastUpdateDate ?? Date().addingTimeInterval(TimeInterval(-86400))
-    let now = Date()
-    print(lastUpdate)
-    print(now)
-    if !Calendar.current.isDate(now, inSameDayAs: lastUpdate) {
+    if !Calendar.current.isDateInToday(lastUpdate) {
       supplyWorkbench()
       refreshWordToday()
-      UserDataManager.lastUpdateDate = now
+      UserDataManager.lastUpdateDate = Date()
     }
   }
   
