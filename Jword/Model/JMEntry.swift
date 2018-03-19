@@ -43,9 +43,7 @@ final class JMEntry: Object {
   }
   
   func pickOneExample() -> TNKExample? {
-    guard !examples.isEmpty else {
-      return nil
-    }
+    guard !examples.isEmpty else { return nil }
     let idx = Int.random(examples.count)
     return examples[idx]
   }

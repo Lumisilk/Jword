@@ -90,6 +90,12 @@ extension Array where Element: UIView {
   }
 }
 
+extension Array where Element: UILabel {
+  func changeTextColor(_ color: UIColor) {
+    self.forEach {$0.textColor = color}
+  }
+}
+
 extension Array where Element: Colorizable {
   func applyTheme() {
     forEach{$0.applyTheme()}
@@ -108,4 +114,11 @@ extension UIColor {
     self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: alpha)
   }
 }
+
+//extension UIView {
+//  @IBInspectable var cornerRadius: CGFloat {
+//    get { return layer.cornerRadius }
+//    set { layer.cornerRadius = newValue }
+//  }
+//}
 

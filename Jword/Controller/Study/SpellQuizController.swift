@@ -2,7 +2,7 @@
 //  SpellQuizController.swift
 //  Jword
 //
-//  Created by usagilynn on 2/22/18.
+//  Created by usagilynn on 3/17/18.
 //  Copyright © 2018 ribilynn. All rights reserved.
 //
 
@@ -13,41 +13,39 @@ final class SpellQuizController: UIViewController, Colorizable {
   @IBOutlet weak var senseContainer: UIView!
   private var dot = ColorDot(color: Theme.tint)
   @IBOutlet weak var senseLabel: UILabel!
-  @IBOutlet weak var quizContainer: UIView!
-  @IBOutlet weak var quizLabel: UILabel!
+  @IBOutlet weak var questionContainer: UIView!
+  @IBOutlet weak var questionLabel: UILabel!
   @IBOutlet weak var resultContainer: UIView!
-  @IBOutlet weak var resultStack: UIStackView!
   @IBOutlet weak var inputTextField: UITextField!
   @IBOutlet weak var resultLabel: UILabel!
-  @IBOutlet weak var forgetButton: ShrinkButton!
-  @IBOutlet weak var confirmButton: ShrinkButton!
+  @IBOutlet weak var forgetButton: JWButton!
+  @IBOutlet weak var confirmButton: JWButton!
+  
+  weak var studyViewModel: StudyViewModel!
+  var entry: JMEntry!
+  var quiz: SpellQuiz!
   private var isResultShowing = false
   
-  weak var studyManager: StudyManager!
-  var entry: JMEntry!
-  var answer = ""
-  var isAnswerDeformed = true
-  
-  // MARK: - ViewController
+  // MARK: - View Controller
   override func viewDidLoad() {
     initView()
     Theme.addObserver(controller: self)
   }
   
   private func initView() {
-    resultLabel.isHidden = true
-    [senseContainer, quizContainer, resultContainer, forgetButton, confirmButton].addRadius()
+    [senseContainer, questionContainer, resultContainer].addRadius()
     dot.translatesAutoresizingMaskIntoConstraints = false
+    forgetButton.initial(title: "Forget", title: "Forget", color: Theme.forgetButton)
+    confirmButton.initial(title: "Confirm", title: "Confirm", color: Theme.tint)
   }
   
   func applyTheme() {
     view.backgroundColor = Theme.background
-    [senseContainer, quizContainer, resultContainer].changeBackground(color: Theme.foreground)
-    senseLabel.textColor = Theme.subText
-    forgetButton.backgroundColor = Theme.forgetButton
-    forgetButton.setTitleColor(Theme.foreground, for: .normal)
-    confirmButton.backgroundColor = Theme.tint
-    confirmButton.setTitleColor(Theme.foreground, for: .normal)
+    [senseContainer, questionContainer, resultContainer].changeBackground(color: Theme.foreground)
+    [senseLabel, questionLabel, resultLabel].changeTextColor(Theme.text)
+    inputTextField.textColor = Theme.text
+    forgetButton.applyTheme()
+    confirmButton.applyTheme()
   }
   
   private func updateView() {
@@ -58,58 +56,49 @@ final class SpellQuizController: UIViewController, Colorizable {
     senseContainer.addConstraint(NSLayoutConstraint(item: dot, attribute: .top, relatedBy: .equal, toItem: senseLabel, attribute: .top, multiplier: 1, constant: t))
     senseContainer.addConstraint(NSLayoutConstraint(item: dot, attribute: .left, relatedBy: .equal, toItem: senseContainer, attribute: .left, multiplier: 1, constant: 14))
     
-    if let (quiz, answer) = entry.pickQuiz() {
-      quizLabel.text = quiz
-      self.answer = answer
-      isAnswerDeformed = (answer != entry.kanji && answer != entry.reading)
-      quizContainer.isHidden = false
-    } else {
-      self.answer = entry.kanji
-      isAnswerDeformed = false
-      quizContainer.isHidden = true
-    }
+    questionContainer.isHidden = !quiz.isHadSentence
+    if quiz.isHadSentence { questionLabel.text = quiz.question }
+    
     isResultShowing = false
     inputTextField.isEnabled = true
     inputTextField.isHidden = false
     inputTextField.text = ""
     resultLabel.isHidden = true
-    forgetButton.isHidden = false
+    forgetButton.isEnabled = true
     print("kanji:  \(entry.kanji)")
     print("reading:\(entry.reading)")
-    print("answer: \(answer)")
-  }
-  
-  enum Result {
-    case forget
-    case wrong
-    case partiallyRight
-    case right
-  }
-  private func showResult(_ result: Result) {
-    inputTextField.isEnabled = false
-    forgetButton.isHidden = true
-    resultLabel.isHidden = false
-    switch result {
-    case .forget:
-      resultLabel.text = "Answer: \(answer)"
-      studyManager.forget()
-    case .wrong:
-      resultLabel.text = "Wrong\nAnswer: \(answer)"
-      studyManager.forget()
-    case .partiallyRight:
-      resultLabel.text = "Partially right. It should be deformed.\nCorrect answer: \(answer)"
-      studyManager.pass()
-    case .right:
-      resultLabel.text = "Excellent!"
-      studyManager.pass()
-    }
-    isResultShowing = true
+    print("answer: \(quiz.deformation)")
   }
   
   // MARK: - Data Interface
   func load(entry: JMEntry) {
     self.entry = entry
+    quiz = SpellQuiz(entry: entry)
     updateView()
+  }
+  
+  private func showResult(_ result: SpellQuiz.Result) {
+    inputTextField.resignFirstResponder()
+    inputTextField.isEnabled = false
+    forgetButton.isEnabled = false
+    resultLabel.isHidden = false
+    let answer = quiz.correctAnswer()
+    switch result {
+    case .forget:
+      inputTextField.isHidden = true
+      resultLabel.text = "Answer: \(answer)"
+      studyViewModel.forget()
+    case .wrong:
+      resultLabel.text = "Wrong\nAnswer: \(answer)"
+      studyViewModel.forget()
+    case .partialRight:
+      resultLabel.text = "Partially right. It should be deformed.\nCorrect answer: \(answer)"
+      studyViewModel.pass()
+    case .right:
+      resultLabel.text = "Excellent!"
+      studyViewModel.pass()
+    }
+    isResultShowing = true
   }
   
   // MARK: - Action
@@ -120,26 +109,11 @@ final class SpellQuizController: UIViewController, Colorizable {
   
   @IBAction func pressConfirm(_ sender: Any) {
     if !isResultShowing {
-      guard let reply = inputTextField.text else { return }
-      if !isAnswerDeformed {
-        if reply == entry.kanji || reply == entry.reading {
-          showResult(.right)
-        } else {
-          showResult(.wrong)
-        }
-      } else {
-        if reply == answer {
-          showResult(.right)
-        } else if reply == entry.kanji || reply == entry.reading {
-          showResult(.partiallyRight)
-        } else {
-          showResult(.wrong)
-        }
-      }
+      let result = quiz.result(input: inputTextField.text!)
+      showResult(result)
     } else {
-      studyManager.showWordPage(method: .passed)
+      studyViewModel.showWordPage(method: .passed)
     }
   }
-  
   
 }

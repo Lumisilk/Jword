@@ -25,7 +25,7 @@ final class KnowQuizController: UIViewController, Colorizable {
   @IBOutlet weak var yesButton: UIButton!
   @IBOutlet weak var noButton: UIButton!
   
-  weak var studyManager: StudyManager!
+  weak var studyViewModel: StudyViewModel!
   private var entry: JMEntry?
   private var state: State = .start
   
@@ -70,8 +70,8 @@ final class KnowQuizController: UIViewController, Colorizable {
   }
 
   @IBAction func pressKnow(_ sender: Any) {
-    studyManager.pass()
-    studyManager.showWordPage(method: .passed)
+    studyViewModel.pass()
+    studyViewModel.showWordPage(method: .passed)
   }
   @IBAction func pressNotKnow(_ sender: Any) {
     switch state {
@@ -79,8 +79,8 @@ final class KnowQuizController: UIViewController, Colorizable {
       sentenceContainer.isHidden = false
       state = .showedSentence
     case .showedSentence:
-      studyManager.forget()
-      studyManager.showWordPage(method: .failed)
+      studyViewModel.forget()
+      studyViewModel.showWordPage(method: .failed)
     }
   }
 }

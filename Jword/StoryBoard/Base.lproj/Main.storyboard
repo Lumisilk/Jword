@@ -203,13 +203,13 @@
             </objects>
             <point key="canvasLocation" x="-1932" y="-67"/>
         </scene>
-        <!--StudyNavigationController-->
+        <!--StudyContainerController-->
         <scene sceneID="wqS-18-RlZ">
             <objects>
-                <viewControllerPlaceholder storyboardName="Study" referencedIdentifier="StudyNavigationController" id="aYa-jV-JQX" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Study" referencedIdentifier="StudyContainerController" id="aYa-jV-JQX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3O-yr-UJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1959" y="402"/>
+            <point key="canvasLocation" x="-1933" y="402"/>
         </scene>
         <!--SettingListController-->
         <scene sceneID="z5o-b3-WrY">

@@ -35,7 +35,7 @@ final class WordPageController: UIViewController, Colorizable {
   
   // MARK: - Data Property
   let bookManager = BookManager.shared
-  weak var studyManager: StudyManager?
+  weak var studyViewModel: StudyViewModel?
   var entry: JMEntry!
   var record: WordRecord?
   var method: openMethod = .wordList
@@ -150,8 +150,8 @@ final class WordPageController: UIViewController, Colorizable {
   
   // MARK: - Action
   @objc private func addOrForget() {
-    if studyManager != nil {
-      studyManager?.forget()
+    if studyViewModel != nil {
+      studyViewModel?.forget()
     } else {
       bookManager.addOrForget(entryID: entry.id)
     }
@@ -163,7 +163,7 @@ final class WordPageController: UIViewController, Colorizable {
     forgetButton.isEnabled = false
   }
   @objc private func processNext() {
-    studyManager?.processNextQuiz()
+    studyViewModel?.processNextQuiz()
   }
   
 }

@@ -1,15 +1,14 @@
 //
-//  StudyManager.swift
+//  StudyViewModel.swift
 //  Jword
 //
-//  Created by usagilynn on 2/10/18.
+//  Created by usagilynn on 3/17/18.
 //  Copyright © 2018 ribilynn. All rights reserved.
 //
 
 import UIKit
-import RealmSwift
 
-final class StudyManager {
+final class StudyViewModel {
   
   private let dictManager = DictManager.shared
   private let bookManager = BookManager.shared
@@ -24,33 +23,26 @@ final class StudyManager {
   private let knowQuizController: KnowQuizController
   private let spellQuizController: SpellQuizController
   
-  init(containerView: StudyContainerController) {
-    self.containerController = containerView
+  init(containerController: StudyContainerController) {
+    self.containerController = containerController
+    
     wordPageController = UIStoryboard.instantiateController(name: "Main", id: "WordPageController") as! WordPageController
     knowQuizController = UIStoryboard.instantiateController(name: "Study", id: "KnowQuizController") as! KnowQuizController
     spellQuizController = UIStoryboard.instantiateController(name: "Study", id: "SpellQuizController") as! SpellQuizController
-
-    wordPageController.studyManager = self
-    knowQuizController.studyManager = self
-    spellQuizController.studyManager = self
-    addChildController([wordPageController, knowQuizController, spellQuizController])
+    
+    wordPageController.studyViewModel = self
+    knowQuizController.studyViewModel = self
+    spellQuizController.studyViewModel = self
+    
+    containerController.addChildControllers([wordPageController, knowQuizController, spellQuizController])
   }
   
-  // MARK: Child Controller Method
-  private func addChildController(_ controllers: [UIViewController]) {
-    for controller in controllers {
-      containerController.addChildViewController(controller)
-      controller.didMove(toParentViewController: containerController)
-      controller.view.frame = containerController.view.bounds
-      controller.view.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-    }
-  }
-
   // MARK: - Process
   func prepareWordsAndProcessNextPage() {
     wordsTolearn = Array(bookManager.wordsToday.filter(WordToday.wordTodayToLearn)).shuffled()
     if wordsTolearn.isEmpty {
-      containerController.view.bringSubview(toFront: containerController.completeView)
+      //containerController.containerView.bringSubview(toFront: containerController.completeView)
+      print("Complete all")
     } else {
       processNextQuiz()
     }
@@ -66,10 +58,11 @@ final class StudyManager {
       switch presentRecord.state {
       case .ready, .familiar:
         knowQuizController.load(entry: presentEntry)
-        containerController.view.addSubview(knowQuizController.view)
+        containerController.containerView.bringSubview(toFront: knowQuizController.view)
       case .know, .spell:
         spellQuizController.load(entry: presentEntry)
-        containerController.view.addSubview(spellQuizController.view)
+        containerController.containerView.bringSubview(toFront: spellQuizController.view)
+        spellQuizController.inputTextField.becomeFirstResponder()
       default:
         assert(true)
       }
@@ -80,10 +73,10 @@ final class StudyManager {
   
   func showWordPage(method: WordPageController.openMethod) {
     wordPageController.loadData(entry: presentEntry, method: method, record: presentRecord)
-    containerController.view.addSubview(wordPageController.view)
+    containerController.containerView.bringSubview(toFront: wordPageController.view)
   }
   
-  // MARK: - Word Operation 
+  // MARK: - Word Operation
   func forget() {
     try! bookManager.realm.write {
       presentWordToday.forget()
@@ -96,5 +89,4 @@ final class StudyManager {
       presentRecord.pass()
     }
   }
-  
 }
