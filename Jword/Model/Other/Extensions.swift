@@ -80,7 +80,7 @@ extension Array where Element: UIView {
       view.layer.shadowOpacity = 0.2
       view.layer.shadowOffset = CGSize(width: 0, height: 3)
       view.layer.shadowRadius = 14
-      view.layer.shouldRasterize = true
+      //view.layer.shouldRasterize = true
     }
   }
   func changeBackground(color: UIColor) {

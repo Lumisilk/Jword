@@ -49,8 +49,8 @@ class CardView: UIView {
   
   func applyTheme() {
     backgroundColor = Theme.foreground
-    titleLabel.textColor = Theme.label
-    line.backgroundColor = Theme.label
+    titleLabel.textColor = Theme.staticLabel
+    line.backgroundColor = Theme.staticLabel
   }
   
 }

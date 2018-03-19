@@ -10,7 +10,6 @@ import UIKit
 
 final class StudyContainerController: UIViewController, Colorizable {
   
-  
   @IBOutlet weak var homeButton: UIButton!
   @IBOutlet weak var searchButton: UIButton!
   @IBOutlet weak var containerView: UIView!
@@ -45,8 +44,4 @@ final class StudyContainerController: UIViewController, Colorizable {
   @IBAction func returnToHome(_ sender: Any) {
     dismiss(animated: true, completion: nil)
   }
-
-  
-
 }
-

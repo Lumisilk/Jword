@@ -10,59 +10,64 @@ import UIKit
 
 final class JWButton: ShrinkButton, Colorizable {
   
-  var titleOriginal: String = "Title"
-  var titleAfter: String = "Title"
-  var color: UIColor = .white
+  var title: String = ""
+  var afterTitle: String = ""
+  var color: UIColor = .clear
   
   override var isEnabled: Bool {
     didSet {
-      updateViewFromIsEnable()
+      applyTheme()
     }
   }
   
-  init(title original: String, title after: String, color: UIColor) {
-    titleOriginal = original
-    titleAfter = after
+  init(title: String, after: String, color: UIColor) {
+    self.title = title
+    afterTitle = after
     self.color = color
     super.init(frame: CGRect.zero)
     initView()
-    updateViewFromIsEnable()
+    applyTheme()
   }
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     initView()
-    updateViewFromIsEnable()
+    applyTheme()
   }
   
   func initView() {
-    layer.cornerRadius = 23
-    layer.borderColor = UIColor.gray.cgColor
-    [self].addShadows()
+    titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .medium)
+    layer.cornerRadius = bounds.height/2
+    layer.shadowColor = UIColor.gray.cgColor
+    layer.shadowOpacity = 0.2
+    layer.shadowOffset = CGSize(width: 0, height: 3)
+    layer.shadowRadius = 14
+    layer.shadowColor = UIColor.gray.cgColor
   }
   
   func applyTheme() {
-    titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .medium)
-  }
-  
-  func initial(title original: String, title after: String, color: UIColor) {
-    titleOriginal = original
-    titleAfter = after
-    self.color = color
-    updateViewFromIsEnable()
-  }
-  
-  private func updateViewFromIsEnable() {
     if isEnabled {
-      titleLabel?.text = titleOriginal
-      tintColor = Theme.foreground
+      titleLabel?.text = title
+      titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
       backgroundColor = color
+      tintColor = .white
       layer.borderWidth = 0
+      layer.shadowOpacity = Theme.theme == .night ? 0: 0.2
     } else {
-      titleLabel?.text = titleAfter
-      tintColor = Theme.subText
+      titleLabel?.text = afterTitle
+      titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .regular)
       backgroundColor = Theme.foreground
-      layer.borderWidth = 1
+      tintColor = Theme.staticLabel
+      layer.shadowOpacity = 0
     }
+    layer.borderColor = Theme.staticLabel.cgColor
+    layer.borderWidth = Theme.theme == .night ? 0 : 1
+  }
+  
+  func initial(title: String, after: String, color: UIColor) {
+    self.title = title
+    afterTitle = after
+    self.color = color
+    applyTheme()
   }
 }

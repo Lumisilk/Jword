@@ -21,9 +21,8 @@ final class KnowQuizController: UIViewController, Colorizable {
   @IBOutlet weak var sentenceContainer: UIView!
   @IBOutlet weak var sentenceLabel: UILabel!
   
-  @IBOutlet weak var KnowButtonContainer: UIView!
-  @IBOutlet weak var yesButton: UIButton!
-  @IBOutlet weak var noButton: UIButton!
+  @IBOutlet weak var yesButton: JWButton!
+  @IBOutlet weak var noButton: JWButton!
   
   weak var studyViewModel: StudyViewModel!
   private var entry: JMEntry?
@@ -36,20 +35,19 @@ final class KnowQuizController: UIViewController, Colorizable {
   }
   
   private func initView() {
-    [labelContainer, sentenceContainer, KnowButtonContainer].addRadius(16)
+    [labelContainer, sentenceContainer].addRadius()
     sentenceContainer.isHidden = true
-    //UIView.addShadows(views: [labelContainer, sentenceContainer, KnowButtonContainer])
-    let inset = UIEdgeInsetsMake(0, 20, 0, 0)
-    yesButton.titleEdgeInsets = inset
-    noButton.titleEdgeInsets = inset
+    yesButton.initial(title: "Know", title: "", color: Theme.tint)
+    noButton.initial(title: "Don't know'", title: "", color: Theme.forgetButton)
   }
   func applyTheme() {
     view.backgroundColor = Theme.background
     labelContainer.backgroundColor = Theme.foreground
     sentenceContainer.backgroundColor = Theme.foreground
-    KnowButtonContainer.backgroundColor = Theme.foreground
     kanjiLabel.textColor = Theme.text
     sentenceLabel.textColor = Theme.text
+    yesButton.applyTheme()
+    noButton.applyTheme()
   }
   
   private func updateView() {

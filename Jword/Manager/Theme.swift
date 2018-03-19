@@ -19,7 +19,7 @@ enum Theme: Int {
   case blue = 1
   case pink = 2
   
-  static private var theme: Theme {
+  static var theme: Theme {
     if let value = UserDefaults.standard.value(forKey: "theme") as? Int {
       return Theme(rawValue: value)!
     } else {
@@ -41,7 +41,7 @@ enum Theme: Int {
   /// A bold color contrasts to main theme.
   static var forgetButton: UIColor = .clear
 
-  static var label: UIColor = .clear
+  static var staticLabel: UIColor = .clear
   
   /// A color for main text, usually is black.
   static var text: UIColor = .clear
@@ -60,6 +60,7 @@ enum Theme: Int {
   
   static func applyTheme() {
     barStyle = .default
+    staticLabel = UIColor(r: 115, g: 115, b: 115)
     switch theme {
     case .night:
       barStyle = .blackOpaque
@@ -67,7 +68,7 @@ enum Theme: Int {
       foreground = UIColor(r: 82, g: 82, b: 82)
       tint = UIColor(r: 252, g: 159, b: 77)
       forgetButton = UIColor(r: 227, g: 55, b: 36)
-      label = UIColor(r: 175, g: 175, b: 175)
+      staticLabel = UIColor(r: 170, g: 170, b: 170)
       text = .white
       subText = UIColor(r: 220, g: 220, b: 220)
       homeButtonTint = UIColor(r: 55, g: 111, b: 181)
@@ -77,8 +78,7 @@ enum Theme: Int {
       background = UIColor(r: 227, g: 239, b: 254)
       foreground = .white
       tint = UIColor(r: 57, g: 124, b: 255)
-      forgetButton = UIColor(r: 238, g: 47, b: 48)
-      label = UIColor(r: 153, g: 153, b: 153)
+      forgetButton = UIColor(r: 226, g: 88, b: 88)
       text = .black
       subText = .gray
       homeButtonTint = UIColor(r: 55, g: 111, b: 181)
@@ -89,7 +89,6 @@ enum Theme: Int {
       foreground = .white
       tint = UIColor(r: 232, g: 86, b: 115)
       forgetButton = .white
-      label = UIColor(r: 153, g: 153, b: 153)
       text = .black
       subText = .gray
       homeButtonTint = UIColor(r: 158, g: 60, b: 61)

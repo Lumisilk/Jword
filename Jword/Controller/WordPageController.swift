@@ -156,10 +156,10 @@ final class WordPageController: UIViewController, Colorizable {
       bookManager.addOrForget(entryID: entry.id)
     }
     forgetButton.backgroundColor = Theme.foreground
-    forgetButton.setTitleColor(Theme.label, for: .normal)
+    forgetButton.setTitleColor(Theme.staticLabel, for: .normal)
     forgetButton.setTitle("Added to word book", for: .normal)
     forgetButton.layer.borderWidth = 1
-    forgetButton.layer.borderColor = Theme.label.cgColor
+    forgetButton.layer.borderColor = Theme.staticLabel.cgColor
     forgetButton.isEnabled = false
   }
   @objc private func processNext() {
