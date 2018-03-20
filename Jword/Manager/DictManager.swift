@@ -9,15 +9,7 @@
 import Foundation
 import RealmSwift
 
-protocol JMDictProtocol {
-  func getEntry(id: Int) -> JMEntry
-  func getEntries(IDs: [Int]) -> [JMEntry]
-  func search(kanji: String) -> [JMEntry]
-  func search(hiragana: String) -> [JMEntry]
-  func search(english: String) -> [JMEntry]
-}
-
-struct DictManager: JMDictProtocol {
+struct DictManager {
 
   static let shared = DictManager()
   

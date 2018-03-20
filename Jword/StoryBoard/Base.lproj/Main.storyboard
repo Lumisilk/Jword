@@ -174,6 +174,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3D-If-asy" customClass="HomeButton" customModule="Jword" customModuleProvider="target">
                                         <rect key="frame" x="195" y="0.0" width="171" height="105.66666666666667"/>
+                                        <connections>
+                                            <segue destination="FKB-2G-YLi" kind="presentation" id="0Hp-Vg-4To"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

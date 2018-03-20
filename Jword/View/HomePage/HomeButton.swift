@@ -74,7 +74,7 @@ final class HomeButton: ShrinkButton, Colorizable {
   }
   
   func applyTheme() {
-    imageView?.tintColor = Theme.homeButtonTint
+    imageView?.tintColor = Theme.homeButtonImageTint
     mainLabel.textColor = Theme.foreground
     subLabel.textColor = Theme.foreground
     gradientLayer.colors = [Theme.gradientStartColor.cgColor, Theme.gradientEndColor.cgColor]

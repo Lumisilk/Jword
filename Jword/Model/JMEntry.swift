@@ -47,14 +47,4 @@ final class JMEntry: Object {
     let idx = Int.random(examples.count)
     return examples[idx]
   }
-  
-  func pickQuiz() -> (quiz: String, answer: String)? {
-    guard let example = pickOneExample(), let idx = example.words.index(of: kanji) else {
-      return nil
-    }
-    let deform = example.deformations[idx]
-    let underline = String(repeating: "__", count: deform.count)
-    let quiz = example.japanese.replacingOccurrences(of: deform, with: underline)
-    return (quiz, deform)
-  }
 }

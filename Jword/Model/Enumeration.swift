@@ -140,7 +140,7 @@ enum SenseInfo: String {
   case sports
   case sumo
   case zool
-  
+
   // misc
   case abbr
   case arch
@@ -168,7 +168,7 @@ enum SenseInfo: String {
   case uk
   case vulg
   case yoji
-  
+
   // dialect
   case hob
   case ksb
@@ -249,4 +249,5 @@ enum SenseSource: String {
   case vie
   case yid
 }
+
 

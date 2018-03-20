@@ -10,9 +10,14 @@ import UIKit
 
 final class JWButton: ShrinkButton, Colorizable {
   
+  enum ButtonType {
+    case forget
+    case normal
+  }
+  
   var title: String = ""
   var afterTitle: String = ""
-  var color: UIColor = .clear
+  var type: ButtonType = .normal
   
   override var isEnabled: Bool {
     didSet {
@@ -20,10 +25,10 @@ final class JWButton: ShrinkButton, Colorizable {
     }
   }
   
-  init(title: String, after: String, color: UIColor) {
+  init(title: String, after: String, type: ButtonType) {
     self.title = title
     afterTitle = after
-    self.color = color
+    self.type = type
     super.init(frame: CGRect.zero)
     initView()
     applyTheme()
@@ -32,11 +37,9 @@ final class JWButton: ShrinkButton, Colorizable {
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     initView()
-    applyTheme()
   }
   
   func initView() {
-    titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .medium)
     layer.cornerRadius = bounds.height/2
     layer.shadowColor = UIColor.gray.cgColor
     layer.shadowOpacity = 0.2
@@ -46,28 +49,30 @@ final class JWButton: ShrinkButton, Colorizable {
   }
   
   func applyTheme() {
+    print("JWButton \(title) applyTheme")
+    layer.borderColor = Theme.staticLabel.cgColor
     if isEnabled {
-      titleLabel?.text = title
-      titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .semibold)
-      backgroundColor = color
+      titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .medium)
+      backgroundColor = type == .normal ? Theme.normalButton: Theme.forgetButton
       tintColor = .white
       layer.borderWidth = 0
       layer.shadowOpacity = Theme.theme == .night ? 0: 0.2
+      layer.borderWidth = 0
+      titleLabel?.text = title
     } else {
-      titleLabel?.text = afterTitle
       titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .regular)
       backgroundColor = Theme.foreground
       tintColor = Theme.staticLabel
       layer.shadowOpacity = 0
+      layer.borderWidth = Theme.theme == .night ? 0 : 1
+      titleLabel?.text = afterTitle
     }
-    layer.borderColor = Theme.staticLabel.cgColor
-    layer.borderWidth = Theme.theme == .night ? 0 : 1
   }
   
-  func initial(title: String, after: String, color: UIColor) {
+  func initial(title: String, after: String, type: ButtonType) {
     self.title = title
     afterTitle = after
-    self.color = color
+    self.type = type
     applyTheme()
   }
 }

@@ -20,9 +20,13 @@ final class StudyContainerController: UIViewController, Colorizable {
   // MARK: - View Controller
   override func viewDidLoad() {
     super.viewDidLoad()
+    Theme.addObserver(controller: self)
+    let homeImage = UIImage(named: "home.png")?.withRenderingMode(.alwaysTemplate)
+    let searchImage = UIImage(named: "smallSearch.png")?.withRenderingMode(.alwaysTemplate)
+    homeButton.imageView?.image = homeImage
+    searchButton.imageView?.image = searchImage
     studyViewModel = StudyViewModel(containerController: self)
     studyViewModel.prepareWordsAndProcessNextPage()
-    Theme.addObserver(controller: self)
   }
   
   func applyTheme() {

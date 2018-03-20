@@ -55,7 +55,7 @@ final class StudyViewModel {
       presentRecord = bookManager.getWordRecord(entryID: nextWord.entryId)!
       presentEntry = dictManager.getEntry(id: nextWord.entryId)
       // prepare next quiz
-      switch presentRecord.state {
+      switch presentRecord.level {
       case .ready, .familiar:
         knowQuizController.load(entry: presentEntry)
         containerController.containerView.bringSubview(toFront: knowQuizController.view)

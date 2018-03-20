@@ -57,6 +57,7 @@
 		BBDA3DB4202BFB960038BE8B /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA3DB1202BFB960038BE8B /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBDA3DB5202BFB960038BE8B /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */; };
 		BBDA3DB6202BFB960038BE8B /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BBE8BCAF2061105F002BA4F5 /* smallSearch.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE8BCAE2061105F002BA4F5 /* smallSearch.png */; };
 		BBEC0512202F3DBB00CD7A54 /* WordPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */; };
 		BBED3D18205BA266000E5833 /* pen.png in Resources */ = {isa = PBXBuildFile; fileRef = BBED3D14205BA266000E5833 /* pen.png */; };
 		BBED3D19205BA266000E5833 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = BBED3D15205BA266000E5833 /* setting.png */; };
@@ -142,6 +143,7 @@
 		BBDA3DA8202BFAF10038BE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBDA3DB1202BFB960038BE8B /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		BBDA3DB2202BFB960038BE8B /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		BBE8BCAE2061105F002BA4F5 /* smallSearch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smallSearch.png; sourceTree = "<group>"; };
 		BBEC0511202F3DBB00CD7A54 /* WordPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPageController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		BBED3D14205BA266000E5833 /* pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pen.png; path = ../../../../Desktop/Jword/icon/pen.png; sourceTree = "<group>"; };
 		BBED3D15205BA266000E5833 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = setting.png; path = ../../../../Desktop/Jword/icon/setting.png; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 				BBED3D17205BA266000E5833 /* search.png */,
 				BBED3D15205BA266000E5833 /* setting.png */,
 				BB2B752020557AE200CD1B75 /* home.png */,
+				BBE8BCAE2061105F002BA4F5 /* smallSearch.png */,
 			);
 			path = Icon;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				BBDA3DA7202BFAF10038BE8B /* LaunchScreen.storyboard in Resources */,
 				BBED3D18205BA266000E5833 /* pen.png in Resources */,
 				BBED3D1B205BA266000E5833 /* search.png in Resources */,
+				BBE8BCAF2061105F002BA4F5 /* smallSearch.png in Resources */,
 				BB2B752120557AE200CD1B75 /* home.png in Resources */,
 				BBDA3DA4202BFAF10038BE8B /* Assets.xcassets in Resources */,
 				BB2EBCE0205D3D99003231F2 /* N5.txt in Resources */,

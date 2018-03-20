@@ -49,9 +49,7 @@ struct SpellQuiz {
   }
   
   func result(input: String) -> Result {
-    guard !input.isEmpty else {
-      return .forget
-    }
+    guard !input.isEmpty else { return .forget }
     
     if !isHadSentence && (input == kanji || input == reading) {
       return .right
@@ -65,10 +63,8 @@ struct SpellQuiz {
       default:
         return .wrong
       }
-    } else if (input == kanji || input == reading) {
-      return .right
     } else {
-      return .wrong
+      return (input == kanji || input == reading) ? .right: .wrong
     }
   }
   

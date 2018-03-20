@@ -35,8 +35,8 @@ final class SpellQuizController: UIViewController, Colorizable {
   private func initView() {
     [senseContainer, questionContainer, resultContainer].addRadius()
     dot.translatesAutoresizingMaskIntoConstraints = false
-    forgetButton.initial(title: "Forget", title: "Forget", color: Theme.forgetButton)
-    confirmButton.initial(title: "Confirm", title: "Confirm", color: Theme.tint)
+    forgetButton.initial(title: "Forget", after: "Forgotten", type: .forget)
+    confirmButton.initial(title: "Confirm", after: "Continue", type: .normal)
   }
   
   func applyTheme() {

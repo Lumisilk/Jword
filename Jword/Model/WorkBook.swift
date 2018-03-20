@@ -11,7 +11,7 @@ import RealmSwift
 
 final class WordRecord: Object {
   
-  enum State: Int {
+  enum Level: Int {
     case wait = 0
     case ready = 1
     case familiar = 2
@@ -28,8 +28,8 @@ final class WordRecord: Object {
   @objc dynamic private var privateLevel: Int = 0
   
   // MARK: Properties for Jword
-  var state: State {
-    get { return State(rawValue: privateLevel)! }
+  var level: Level {
+    get { return Level(rawValue: privateLevel)! }
     set { privateLevel = newValue.rawValue }
   }
   
@@ -76,12 +76,8 @@ final class WordToday: Object {
   @objc dynamic var entryId: Int = 0
   @objc dynamic private var privateState: Int = 0
   var state: State {
-    get {
-      return State(rawValue: privateState)!
-    }
-    set {
-      privateState = newValue.rawValue
-    }
+    get { return State(rawValue: privateState)! }
+    set { privateState = newValue.rawValue }
   }
   
   override static func primaryKey() -> String? {

@@ -38,8 +38,8 @@ enum Theme: Int {
   /// A bold color close to main theme.
   static var tint: UIColor = .clear
   
-  /// A bold color contrasts to main theme.
   static var forgetButton: UIColor = .clear
+  static var normalButton: UIColor = .clear
 
   static var staticLabel: UIColor = .clear
   
@@ -48,7 +48,7 @@ enum Theme: Int {
   /// A color for sub text, usually is gray.
   static var subText: UIColor = .clear
   
-  static var homeButtonTint: UIColor = .clear
+  static var homeButtonImageTint: UIColor = .clear
   static var gradientStartColor: UIColor = .clear
   static var gradientEndColor: UIColor = .clear
   
@@ -60,7 +60,7 @@ enum Theme: Int {
   
   static func applyTheme() {
     barStyle = .default
-    staticLabel = UIColor(r: 115, g: 115, b: 115)
+    staticLabel = .gray
     switch theme {
     case .night:
       barStyle = .blackOpaque
@@ -68,10 +68,11 @@ enum Theme: Int {
       foreground = UIColor(r: 82, g: 82, b: 82)
       tint = UIColor(r: 252, g: 159, b: 77)
       forgetButton = UIColor(r: 227, g: 55, b: 36)
+      normalButton = tint
       staticLabel = UIColor(r: 170, g: 170, b: 170)
       text = .white
       subText = UIColor(r: 220, g: 220, b: 220)
-      homeButtonTint = UIColor(r: 55, g: 111, b: 181)
+      homeButtonImageTint = UIColor(r: 55, g: 111, b: 181)
       gradientStartColor = UIColor(r: 71, g: 183, b: 255)
       gradientEndColor = UIColor(r: 34, g: 129, b: 255)
     case .blue:
@@ -79,9 +80,10 @@ enum Theme: Int {
       foreground = .white
       tint = UIColor(r: 57, g: 124, b: 255)
       forgetButton = UIColor(r: 226, g: 88, b: 88)
+      normalButton = tint
       text = .black
       subText = .gray
-      homeButtonTint = UIColor(r: 55, g: 111, b: 181)
+      homeButtonImageTint = UIColor(r: 55, g: 111, b: 181)
       gradientStartColor = UIColor(r: 71, g: 183, b: 255)
       gradientEndColor = UIColor(r: 34, g: 129, b: 255)
     case .pink:
@@ -91,7 +93,7 @@ enum Theme: Int {
       forgetButton = .white
       text = .black
       subText = .gray
-      homeButtonTint = UIColor(r: 158, g: 60, b: 61)
+      homeButtonImageTint = UIColor(r: 158, g: 60, b: 61)
       gradientStartColor = UIColor(r: 242, g: 94, b: 94)
       gradientEndColor = UIColor(r: 217, g: 84, b: 84)
     }

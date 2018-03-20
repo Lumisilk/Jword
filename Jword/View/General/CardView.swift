@@ -30,7 +30,7 @@ class CardView: UIView {
   
   private func initView(_ title: String) {
     [self].addShadows()
-    [self].addRadius()
+    layer.cornerRadius = 20
     if !title.isEmpty {
       titleLabel.text = title
       titleLabel.font = UIFont.systemFont(ofSize: 13)

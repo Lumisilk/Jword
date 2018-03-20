@@ -70,9 +70,7 @@ extension String {
 // MARK: - UIKit
 extension Array where Element: UIView {
   func addRadius(_ radius: CGFloat = 20) {
-    for view in self {
-      view.layer.cornerRadius = radius
-    }
+    forEach { $0.layer.cornerRadius = radius }
   }
   func addShadows() {
     for view in self {
@@ -84,15 +82,13 @@ extension Array where Element: UIView {
     }
   }
   func changeBackground(color: UIColor) {
-    for view in self {
-      view.backgroundColor = color
-    }
+    forEach { $0.backgroundColor = color }
   }
 }
 
 extension Array where Element: UILabel {
   func changeTextColor(_ color: UIColor) {
-    self.forEach {$0.textColor = color}
+    forEach { $0.textColor = color }
   }
 }
 
@@ -114,11 +110,4 @@ extension UIColor {
     self.init(red: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha: alpha)
   }
 }
-
-//extension UIView {
-//  @IBInspectable var cornerRadius: CGFloat {
-//    get { return layer.cornerRadius }
-//    set { layer.cornerRadius = newValue }
-//  }
-//}
 

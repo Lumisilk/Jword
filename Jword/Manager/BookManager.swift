@@ -58,7 +58,7 @@ struct BookManager {
       }
       try! realm.write {
         for word in wordReadyToLearn {
-          word.state = .ready
+          word.level = .ready
         }
       }
     }
@@ -152,7 +152,8 @@ struct BookManager {
   func makeWorkbenchAllToSpellLevel() -> Int {
     let words = realm.objects(WordRecord.self).filter(WordRecord.wordRecordsInWorkbench)
     try! realm.write {
-      words.forEach{$0.state = .know}
+      words.forEach{$0.level = .know}
+      wordsToday.forEach {$0.state = .forgotten}
     }
     return words.count
   }
