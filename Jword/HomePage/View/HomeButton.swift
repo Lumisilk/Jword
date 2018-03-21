@@ -10,7 +10,7 @@ import UIKit
 
 final class HomeButton: ShrinkButton, Colorizable {
   
-  enum Entrance {
+  enum HomeButtonType {
     case wordToday
     case study
     case search
@@ -24,9 +24,7 @@ final class HomeButton: ShrinkButton, Colorizable {
   private let mainLabel = UILabel()
   private let subLabel = UILabel()
   var subTitle: String = "" {
-    didSet {
-      subLabel.text = subTitle
-    }
+    didSet { subLabel.text = subTitle }
   }
   
   init() {
@@ -46,7 +44,7 @@ final class HomeButton: ShrinkButton, Colorizable {
     
     mainLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
     mainLabel.adjustsFontSizeToFitWidth = true
-    subLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+    subLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
     subLabel.textAlignment = .right
     
     mainLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -74,13 +72,14 @@ final class HomeButton: ShrinkButton, Colorizable {
   }
   
   func applyTheme() {
+    let textColor = Theme.isNight ? Theme.text: Theme.foreground
     imageView?.tintColor = Theme.homeButtonImageTint
-    mainLabel.textColor = Theme.foreground
-    subLabel.textColor = Theme.foreground
+    mainLabel.textColor = textColor
+    subLabel.textColor = textColor
     gradientLayer.colors = [Theme.gradientStartColor.cgColor, Theme.gradientEndColor.cgColor]
   }
   
-  func load(type: Entrance, subTitle: String = "") {
+  func load(type: HomeButtonType, subTitle: String = "") {
     self.subTitle = subTitle
     var origImage: UIImage?
     switch type {

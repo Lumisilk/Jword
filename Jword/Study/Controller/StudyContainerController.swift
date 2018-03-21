@@ -10,6 +10,7 @@ import UIKit
 
 final class StudyContainerController: UIViewController, Colorizable {
   
+  @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var homeButton: UIButton!
   @IBOutlet weak var searchButton: UIButton!
   @IBOutlet weak var containerView: UIView!
@@ -31,6 +32,7 @@ final class StudyContainerController: UIViewController, Colorizable {
   
   func applyTheme() {
     view.backgroundColor = Theme.background
+    titleLabel.textColor = Theme.text
     homeButton.tintColor = Theme.tint
     searchButton.tintColor = Theme.tint
   }

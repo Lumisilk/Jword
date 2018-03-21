@@ -40,9 +40,9 @@
                                             <action selector="returnToHome:" destination="cHa-xf-GzM" eventType="touchUpInside" id="BTb-mc-L2o"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Study)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJM-T1-FiR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Study Mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJM-T1-FiR">
                                         <rect key="frame" x="26" y="0.0" width="287" height="26"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -81,6 +81,7 @@
                         <outlet property="containerView" destination="dmI-rd-xev" id="Ipq-LY-ebR"/>
                         <outlet property="homeButton" destination="7Ur-VX-ene" id="AnQ-LM-1tT"/>
                         <outlet property="searchButton" destination="Jdn-cn-Qmb" id="Ezs-2W-S8n"/>
+                        <outlet property="titleLabel" destination="IJM-T1-FiR" id="AiT-3N-zh9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jC2-W5-nhG" userLabel="First Responder" sceneMemberID="firstResponder"/>

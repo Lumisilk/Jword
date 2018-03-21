@@ -31,9 +31,15 @@ struct BookManager {
   func getWordRecord(entryID: Int) -> WordRecord? {
     return realm.object(ofType: WordRecord.self, forPrimaryKey: entryID)
   }
+  var wordsTodayCount: Int {
+    return wordsToday.count
+  }
+  var wordsTodayCountToLearn: Int {
+    return wordsToday.filter(WordToday.wordTodayToLearn).count
+  }
   var progress: Int {
     guard wordsToday.count != 0 else { return 0 }
-    let count = wordsToday.filter(WordToday.wordTodayToLearn).count
+    let count = wordsToday.count - wordsTodayCountToLearn
     return count * 100 / wordsToday.count
   }
   

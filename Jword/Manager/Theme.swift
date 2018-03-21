@@ -27,6 +27,10 @@ enum Theme: Int {
     }
   }
   
+  static var isNight: Bool {
+    return theme == .night
+  }
+  
   /// A background color used mostly.
   static var background: UIColor = .clear
   
@@ -72,9 +76,9 @@ enum Theme: Int {
       staticLabel = UIColor(r: 170, g: 170, b: 170)
       text = .white
       subText = UIColor(r: 220, g: 220, b: 220)
-      homeButtonImageTint = UIColor(r: 55, g: 111, b: 181)
-      gradientStartColor = UIColor(r: 71, g: 183, b: 255)
-      gradientEndColor = UIColor(r: 34, g: 129, b: 255)
+      homeButtonImageTint = UIColor(r: 71, g: 91, b: 126)
+      gradientStartColor = UIColor(r: 102, g: 129, b: 230)
+      gradientEndColor = UIColor(r: 82, g: 106, b: 185)
     case .blue:
       background = UIColor(r: 227, g: 239, b: 254)
       foreground = .white

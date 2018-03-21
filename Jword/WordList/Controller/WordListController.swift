@@ -10,9 +10,8 @@ import UIKit
 
 final class WordListConrtoller: UITableViewController, Colorizable {
   
-  let dictManager = DictManager.shared
-  let bookManager = BookManager.shared
-  var wordList = [JMEntry]()
+  var dataSource: WordListDataSource?
+  
   /// A boolean value indicates this page is a searching page or a wordToday list.
   var isForSearching = true
   
@@ -20,13 +19,10 @@ final class WordListConrtoller: UITableViewController, Colorizable {
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationController?.navigationBar.prefersLargeTitles = true
-//    navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//    navigationController?.navigationBar.shadowImage = UIImage()
-//    navigationController?.navigationBar.isTranslucent = true
-//    navigationController?.navigationBar.backgroundColor = .clear
-//    navigationController?.view.backgroundColor = .clear
+    Theme.addObserver(controller: self)
     
     if isForSearching {
+      dataSource = SearchDataSource()
       navigationItem.title = "Search"
       let searchController = UISearchController(searchResultsController: nil)
       searchController.searchBar.placeholder = "漢字/ローマ字/English"
@@ -36,12 +32,11 @@ final class WordListConrtoller: UITableViewController, Colorizable {
       navigationItem.searchController = searchController
       navigationItem.hidesSearchBarWhenScrolling = false
     } else {
+      dataSource = WordTodayDataSource(tableView: tableView)
       navigationItem.title = "Words Today"
-      let wordToday = Array(bookManager.wordsToday)
-      let IDs: [Int] = wordToday.map{$0.entryId}
-      wordList = dictManager.getEntries(IDs: IDs)
     }
-    Theme.addObserver(controller: self)
+    
+    tableView.dataSource = dataSource
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -55,7 +50,6 @@ final class WordListConrtoller: UITableViewController, Colorizable {
   
   func applyTheme() {
     tableView.backgroundColor = Theme.background
-    //navigationController?.navigationBar.backgroundColor = Theme.background
     navigationController?.navigationBar.tintColor = Theme.tint
     navigationController?.navigationBar.barStyle = Theme.barStyle
     navigationItem.searchController?.searchBar.tintColor = Theme.tint
@@ -71,6 +65,7 @@ final class WordListConrtoller: UITableViewController, Colorizable {
     dismiss(animated: true, completion: nil)
     dismiss(animated: true, completion: nil)
   }
+  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "showWordPage" {
       let entry = sender as! JMEntry
@@ -84,24 +79,9 @@ final class WordListConrtoller: UITableViewController, Colorizable {
   }
 
   // MARK: - TableView
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return wordList.count
-  }
-  
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "SearchPageCell", for: indexPath)
-    let row = indexPath.row
-    let entry = wordList[row]
-    cell.textLabel?.text = entry.kanji
-    cell.textLabel?.textColor = Theme.text
-    cell.detailTextLabel?.text = entry.reading
-    cell.detailTextLabel?.textColor = Theme.subText
-    return cell
-  }
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.navigationItem.searchController?.searchBar.resignFirstResponder()
-    let entry = wordList[indexPath.row]
-    if isForSearching { UserDataManager.addSearchHistory(entryID: entry.id) }
+    let entry = dataSource?.entry(at: indexPath.row)
     performSegue(withIdentifier: "showWordPage", sender: entry)
   }
   
@@ -110,11 +90,8 @@ final class WordListConrtoller: UITableViewController, Colorizable {
 // MARK: - UISearchResultsUpdating Delegate
 extension WordListConrtoller: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
-    if searchController.searchBar.text!.isEmpty {
-      let history = UserDataManager.searchHistory
-      wordList = dictManager.getEntries(IDs: history)
-    } else {
-      wordList = dictManager.search(kanji: searchController.searchBar.text!)
+    if isForSearching {
+      (dataSource as! SearchDataSource).updateResult(input: searchController.searchBar.text!)
     }
     tableView.reloadData()
   }

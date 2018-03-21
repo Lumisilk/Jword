@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class HomePageController: UIViewController, Colorizable {
 
@@ -15,7 +16,7 @@ final class HomePageController: UIViewController, Colorizable {
   @IBOutlet weak var searchButton: HomeButton!
   @IBOutlet weak var settingButton: HomeButton!
   
-  private let bookManager = BookManager.shared
+  var token: NotificationToken? = nil
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,13 +25,16 @@ final class HomePageController: UIViewController, Colorizable {
     searchButton.load(type: .search)
     settingButton.load(type: .setting)
     Theme.addObserver(controller: self)
-  }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    let count = bookManager.wordsToday.count
-    todayButton.subTitle = count != 0 ? count.description : ""
-    let progress = bookManager.progress
-    studyButton.subTitle = progress != 0 ? "\(progress)%" : ""
+    
+    token = BookManager.shared.wordsToday.observe{ [weak self] change in
+      switch change {
+      case .initial, .update(_,_,_,_):
+        self?.todayButton.subTitle = BookManager.shared.wordsToday.count.description + " words"
+        self?.studyButton.subTitle = BookManager.shared.progress.description + "%"
+      case .error(let error):
+        fatalError("\(error)")
+      }
+    }
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -50,4 +54,7 @@ final class HomePageController: UIViewController, Colorizable {
     [todayButton, searchButton, studyButton, settingButton].applyTheme()
   }
 
+  deinit {
+    token?.invalidate()
+  }
 }

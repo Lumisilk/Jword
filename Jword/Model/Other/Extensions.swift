@@ -111,3 +111,11 @@ extension UIColor {
   }
 }
 
+extension UITableViewCell {
+  func configure(entry: JMEntry) {
+    textLabel?.text = entry.kanji
+    textLabel?.textColor = Theme.text
+    detailTextLabel?.text = entry.reading
+    detailTextLabel?.textColor = Theme.subText
+  }
+}
