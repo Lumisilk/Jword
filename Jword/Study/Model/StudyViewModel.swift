@@ -39,11 +39,12 @@ final class StudyViewModel {
   
   // MARK: - Process
   func prepareWordsAndProcessNextPage() {
-    wordsTolearn = Array(bookManager.wordsToday.filter(WordToday.wordTodayToLearn)).shuffled()
-    if wordsTolearn.isEmpty {
+    let words = bookManager.wordsToday.filter(WordToday.wordTodayToLearn)
+    if words.isEmpty {
       //containerController.containerView.bringSubview(toFront: containerController.completeView)
       print("Complete all")
     } else {
+      wordsTolearn = Array(words).shuffled()
       processNextQuiz()
     }
   }
