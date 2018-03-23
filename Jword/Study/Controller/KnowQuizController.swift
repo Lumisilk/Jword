@@ -37,8 +37,8 @@ final class KnowQuizController: UIViewController, Colorizable {
   private func initView() {
     [labelContainer, sentenceContainer].addRadius()
     sentenceContainer.isHidden = true
-    yesButton.initial(title: "Know", after: "", type: .normal)
-    noButton.initial(title: "Don't know'", after: "", type: .forget)
+    yesButton.initial(title: "Know", after: "", isNormal: true)
+    noButton.initial(title: "Don't know'", after: "", isNormal: false)
   }
   func applyTheme() {
     view.backgroundColor = Theme.background

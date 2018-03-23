@@ -35,7 +35,7 @@
 		BB741E6320527C56009F8E17 /* makeAllToSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB741E6220527C56009F8E17 /* makeAllToSpell.swift */; };
 		BB772D3E202DAA98008DFE85 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D3D202DAA98008DFE85 /* Extensions.swift */; };
 		BB772D42202DEB1F008DFE85 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB772D41202DEB1F008DFE85 /* UserDataManager.swift */; };
-		BB791841205EA77D007B3CF5 /* JWButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB791840205EA77D007B3CF5 /* JWButton.swift */; };
+		BB791841205EA77D007B3CF5 /* StudyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB791840205EA77D007B3CF5 /* StudyButton.swift */; };
 		BB7EFD8E2032EE0D00005F7E /* ExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */; };
 		BBA052FA204B9B32002A095D /* ShrinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA052F9204B9B32002A095D /* ShrinkButton.swift */; };
 		BBA0653E205D5E5A0037283D /* StudyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA0653D205D5E5A0037283D /* StudyViewModel.swift */; };
@@ -121,7 +121,7 @@
 		BB741E6220527C56009F8E17 /* makeAllToSpell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = makeAllToSpell.swift; sourceTree = "<group>"; };
 		BB772D3D202DAA98008DFE85 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BB772D41202DEB1F008DFE85 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
-		BB791840205EA77D007B3CF5 /* JWButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWButton.swift; sourceTree = "<group>"; };
+		BB791840205EA77D007B3CF5 /* StudyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyButton.swift; sourceTree = "<group>"; };
 		BB7EFD8D2032EE0D00005F7E /* ExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView.swift; sourceTree = "<group>"; };
 		BBA052F9204B9B32002A095D /* ShrinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShrinkButton.swift; path = Jword/General/View/ShrinkButton.swift; sourceTree = SOURCE_ROOT; };
 		BBA0653D205D5E5A0037283D /* StudyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyViewModel.swift; sourceTree = "<group>"; };
@@ -350,7 +350,6 @@
 			children = (
 				BBA052F9204B9B32002A095D /* ShrinkButton.swift */,
 				BB2DC6C32034228C000D6AB2 /* CardView.swift */,
-				BB791840205EA77D007B3CF5 /* JWButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -416,6 +415,7 @@
 		BBE8BCBD20624456002BA4F5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BB791840205EA77D007B3CF5 /* StudyButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -614,7 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBEC0512202F3DBB00CD7A54 /* WordPageController.swift in Sources */,
-				BB791841205EA77D007B3CF5 /* JWButton.swift in Sources */,
+				BB791841205EA77D007B3CF5 /* StudyButton.swift in Sources */,
 				BBDA3D9D202BFAF10038BE8B /* AppDelegate.swift in Sources */,
 				BB6B0CDA204E72CE00394F12 /* HomeButton.swift in Sources */,
 				BB67F0FC202D505700FE6F75 /* WorkBook.swift in Sources */,

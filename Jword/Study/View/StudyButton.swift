@@ -10,14 +10,9 @@ import UIKit
 
 final class JWButton: ShrinkButton, Colorizable {
   
-  enum ButtonType {
-    case forget
-    case normal
-  }
-  
   var title: String = ""
   var afterTitle: String = ""
-  var type: ButtonType = .normal
+  var isNormal: Bool = true
   
   override var isEnabled: Bool {
     didSet {
@@ -25,10 +20,10 @@ final class JWButton: ShrinkButton, Colorizable {
     }
   }
   
-  init(title: String, after: String, type: ButtonType) {
+  init(title: String, after: String, isNormal: Bool) {
     self.title = title
     afterTitle = after
-    self.type = type
+    self.isNormal = isNormal
     super.init(frame: CGRect.zero)
     initView()
     applyTheme()
@@ -50,29 +45,42 @@ final class JWButton: ShrinkButton, Colorizable {
   
   func applyTheme() {
     print("JWButton \(title) applyTheme")
-    layer.borderColor = Theme.staticLabel.cgColor
+    
     if isEnabled {
+      
       titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .medium)
-      backgroundColor = type == .normal ? Theme.normalButton: Theme.forgetButton
-      tintColor = .white
-      layer.borderWidth = 0
-      layer.shadowOpacity = Theme.theme == .night ? 0: 0.2
-      layer.borderWidth = 0
       titleLabel?.text = title
+      if isNormal {
+        tintColor = .white
+        backgroundColor = Theme.tint
+        layer.borderWidth = 0
+        layer.shadowOpacity = Theme.theme == .night ? 0: 0.3
+      } else {
+        tintColor = Theme.tint
+        backgroundColor = Theme.background
+        layer.borderColor = Theme.tint.cgColor
+        layer.borderWidth = 2
+        layer.shadowOpacity = 0
+      }
     } else {
+      
       titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .regular)
+      titleLabel?.text = afterTitle
+      if isNormal {
+        fatalError()
+      }
       backgroundColor = Theme.foreground
       tintColor = Theme.staticLabel
+      layer.borderColor = Theme.staticLabel.cgColor
       layer.shadowOpacity = 0
       layer.borderWidth = Theme.theme == .night ? 0 : 1
-      titleLabel?.text = afterTitle
     }
   }
   
-  func initial(title: String, after: String, type: ButtonType) {
+  func initial(title: String, after: String, isNormal: Bool) {
     self.title = title
     afterTitle = after
-    self.type = type
+    self.isNormal = isNormal
     applyTheme()
   }
 }
