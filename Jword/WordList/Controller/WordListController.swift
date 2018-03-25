@@ -81,7 +81,7 @@ final class WordListConrtoller: UITableViewController, Colorizable {
   // MARK: - TableView
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.navigationItem.searchController?.searchBar.resignFirstResponder()
-    let entry = dataSource?.entry(at: indexPath.row)
+    let entry = dataSource?.fetch(at: indexPath.row)
     performSegue(withIdentifier: "showWordPage", sender: entry)
   }
   

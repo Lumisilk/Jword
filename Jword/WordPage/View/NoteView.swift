@@ -8,14 +8,14 @@
 
 import UIKit
 
-final class NoteView: CardView {
+final class NoteView: CardView, Colorizable {
   
-  private let addNoteButton = UIButton()
-  private let noteTextView = UITextView()
-  private var buttonConstraints = [NSLayoutConstraint]()
-  private var textViewConstraints = [NSLayoutConstraint]()
+  private let addLabel = UILabel()
+  private let noteLabel = UILabel()
+  private var addLabelConstraints = [NSLayoutConstraint]()
+  private var noteLabelConstraints = [NSLayoutConstraint]()
   
-  init(note: String?) {
+  init(note: String) {
     super.init(title: "Note")
     initViews()
     loadNote(note)
@@ -26,46 +26,46 @@ final class NoteView: CardView {
   }
   
   private func initViews() {
-    noteTextView.isScrollEnabled = false
-    noteTextView.font = UIFont.systemFont(ofSize: 14)
-    noteTextView.isEditable = false
-    noteTextView.translatesAutoresizingMaskIntoConstraints = false
     
-    addNoteButton.setTitle("Add a note", for: .normal)
-    addNoteButton.setTitleColor(.black, for: .normal)
-    addNoteButton.backgroundColor = UIColor.clear
-    addNoteButton.translatesAutoresizingMaskIntoConstraints = false
+    addLabel.font = UIFont.systemFont(ofSize: 17)
+    addLabel.text = "Add New Note"
+    addLabel.translatesAutoresizingMaskIntoConstraints = false
+
+    noteLabel.font = UIFont.systemFont(ofSize: 17)
+    noteLabel.numberOfLines = 0
+    noteLabel.lineBreakMode = .byWordWrapping
+    noteLabel.translatesAutoresizingMaskIntoConstraints = false
+
+    let addLabelX = NSLayoutConstraint(item: addLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0)
+    let addLabelY = NSLayoutConstraint(item: addLabel, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 15)
+    addLabelConstraints = [addLabelX, addLabelY]
     
-    let buttonTop = NSLayoutConstraint(item: addNoteButton, attribute: .top, relatedBy: .equal, toItem: line, attribute: .bottom, multiplier: 1, constant: 0)
-    let buttonLeft = NSLayoutConstraint(item: addNoteButton, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
-    let buttonRight = NSLayoutConstraint(item: addNoteButton, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
-    let buttonHeight = NSLayoutConstraint(item: addNoteButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 0, constant: 100)
-    let selfBottom1 = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: addNoteButton, attribute: .bottom, multiplier: 1, constant: 0)
-    buttonConstraints = [buttonTop, buttonLeft, buttonRight, buttonHeight, selfBottom1]
+    let noteTop = NSLayoutConstraint(item: noteLabel, attribute: .top, relatedBy: .equal, toItem: line, attribute: .bottom, multiplier: 1, constant: topBottomMargin)
+    let noteLeft = NSLayoutConstraint(item: noteLabel, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: sideMargin)
+    let noteRight = NSLayoutConstraint(item: noteLabel, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -sideMargin)
+    let selfBottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: noteLabel, attribute: .bottom, multiplier: 1, constant: topBottomMargin)
+    noteLabelConstraints = [noteTop, noteLeft, noteRight, selfBottom]
     
-    let noteTop = NSLayoutConstraint(item: noteTextView, attribute: .top, relatedBy: .equal, toItem: line, attribute: .bottom, multiplier: 1, constant: 3)
-    let noteLeft = NSLayoutConstraint(item: noteTextView, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: sideMargin)
-    let noteRight = NSLayoutConstraint(item: noteTextView, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: -sideMargin)
-    let selfBottom2 = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: noteTextView, attribute: .bottom, multiplier: 1, constant: topBottomMargin)
-    textViewConstraints = [noteTop, noteLeft, noteRight, selfBottom2]
+    let selfHeight = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .height, multiplier: 0, constant: 100)
+    addConstraint(selfHeight)
   }
   
-  func loadNote(_ note: String?) {
-    if let note = note {
-      addNoteButton.removeFromSuperview()
-      noteTextView.text = note
-      if noteTextView.superview == nil {
-        addSubview(noteTextView)
-        addConstraints(textViewConstraints)
+  func loadNote(_ note: String) {
+    print(note)
+    if note.isEmpty {
+      noteLabel.removeFromSuperview()
+      if addLabel.superview == nil {
+        addSubview(addLabel)
+        print("addlabel")
+        addConstraints(addLabelConstraints)
       }
     } else {
-      noteTextView.removeFromSuperview()
-      if addNoteButton.superview == nil {
-        addSubview(addNoteButton)
-        addConstraints(buttonConstraints)
+      addLabel.removeFromSuperview()
+      noteLabel.text = note
+      if noteLabel.superview == nil {
+        addSubview(noteLabel)
+        addConstraints(noteLabelConstraints)
       }
     }
-    
   }
-  
 }

@@ -21,7 +21,7 @@ final class WordTodayDataSource: NSObject, WordListDataSource {
     wordsToday = bookManager.wordsToday
     super.init()
     token = wordsToday.observe { [weak self] change in
-      guard let this = self else { return }
+      guard let _ = self else { return }
       switch change {
       case .initial:
         break
@@ -46,12 +46,12 @@ final class WordTodayDataSource: NSObject, WordListDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "SearchListCell")!
-    let entry = self.entry(at: indexPath.row)
+    let entry = self.fetch(at: indexPath.row)
     cell.configure(entry: entry)
     return cell
   }
   
-  func entry(at row: Int) -> JMEntry {
+  func fetch(at row: Int) -> JMEntry {
     let word = wordsToday[row]
     let entry = dictManager.getEntry(id: word.entryId)
     return entry

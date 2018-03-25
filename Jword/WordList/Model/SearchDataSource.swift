@@ -9,7 +9,7 @@
 import UIKit
 
 protocol WordListDataSource: UITableViewDataSource {
-  func entry(at row: Int) -> JMEntry
+  func fetch(at row: Int) -> JMEntry
 }
 
 final class SearchDataSource: NSObject, WordListDataSource {
@@ -32,7 +32,7 @@ final class SearchDataSource: NSObject, WordListDataSource {
     return cell
   }
   
-  func entry(at row: Int) -> JMEntry {
+  func fetch(at row: Int) -> JMEntry {
     return searchResults[row]
   }
   

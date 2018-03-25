@@ -24,7 +24,7 @@ final class WordPageController: UIViewController, Colorizable {
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var entryView: EntryView!
   @IBOutlet weak var exampleView: ExampleView!
-  //@IBOutlet weak var noteView: NoteView!
+  @IBOutlet weak var noteView: NoteView!
   
   @IBOutlet weak var buttonStack: UIStackView!
   private let forgetButton = ShrinkButton()
@@ -47,7 +47,7 @@ final class WordPageController: UIViewController, Colorizable {
     initView()
     if isDataLoaded {
       updateViewFromEntry()
-      //updateViewFromRecord()
+      updateViewFromRecord()
       reloadContentSize()
     }
     Theme.addObserver(controller: self)
@@ -63,11 +63,15 @@ final class WordPageController: UIViewController, Colorizable {
     buttonStack.addArrangedSubview(forgetButton)
     buttonStack.addArrangedSubview(continueButton)
     view.bringSubview(toFront: buttonStack)
+    
+    let tap = UITapGestureRecognizer(target: self, action: #selector(showNoteController))
+    noteView.addGestureRecognizer(tap)
   }
   
   func applyTheme() {
     entryView.applyTheme()
     exampleView.applyTheme()
+    noteView.applyTheme()
     view.backgroundColor = Theme.background
     forgetButton.setTitleColor(Theme.background, for: .normal)
     forgetButton.backgroundColor = isForgotten ? Theme.foreground : Theme.tint
@@ -84,6 +88,7 @@ final class WordPageController: UIViewController, Colorizable {
     
     entryView.layer.shadowPath = UIBezierPath(rect: entryView.bounds).cgPath
     exampleView.layer.shadowPath = UIBezierPath(rect: exampleView.bounds).cgPath
+    noteView.layer.shadowPath = UIBezierPath(rect: noteView.bounds).cgPath
   }
   
   private func changeButtonStackLength(isShort: Bool) {
@@ -126,34 +131,49 @@ final class WordPageController: UIViewController, Colorizable {
     }
   }
   
-//  private func updateViewFromRecord() {
-//    if let record = record {
-//      noteView.loadNote(record.note)
-//      noteView.isHidden = false
-//    } else {
-//      noteView.isHidden = true
-//    }
-//  }
+  private func updateViewFromRecord() {
+    if let record = record {
+      noteView.loadNote(record.note ?? "")
+      noteView.isHidden = false
+    } else {
+      noteView.isHidden = true
+    }
+  }
   
   // MARK: - Data Interface
   func loadData(entry: JMEntry, method: openMethod, record: WordRecord? = nil) {
     self.entry = entry
-    self.record = method == .search ? bookManager.getWordRecord(entryID: entry.id) : record
+    self.record = record ?? bookManager.getWordRecord(entryID: entry.id)
     self.method = method
     isDataLoaded = true
     if isViewLoaded {
       updateViewFromEntry()
-      //updateViewFromRecord()
+      updateViewFromRecord()
       reloadContentSize()
     }
   }
   
   // MARK: - Action
+  @objc private func showNoteController() {
+    let noteController = UIStoryboard.instantiateController(name: "Main", id: "NoteController") as! NoteController
+    noteController.load(note: record?.note ?? "") { [weak self] note in
+      guard let this = self else { return }
+      print(note)
+      this.noteView.loadNote(note)
+      try! this.bookManager.realm.write {
+        this.record?.note = note
+      }
+    }
+    present(noteController, animated: true, completion: nil)
+  }
+  
   @objc private func addOrForget() {
     if studyViewModel != nil {
       studyViewModel?.forget()
     } else {
       bookManager.addOrForget(entryID: entry.id)
+      record = bookManager.getWordRecord(entryID: entry.id)
+      updateViewFromRecord()
     }
     forgetButton.backgroundColor = Theme.foreground
     forgetButton.setTitleColor(Theme.staticLabel, for: .normal)

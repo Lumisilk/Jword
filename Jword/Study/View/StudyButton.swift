@@ -63,7 +63,6 @@ final class JWButton: ShrinkButton, Colorizable {
         layer.shadowOpacity = 0
       }
     } else {
-      
       titleLabel?.font = UIFont.systemFont(ofSize: 19, weight: .regular)
       titleLabel?.text = afterTitle
       if isNormal {
