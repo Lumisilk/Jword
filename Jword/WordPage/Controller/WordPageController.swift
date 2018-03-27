@@ -35,7 +35,7 @@ final class WordPageController: UIViewController, Colorizable {
   
   // MARK: - Data Property
   let bookManager = BookManager.shared
-  weak var studyViewModel: StudyViewModel?
+  weak var studyViewModel: StudyCoordinator?
   var entry: JMEntry!
   var record: WordRecord?
   var method: openMethod = .wordList

@@ -21,7 +21,7 @@ final class SpellQuizController: UIViewController, Colorizable {
   @IBOutlet weak var forgetButton: JWButton!
   @IBOutlet weak var confirmButton: JWButton!
   
-  weak var studyViewModel: StudyViewModel!
+  weak var studyViewModel: StudyCoordinator!
   var entry: JMEntry!
   var quiz: SpellQuiz!
   private var isResultShowing = false

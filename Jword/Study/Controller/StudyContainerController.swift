@@ -16,7 +16,7 @@ final class StudyContainerController: UIViewController, Colorizable {
   @IBOutlet weak var containerView: UIView!
   @IBOutlet weak var completeView: UIView!
   
-  var studyViewModel: StudyViewModel!
+  var studyCoordinator: StudyCoordinator!
 
   // MARK: - View Controller
   override func viewDidLoad() {
@@ -26,8 +26,8 @@ final class StudyContainerController: UIViewController, Colorizable {
     let searchImage = UIImage(named: "smallSearch.png")?.withRenderingMode(.alwaysTemplate)
     homeButton.imageView?.image = homeImage
     searchButton.imageView?.image = searchImage
-    studyViewModel = StudyViewModel(containerController: self)
-    studyViewModel.prepareWordsAndProcessNextPage()
+    studyCoordinator = StudyCoordinator(containerController: self)
+    studyCoordinator.prepareWordsAndProcessNextPage()
   }
   
   func applyTheme() {

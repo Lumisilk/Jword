@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class StudyViewModel {
+final class StudyCoordinator {
   
   private let dictManager = DictManager.shared
   private let bookManager = BookManager.shared
@@ -31,7 +31,7 @@ final class StudyViewModel {
     spellQuizController = UIStoryboard.instantiateController(name: "Study", id: "SpellQuizController") as! SpellQuizController
     
     wordPageController.studyViewModel = self
-    knowQuizController.studyViewModel = self
+    knowQuizController.studyCoordinator = self
     spellQuizController.studyViewModel = self
     
     containerController.addChildControllers([wordPageController, knowQuizController, spellQuizController])
